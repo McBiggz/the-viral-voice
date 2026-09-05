@@ -22,3 +22,78 @@
 .footer-follow-signal img{filter:drop-shadow(0 0 10px rgba(37,201,216,.1))}
 @media(max-width:900px){.hero-follow-signal{width:min(560px,86vw)}.footer-follow-signal{width:190px;max-width:46vw}}
 @media(max-width:520px){.hero-follow-signal{width:min(285px,68vw);margin:10px 0 4px}.type-card .follow-signal-card{width:min(82%,260px);height:90%}.follow-footer{display:flex;flex-direction:column;align-items:center;gap:12px}.footer-follow-signal{width:150px;max-width:48vw}}
+
+
+/* Video static / signal interference */
+.hero-static-video{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  z-index:1;
+  opacity:.075;
+  mix-blend-mode:screen;
+  pointer-events:none;
+  filter:contrast(1.18) brightness(.72) saturate(.55);
+}
+.hero-vignette,.hero-grid{z-index:2}
+.hero-content{z-index:4}
+.hero-sidecode{z-index:5}
+
+.signal-break{
+  height:118px;
+  position:relative;
+  overflow:hidden;
+  background:#020405;
+  border-top:1px solid rgba(37,201,216,.12);
+  border-bottom:1px solid rgba(37,201,216,.12);
+}
+.signal-break video{
+  position:absolute;
+  inset:-35%;
+  width:170%;
+  height:170%;
+  object-fit:cover;
+  opacity:.22;
+  mix-blend-mode:screen;
+  filter:contrast(1.55) brightness(.55) saturate(.25);
+  animation:signalPulse 10s steps(1,end) infinite;
+}
+.signal-break-mask{
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(90deg,#020405 0%,transparent 15%,transparent 85%,#020405 100%),
+    repeating-linear-gradient(0deg,rgba(2,4,5,.08) 0 2px,rgba(37,201,216,.025) 3px 4px);
+}
+.signal-break-label{
+  position:absolute;
+  right:5vw;
+  bottom:14px;
+  z-index:2;
+  color:rgba(37,201,216,.72);
+  font-size:.62rem;
+  letter-spacing:.28em;
+  text-transform:uppercase;
+}
+@keyframes signalPulse{
+  0%,15%,19%,46%,50%,77%,81%,100%{opacity:.12}
+  16%,18%,47%,49%,78%,80%{opacity:.38}
+}
+
+@media(max-width:900px){
+  .hero-static-video{opacity:.055}
+  .signal-break{height:90px}
+  .signal-break video{opacity:.18}
+}
+@media(max-width:520px){
+  .hero-static-video{opacity:.045}
+  .signal-break{height:72px}
+  .signal-break-label{right:6vw;bottom:10px;font-size:.55rem;letter-spacing:.2em}
+}
+
+@media(prefers-reduced-motion:reduce){
+  .hero-static-video,.signal-break video{display:none}
+  .scanline,.orbit-two{animation:none}
+}
