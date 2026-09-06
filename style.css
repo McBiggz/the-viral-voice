@@ -1,1079 +1,595 @@
-:root{--bg:#020405;--panel:#080b0c;--ink:#eff5f5;--muted:#8f9a9d;--cyan:#25c9d8;--cyan2:#0b7882;--red:#af0716;--line:rgba(37,201,216,.3)}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font-family:Oswald,Arial,sans-serif;overflow-x:hidden}a{color:inherit;text-decoration:none}.noise{position:fixed;inset:0;z-index:100;pointer-events:none;opacity:.055;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}.scanline{position:fixed;left:0;right:0;top:-10px;height:3px;background:rgba(37,201,216,.08);box-shadow:0 0 20px rgba(37,201,216,.22);z-index:99;pointer-events:none;animation:scan 9s linear infinite}@keyframes scan{to{transform:translateY(110vh)}}
-.site-header{height:72px;padding:0 4vw;position:fixed;inset:0 0 auto;z-index:40;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;background:linear-gradient(#020405f2,#0204059c,transparent);backdrop-filter:blur(6px)}.brand-mark img{width:44px;height:44px;object-fit:contain}.header-tag{font-size:.7rem;letter-spacing:.28em;color:var(--cyan);text-align:center}.site-header nav{justify-self:end;display:flex;gap:25px;font-size:.74rem;letter-spacing:.18em}.site-header nav a:hover{color:var(--cyan)}
-.hero{min-height:100svh;position:relative;overflow:hidden;display:flex;align-items:flex-end;background:#1a0609}.hero-image{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:60% 28%;filter:saturate(.98) contrast(1.06)}.hero-vignette{position:absolute;inset:0;background:linear-gradient(90deg,rgba(1,3,4,.96) 0%,rgba(1,3,4,.84) 28%,rgba(1,3,4,.15) 67%),linear-gradient(0deg,#020405 0%,transparent 30%),radial-gradient(circle at 70% 35%,transparent 0 20%,rgba(0,0,0,.24) 58%)}.hero-grid{position:absolute;inset:0;opacity:.13;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:56px 56px;mask-image:linear-gradient(90deg,#000,transparent 62%)}.hero-content{position:relative;z-index:3;padding:0 0 9vh 6vw;width:min(760px,90vw)}.micro-label,.eyebrow{font-size:.73rem;letter-spacing:.32em;color:var(--cyan);font-weight:600;text-transform:uppercase}.hero h1,.signal-copy h2,.manifesto-copy h2,.section-head h2,.merch-copy h2,.follow-section h2{font-family:Rye,Georgia,serif;font-weight:400;text-transform:uppercase;line-height:.88;margin:.16em 0;text-shadow:0 3px 0 #000}.hero h1{font-size:clamp(4.4rem,10.7vw,10.8rem);letter-spacing:-.035em}.small-the{display:block;font-family:Oswald,sans-serif;font-size:.17em;letter-spacing:.5em;margin:0 0 .25em .15em;color:#d8f8fa}.small-the.inline{display:inline;font-size:.25em;letter-spacing:.28em}.rule{height:2px;width:min(420px,70vw);background:linear-gradient(90deg,var(--cyan),transparent);margin:18px 0}.hero h2{font-size:clamp(1.15rem,2.4vw,2rem);font-family:Oswald,sans-serif;letter-spacing:.34em;color:#dffbfc}.hero-copy{max-width:570px;color:#d2d9da;font-size:clamp(1rem,1.5vw,1.22rem)}.signal-button{display:flex;align-items:center;justify-content:space-between;width:min(330px,80vw);margin-top:26px;border:1px solid var(--cyan);padding:13px 15px 13px 18px;font-size:.78rem;letter-spacing:.2em;transition:.2s}.signal-button b{font-size:1.4rem;color:var(--cyan)}.signal-button:hover{background:var(--cyan);color:#001013}.signal-button:hover b{color:#001013}.hero-sidecode{position:absolute;right:2.6vw;bottom:8vh;z-index:4;writing-mode:vertical-rl;transform:rotate(180deg);font-size:.65rem;line-height:1.8;letter-spacing:.22em;color:#b7c3c5}.hero-sigil{position:absolute;z-index:2;right:-7vw;bottom:-13vw;opacity:.12}.hero-sigil img{width:45vw;min-width:520px}
-.signal-section{min-height:760px;padding:110px 8vw;display:grid;grid-template-columns:auto 1.1fr .9fr;gap:4vw;align-items:center;position:relative;background:radial-gradient(circle at 80% 42%,rgba(37,201,216,.1),transparent 25%),linear-gradient(180deg,#020405,#071012)}.section-number{align-self:start;font-size:8rem;line-height:.8;color:transparent;-webkit-text-stroke:1px rgba(37,201,216,.23);font-weight:700}.signal-copy h2{font-size:clamp(3rem,7.5vw,7rem)}.signal-copy h2 span{color:var(--cyan)}.lead{font-size:1.16rem;line-height:1.7;color:#b9c3c5;max-width:690px}.mantra{display:flex;align-items:center;gap:18px;margin-top:34px;font-size:.85rem;letter-spacing:.23em;color:#d7eeef}.mantra i{width:45px;height:1px;background:var(--line)}.signal-art{position:relative;display:flex;justify-content:center;align-items:center;min-height:480px}.signal-art img{width:min(470px,72vw);filter:drop-shadow(0 0 30px rgba(37,201,216,.14));position:relative;z-index:2}.orbit{position:absolute;border:1px solid rgba(37,201,216,.22);border-radius:50%}.orbit-one{width:430px;height:430px}.orbit-two{width:530px;height:530px;border-style:dashed;animation:rot 30s linear infinite}@keyframes rot{to{transform:rotate(360deg)}}.stamp{position:absolute;right:-4vw;bottom:8%;z-index:3;border:1px solid var(--cyan);padding:12px 16px;letter-spacing:.19em;color:var(--cyan);font-size:.72rem;transform:rotate(-4deg);background:#020405dd}
-.manifesto{min-height:700px;display:grid;grid-template-columns:.9fr 1.1fr;background:#070708}.manifesto-photo{position:relative;overflow:hidden;min-height:660px}.manifesto-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:47% 32%;filter:grayscale(.25) contrast(1.12)}.redwash{position:absolute;inset:0;background:linear-gradient(135deg,rgba(174,5,21,.62),transparent 57%),linear-gradient(90deg,transparent 70%,#070708 100%);mix-blend-mode:multiply}.manifesto-copy{padding:100px 8vw 90px 7vw;display:flex;flex-direction:column;justify-content:center}.manifesto-copy h2{font-size:clamp(3rem,6vw,6.1rem)}.manifesto-copy>p:not(.eyebrow):not(.signature){font-size:1.1rem;line-height:1.7;color:#b8c0c2;max-width:660px}.manifesto-copy blockquote{margin:28px 0 18px;border-left:3px solid var(--cyan);padding:4px 0 4px 22px;font-size:1.45rem;line-height:1.45;color:#edf8f8;max-width:700px}.signature{font-size:.75rem;letter-spacing:.23em;color:var(--cyan)}
-.section-pad{padding:115px 8vw}.transmissions{background:#020405}.section-head{display:flex;justify-content:space-between;align-items:end;gap:40px}.section-head h2{font-size:clamp(3.1rem,6vw,6.2rem)}.head-note{max-width:330px;color:#8f9a9d;line-height:1.6}.transmission-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:55px}.transmission-card{border:1px solid rgba(37,201,216,.22);min-height:460px;position:relative;overflow:hidden;background:#071012;transition:.2s}.transmission-card:hover{transform:translateY(-5px);border-color:var(--cyan)}.card-no{position:absolute;top:16px;left:16px;z-index:4;color:var(--cyan);font-size:.7rem;letter-spacing:.2em}.card-art{height:370px;display:flex;align-items:center;justify-content:center;overflow:hidden;background:radial-gradient(circle,rgba(37,201,216,.09),transparent 60%)}.card-art img{width:82%;height:82%;object-fit:contain}.photo-card img{width:100%;height:100%;object-fit:cover;object-position:48% 26%;filter:contrast(1.1) saturate(.8)}.featured{transform:translateY(-22px)}.featured:hover{transform:translateY(-28px)}.type-card{font-family:Rye,serif;font-size:clamp(2.2rem,4vw,4.5rem);line-height:.86;text-align:center;color:var(--cyan);text-shadow:0 0 22px rgba(37,201,216,.16)}.card-bottom{height:90px;padding:16px 18px;border-top:1px solid rgba(37,201,216,.18);display:flex;justify-content:space-between;align-items:end}.card-bottom strong{letter-spacing:.13em}.card-bottom small{color:#647174;letter-spacing:.1em}
-.merch-strip{min-height:470px;padding:70px 8vw;position:relative;display:grid;grid-template-columns:.75fr 1.1fr .8fr;align-items:center;overflow:hidden;background:linear-gradient(90deg,#071012,#0b1314 55%,#120609)}.merch-strip:before{content:"";position:absolute;inset:0;opacity:.12;background-image:repeating-linear-gradient(-45deg,transparent 0 28px,rgba(37,201,216,.2) 29px 30px)}.merch-sigil,.merch-copy,.merch-type{position:relative;z-index:2}.merch-sigil img{width:min(340px,60vw);opacity:.74}.merch-copy h2{font-size:clamp(3rem,6vw,6.5rem)}.merch-copy p{color:#aab4b6;font-size:1.1rem}.coming{display:inline-block;margin-top:20px;border:1px solid var(--cyan);padding:10px 14px;color:var(--cyan);font-size:.72rem;letter-spacing:.2em}.merch-type{justify-self:end;font-family:Rye,serif;font-size:clamp(3rem,6vw,6rem);line-height:.85;color:transparent;-webkit-text-stroke:1px rgba(37,201,216,.27);transform:rotate(90deg)}
-.follow-section{text-align:center;background:radial-gradient(circle at center,rgba(37,201,216,.09),transparent 35%),#020405}.logo-lockup{width:min(600px,84vw);margin:0 auto 32px;filter:drop-shadow(0 10px 25px #000)}.follow-section h2{font-size:clamp(3rem,7vw,7rem)}.social-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;max-width:980px;margin:48px auto 28px}.social-grid a{border:1px solid rgba(37,201,216,.28);padding:16px 17px;display:flex;justify-content:space-between;font-size:.78rem;letter-spacing:.15em}.social-grid a span{color:var(--cyan)}.social-grid a:hover{background:var(--cyan);color:#021012}.social-grid a:hover span{color:#021012}.follow-footer{max-width:980px;margin:auto;padding-top:16px;border-top:1px solid rgba(255,255,255,.08);display:flex;justify-content:space-between;color:#697477;font-size:.7rem;letter-spacing:.2em}footer{min-height:105px;border-top:1px solid rgba(255,255,255,.08);padding:24px 5vw;display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:18px;color:#586366;font-size:.67rem;letter-spacing:.17em}footer img{width:38px;height:38px;object-fit:contain;opacity:.65}
-@media(max-width:900px){.header-tag,.site-header nav{display:none}.site-header{grid-template-columns:1fr}.hero-image{object-position:56% 25%}.hero-vignette{background:linear-gradient(0deg,#020405 0%,rgba(2,4,5,.76) 43%,rgba(2,4,5,.12) 74%),linear-gradient(90deg,rgba(2,4,5,.55),transparent)}.hero-content{padding:0 7vw 8vh}.hero h1{font-size:clamp(4.2rem,18vw,7.2rem)}.hero-sidecode{display:none}.hero-sigil{opacity:.1}.signal-section{grid-template-columns:1fr;padding:90px 7vw}.section-number{font-size:5rem}.signal-art{min-height:370px}.orbit-one{width:320px;height:320px}.orbit-two{width:390px;height:390px}.stamp{right:0}.manifesto{grid-template-columns:1fr}.manifesto-photo{min-height:500px}.manifesto-copy{padding:75px 7vw 85px}.section-head{display:block}.head-note{margin-top:20px}.transmission-grid{grid-template-columns:1fr}.featured{transform:none}.featured:hover{transform:translateY(-5px)}.merch-strip{grid-template-columns:1fr;text-align:center}.merch-sigil{order:2;margin-top:30px}.merch-type{display:none}.social-grid{grid-template-columns:1fr 1fr}.section-pad{padding:90px 7vw}footer{grid-template-columns:auto 1fr}footer span:last-child{display:none}}
-@media(max-width:520px){.hero-content{padding-bottom:7vh}.hero h1{font-size:clamp(4rem,22vw,6.1rem)}.hero h2{letter-spacing:.23em}.micro-label{max-width:260px;line-height:1.6}.mantra{gap:10px;justify-content:space-between}.mantra i{width:20px}.signal-art img{width:82vw}.orbit-one{width:290px;height:290px}.orbit-two{width:345px;height:345px}.manifesto-photo{min-height:420px}.transmission-card{min-height:420px}.card-art{height:330px}.social-grid{grid-template-columns:1fr}.follow-footer{display:block;line-height:2}.section-pad{padding:78px 6vw}.signal-section{padding:78px 6vw}.manifesto-copy{padding:65px 6vw}.merch-strip{padding:60px 6vw}footer{padding:22px 6vw}}
-
-
-/* Follow the Signal artwork */
-.follow-signal{display:block}
-.follow-signal img{display:block;width:100%;height:auto}
-.hero-follow-signal{width:min(540px,76vw);margin:12px 0 2px}
-.hero-follow-signal img{filter:drop-shadow(0 0 16px rgba(37,201,216,.14))}
-.type-card{padding:24px}
-.type-card .follow-signal-card{width:min(92%,310px);height:88%;object-fit:contain;filter:drop-shadow(0 0 20px rgba(37,201,216,.14))}
-.footer-follow-signal{width:210px;max-width:42vw}
-.footer-follow-signal img{filter:drop-shadow(0 0 10px rgba(37,201,216,.1))}
-@media(max-width:900px){.hero-follow-signal{width:min(560px,86vw)}.footer-follow-signal{width:190px;max-width:46vw}}
-@media(max-width:520px){.hero-follow-signal{width:min(285px,68vw);margin:10px 0 4px}.type-card .follow-signal-card{width:min(82%,260px);height:90%}.follow-footer{display:flex;flex-direction:column;align-items:center;gap:12px}.footer-follow-signal{width:150px;max-width:48vw}}
-
-
-/* Video static / signal interference */
-.hero-static-video{
-  position:absolute;
-  inset:0;
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  z-index:1;
-  opacity:.075;
-  mix-blend-mode:screen;
-  pointer-events:none;
-  filter:contrast(1.18) brightness(.72) saturate(.55);
-}
-.hero-vignette,.hero-grid{z-index:2}
-.hero-content{z-index:4}
-.hero-sidecode{z-index:5}
-
-.signal-break{
-  height:118px;
-  position:relative;
-  overflow:hidden;
-  background:#020405;
-  border-top:1px solid rgba(37,201,216,.12);
-  border-bottom:1px solid rgba(37,201,216,.12);
-}
-.signal-break video{
-  position:absolute;
-  inset:-35%;
-  width:170%;
-  height:170%;
-  object-fit:cover;
-  opacity:.22;
-  mix-blend-mode:screen;
-  filter:contrast(1.55) brightness(.55) saturate(.25);
-  animation:signalPulse 10s steps(1,end) infinite;
-}
-.signal-break-mask{
-  position:absolute;
-  inset:0;
-  background:
-    linear-gradient(90deg,#020405 0%,transparent 15%,transparent 85%,#020405 100%),
-    repeating-linear-gradient(0deg,rgba(2,4,5,.08) 0 2px,rgba(37,201,216,.025) 3px 4px);
-}
-.signal-break-label{
-  position:absolute;
-  right:5vw;
-  bottom:14px;
-  z-index:2;
-  color:rgba(37,201,216,.72);
-  font-size:.62rem;
-  letter-spacing:.28em;
-  text-transform:uppercase;
-}
-@keyframes signalPulse{
-  0%,15%,19%,46%,50%,77%,81%,100%{opacity:.12}
-  16%,18%,47%,49%,78%,80%{opacity:.38}
-}
-
-@media(max-width:900px){
-  .hero-static-video{opacity:.055}
-  .signal-break{height:90px}
-  .signal-break video{opacity:.18}
-}
-@media(max-width:520px){
-  .hero-static-video{opacity:.045}
-  .signal-break{height:72px}
-  .signal-break-label{right:6vw;bottom:10px;font-size:.55rem;letter-spacing:.2em}
-}
-
-@media(prefers-reduced-motion:reduce){
-  .hero-static-video,.signal-break video{display:none}
-  .scanline,.orbit-two{animation:none}
-}
-
-
 /* ==========================================================
-   VIRAL VOICE HERO REFRESH
-   Farquharson display face + signal-colored glitch system
+   THE VIRAL VOICE
+   SUPABASE + TRUE BELIEVER + SIGNAL DISTORTION SYSTEM
    ========================================================== */
 
-@font-face{
-  font-family:"Farquharson";
-  src:url("assets/Farquharson.otf") format("opentype");
-  font-weight:400;
-  font-style:normal;
-  font-display:swap;
-}
+(() => {
+  "use strict";
 
-:root{
-  --signal-cyan:var(--cyan);
-  --signal-blue:var(--cyan2);
-  --signal-glow:rgba(37,201,216,.56);
-}
+  /* ========================================================
+     SUPABASE CONFIGURATION
 
-/* H1 only: keep the rest of the site's existing heading system intact. */
-.hero .hero-title{
-  position:relative;
-  display:flex;
-  flex-direction:column;
-  align-items:flex-start;
-  width:max-content;
-  max-width:100%;
-  margin:.16em 0;
-  font-family:"Farquharson",Rye,Georgia,serif;
-  font-weight:400;
-  font-size:clamp(4.4rem,10.7vw,10.8rem);
-  line-height:.78;
-  letter-spacing:-.025em;
-  text-transform:uppercase;
-  text-shadow:
-    0 3px 0 #000,
-    0 0 24px rgba(37,201,216,.08);
-  isolation:isolate;
-}
+     The publishable key is designed for browser use.
+     NEVER put a secret/service_role key in this file.
+     ======================================================== */
 
-.hero-title .glitch-line{
-  position:relative;
-  display:block;
-  color:var(--ink);
-}
+  const SUPABASE_URL =
+    "https://vogyjohoxerhcjpbifim.supabase.co";
 
-.hero-title .glitch-line-the{
-  margin:0 0 .35em .14em;
-  font-family:Oswald,Arial,sans-serif;
-  font-size:.17em;
-  line-height:1;
-  letter-spacing:.5em;
-  color:#d8f8fa;
-}
+  const SUPABASE_PUBLISHABLE_KEY =
+    "sb_publishable_8QXKs6ZGfecrasgNzQfAjw_beTJIpMg";
 
-.hero-title .glitch-line::before,
-.hero-title .glitch-line::after{
-  content:attr(data-text);
-  position:absolute;
-  inset:0;
-  opacity:0;
-  pointer-events:none;
-}
 
-.hero-title .glitch-line::before{
-  color:var(--signal-cyan);
-  text-shadow:4px 0 15px var(--signal-glow);
-  animation:titleGlitchCyan 5.4s steps(1,end) infinite;
-}
+  /* ========================================================
+     LOCAL STORAGE
+     This is how this browser remembers which True Believer
+     it has already been assigned.
+     ======================================================== */
 
-.hero-title .glitch-line::after{
-  color:var(--signal-blue);
-  text-shadow:-4px 0 12px rgba(11,120,130,.58);
-  animation:titleGlitchBlue 5.4s steps(1,end) infinite;
-}
+  const VISITOR_TOKEN_KEY =
+    "viral_voice_visitor_token";
 
-@keyframes titleGlitchCyan{
-  0%,8%,11%,37%,40%,69%,72%,100%{opacity:0;transform:none;clip-path:inset(0 0 0 0)}
-  8.4%{opacity:.95;transform:translate(7px,-1px);clip-path:inset(12% 0 64% 0)}
-  9.1%{opacity:.8;transform:translate(-5px,1px);clip-path:inset(58% 0 18% 0)}
-  10%{opacity:.9;transform:translate(4px,0);clip-path:inset(34% 0 42% 0)}
-  37.4%{opacity:.8;transform:translate(-7px,1px);clip-path:inset(68% 0 7% 0)}
-  38.1%{opacity:.92;transform:translate(5px,-1px);clip-path:inset(18% 0 61% 0)}
-  69.4%{opacity:.9;transform:translate(8px,0);clip-path:inset(42% 0 34% 0)}
-  70.2%{opacity:.75;transform:translate(-4px,1px);clip-path:inset(8% 0 72% 0)}
-}
 
-@keyframes titleGlitchBlue{
-  0%,8%,11%,37%,40%,69%,72%,100%{opacity:0;transform:none;clip-path:inset(0 0 0 0)}
-  8.7%{opacity:.72;transform:translate(-8px,1px);clip-path:inset(64% 0 10% 0)}
-  9.5%{opacity:.88;transform:translate(5px,-1px);clip-path:inset(24% 0 54% 0)}
-  38%{opacity:.8;transform:translate(7px,0);clip-path:inset(48% 0 27% 0)}
-  39%{opacity:.7;transform:translate(-5px,-1px);clip-path:inset(6% 0 74% 0)}
-  70%{opacity:.82;transform:translate(-7px,1px);clip-path:inset(59% 0 14% 0)}
-  71%{opacity:.68;transform:translate(4px,0);clip-path:inset(20% 0 60% 0)}
-}
+  /* ========================================================
+     SIGNAL STAGES
+     ======================================================== */
 
-/* Photo glitch layers. These reuse asset-2.png, so the source photo itself is never altered. */
-.hero-image-glitch{
-  position:absolute;
-  inset:0;
-  z-index:1;
-  pointer-events:none;
-  opacity:0;
-  background-image:
-    linear-gradient(var(--signal-cyan),var(--signal-cyan)),
-    url("assets/asset-2.png");
-  background-size:cover;
-  background-position:60% 28%;
-  background-repeat:no-repeat;
-  background-blend-mode:color,normal;
-  mix-blend-mode:screen;
-  will-change:transform,clip-path,opacity;
-}
+  const STAGES = [
+    "signal-stage-low",
+    "signal-stage-mid",
+    "signal-stage-high",
+    "signal-stage-psychedelic",
+    "signal-stage-locked"
+  ];
 
-.hero-image-glitch-a{
-  animation:heroGlitchA 6.6s steps(1,end) infinite;
-}
 
-.hero-image-glitch-b{
-  background-image:
-    linear-gradient(var(--signal-blue),var(--signal-blue)),
-    url("assets/asset-2.png");
-  animation:heroGlitchB 6.6s steps(1,end) infinite;
-}
+  /* ========================================================
+     PAGE ELEMENTS
+     ======================================================== */
 
-@keyframes heroGlitchA{
-  0%,14%,18%,44%,48%,73%,77%,100%{opacity:0;transform:none;clip-path:inset(0 0 0 0)}
-  14.3%{opacity:.55;transform:translateX(18px);clip-path:inset(9% 0 72% 0)}
-  15.1%{opacity:.68;transform:translateX(-12px);clip-path:inset(42% 0 36% 0)}
-  16.2%{opacity:.48;transform:translateX(9px);clip-path:inset(72% 0 11% 0)}
-  44.4%{opacity:.62;transform:translateX(-17px);clip-path:inset(22% 0 60% 0)}
-  45.2%{opacity:.46;transform:translateX(12px);clip-path:inset(61% 0 19% 0)}
-  73.4%{opacity:.7;transform:translateX(20px);clip-path:inset(35% 0 41% 0)}
-  74.2%{opacity:.5;transform:translateX(-9px);clip-path:inset(78% 0 5% 0)}
-}
+  const believerSection =
+    document.querySelector("#believer");
 
-@keyframes heroGlitchB{
-  0%,14%,18%,44%,48%,73%,77%,100%{opacity:0;transform:none;clip-path:inset(0 0 0 0)}
-  14.7%{opacity:.45;transform:translateX(-20px);clip-path:inset(68% 0 14% 0)}
-  15.6%{opacity:.58;transform:translateX(10px);clip-path:inset(28% 0 49% 0)}
-  45%{opacity:.52;transform:translateX(18px);clip-path:inset(52% 0 27% 0)}
-  46%{opacity:.4;transform:translateX(-11px);clip-path:inset(7% 0 76% 0)}
-  74%{opacity:.58;transform:translateX(-19px);clip-path:inset(18% 0 64% 0)}
-  75%{opacity:.44;transform:translateX(12px);clip-path:inset(66% 0 16% 0)}
-}
+  const believerNumberElement =
+    document.querySelector("[data-believer-number]");
 
-/* Make the existing VHS/static layer much easier to see and keep it in the same signal palette. */
-.hero-static-video{
-  z-index:2;
-  opacity:.16;
-  mix-blend-mode:screen;
-  filter:contrast(1.55) brightness(.82) saturate(1.35) hue-rotate(145deg);
-  animation:heroStaticPulse 6.6s steps(1,end) infinite;
-}
+  const visitCountElement =
+    document.querySelector("[data-visit-count]");
 
-@keyframes heroStaticPulse{
-  0%,14%,18%,44%,48%,73%,77%,100%{opacity:.10}
-  14.3%,15.1%,44.4%,45.2%,73.4%,74.2%{opacity:.27}
-  16.2%,46%,75%{opacity:.20}
-}
+  const strengthValue =
+    document.querySelector(".strength-header strong");
 
-.hero-vignette,.hero-grid{z-index:3}
-.hero-content{z-index:5}
-.hero-sidecode{z-index:6}
-.hero-sigil{z-index:4}
+  const meter =
+    document.querySelector(".signal-meter");
 
-@media(max-width:900px){
-  .hero .hero-title{font-size:clamp(4.2rem,18vw,7.2rem)}
-  .hero-image-glitch{background-position:56% 25%}
-  .hero-static-video{opacity:.13}
-}
+  const statusValue =
+    document.querySelector("[data-believer-status]") ||
+    document.querySelector(".identity-meta b");
 
-@media(max-width:520px){
-  .hero .hero-title{font-size:clamp(4rem,22vw,6.1rem)}
-  .hero-static-video{opacity:.11}
-}
 
-@media(prefers-reduced-motion:reduce){
-  .hero-title .glitch-line::before,
-  .hero-title .glitch-line::after,
-  .hero-image-glitch,
-  .hero-static-video{
-    animation:none;
-  }
-  .hero-image-glitch{display:none}
-}
+  /* ========================================================
+     SIGNAL STRENGTH HELPERS
+     ======================================================== */
 
-/* ==========================================================
-   DISTRESSED TURQUOISE HERO TYPE
-   Inspired by the physical Viral Voice logo treatment while
-   keeping the H1 as selectable, responsive HTML text.
-   ========================================================== */
+  function clampStrength(value) {
+    const parsed = Number(value);
 
-.hero-title .glitch-line:not(.glitch-line-the){
-  color:transparent;
-  -webkit-text-fill-color:transparent;
-  -webkit-text-stroke:.6px rgba(115,235,241,.24);
-
-  /* Layered turquoise ink + subtle chipped / mottled texture. */
-  background-image:
-    radial-gradient(circle at 16% 24%,rgba(0,0,0,.52) 0 1.3%,transparent 2.4%),
-    radial-gradient(circle at 71% 38%,rgba(0,0,0,.38) 0 1.1%,transparent 2.2%),
-    radial-gradient(circle at 42% 78%,rgba(225,255,255,.14) 0 1%,transparent 2%),
-    repeating-linear-gradient(103deg,rgba(0,0,0,.16) 0 1px,transparent 1px 7px),
-    linear-gradient(
-      180deg,
-      #74eef3 0%,
-      #39d5df 18%,
-      #25c9d8 38%,
-      #159aa6 72%,
-      #0b6d76 100%
-    );
-  background-size:
-    37px 31px,
-    53px 43px,
-    29px 35px,
-    19px 19px,
-    100% 100%;
-  background-position:
-    0 0,
-    9px 7px,
-    3px 11px,
-    0 0,
-    0 0;
-  background-blend-mode:multiply,multiply,screen,overlay,normal;
-  -webkit-background-clip:text;
-  background-clip:text;
-
-  /* Dark body edge + restrained cyan bloom, like printed/painted signage. */
-  filter:
-    drop-shadow(1px 1px 0 rgba(122,238,243,.16))
-    drop-shadow(2px 3px 0 #031416)
-    drop-shadow(4px 6px 0 rgba(0,0,0,.62))
-    drop-shadow(0 0 7px rgba(37,201,216,.24))
-    drop-shadow(0 0 20px rgba(37,201,216,.10));
-}
-
-/* Keep THE cleaner and smaller, matching the reference lockup hierarchy. */
-.hero-title .glitch-line-the{
-  color:#8ce9ee;
-  text-shadow:
-    1px 2px 0 #031416,
-    0 0 8px rgba(37,201,216,.20);
-}
-
-/* The base letters use a clipped texture, so explicitly restore solid
-   color on the animated duplicate layers used for the glitch. */
-.hero-title .glitch-line::before,
-.hero-title .glitch-line::after{
-  -webkit-text-fill-color:currentColor;
-  -webkit-text-stroke:0;
-  background:none;
-  filter:none;
-}
-
-/* Give glitch bursts a little more of the bright cyan separation seen in
-   the rest of the site's signal palette without turning the title into mush. */
-.hero-title .glitch-line::before{
-  color:#55e3ea;
-  text-shadow:
-    5px 0 0 rgba(37,201,216,.18),
-    0 0 14px rgba(37,201,216,.54);
-}
-
-.hero-title .glitch-line::after{
-  color:#0d7d8a;
-  text-shadow:
-    -5px 0 0 rgba(11,120,130,.20),
-    0 0 12px rgba(11,120,130,.62);
-}
-
-/* Mobile gets slightly less shadow depth so the narrower letters stay crisp. */
-@media(max-width:520px){
-  .hero-title .glitch-line:not(.glitch-line-the){
-    -webkit-text-stroke:.45px rgba(115,235,241,.22);
-    filter:
-      drop-shadow(1px 1px 0 rgba(122,238,243,.13))
-      drop-shadow(2px 3px 0 #031416)
-      drop-shadow(0 0 7px rgba(37,201,216,.22));
-  }
-}
-
-/* ==========================================================
-   TRUE BELIEVER EXPERIENCE / STATIC SUPABASE UI PREVIEW
-   Later JS can update --signal-strength and swap stage classes:
-   signal-stage-low / signal-stage-mid / signal-stage-high / signal-stage-locked
-   ========================================================== */
-
-.signal-experience{
-  --signal-strength:42%;
-  position:relative;
-  overflow:hidden;
-  padding:110px 7vw 120px;
-  background:
-    radial-gradient(circle at 77% 20%,rgba(37,201,216,.11),transparent 24%),
-    radial-gradient(circle at 18% 82%,rgba(11,120,130,.09),transparent 28%),
-    #020405;
-  border-top:1px solid rgba(37,201,216,.16);
-  border-bottom:1px solid rgba(37,201,216,.16);
-  isolation:isolate;
-}
-.signal-experience::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  z-index:-1;
-  pointer-events:none;
-  opacity:.22;
-  background-image:
-    linear-gradient(rgba(37,201,216,.055) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(37,201,216,.045) 1px,transparent 1px);
-  background-size:34px 34px;
-  mask-image:linear-gradient(90deg,transparent,#000 15% 85%,transparent);
-}
-.signal-atmosphere,.signal-chroma{position:absolute;inset:0;pointer-events:none;z-index:0}
-.signal-atmosphere{
-  opacity:.13;
-  background:
-    repeating-linear-gradient(0deg,transparent 0 5px,rgba(37,201,216,.08) 6px 7px),
-    linear-gradient(90deg,transparent 0 48%,rgba(37,201,216,.08) 49%,transparent 50%);
-  animation:believerScan 11s linear infinite;
-}
-.signal-chroma{opacity:0;mix-blend-mode:screen}
-.believer-shell{position:relative;z-index:2;max-width:1380px;margin:auto;display:grid;grid-template-columns:.72fr 1.28fr;gap:58px;align-items:start}
-.believer-intro{position:sticky;top:110px}
-.believer-intro h2{font-family:"Farquharson",Rye,serif;font-size:clamp(3.4rem,6.6vw,7rem);line-height:.82;font-weight:400;text-transform:uppercase;margin:.18em 0 .25em;text-shadow:0 3px 0 #000}
-.believer-intro h2 span{color:var(--cyan);text-shadow:0 0 18px rgba(37,201,216,.18)}
-.believer-lead{max-width:620px;color:#aeb9bb;line-height:1.75;font-size:1.05rem}
-.curiosity-riddle{position:relative;margin-top:34px;max-width:590px;border-left:2px solid rgba(37,201,216,.75);padding:17px 20px 17px 42px;background:linear-gradient(90deg,rgba(37,201,216,.07),transparent);color:#9aa6a8;transition:.25s}
-.curiosity-riddle:hover,.curiosity-riddle:focus{color:#d9f6f7;border-left-color:#66edf2;background:linear-gradient(90deg,rgba(37,201,216,.13),transparent);outline:none;transform:translateX(4px)}
-.riddle-mark{position:absolute;left:15px;top:17px;color:var(--cyan);font-size:1.1rem;animation:riddlePulse 2.8s steps(1,end) infinite}
-.curiosity-riddle p{margin:0;font-size:.76rem;letter-spacing:.14em;line-height:1.8;text-transform:uppercase}
-.curiosity-riddle strong{color:#e8f5f5;font-weight:600}.curiosity-riddle em{color:var(--cyan);font-style:normal}
-
-.believer-dashboard{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
-.believer-card{position:relative;overflow:hidden;min-height:245px;padding:20px;border:1px solid rgba(37,201,216,.32);background:linear-gradient(145deg,rgba(10,17,18,.96),rgba(2,4,5,.91));box-shadow:inset 0 0 38px rgba(37,201,216,.025),0 18px 50px rgba(0,0,0,.3)}
-.believer-card::before,.believer-card::after{content:"";position:absolute;width:22px;height:22px;pointer-events:none}
-.believer-card::before{left:7px;top:7px;border-left:1px solid var(--cyan);border-top:1px solid var(--cyan)}
-.believer-card::after{right:7px;bottom:7px;border-right:1px solid var(--cyan);border-bottom:1px solid var(--cyan)}
-.hud-label{font-size:.62rem;letter-spacing:.24em;color:var(--cyan);text-transform:uppercase;border-bottom:1px solid rgba(37,201,216,.15);padding-bottom:9px;margin-bottom:16px}
-.identity-row{display:flex;justify-content:space-between;align-items:center;gap:20px}.identity-kicker{display:block;font-size:.7rem;letter-spacing:.22em;color:#a3b0b2}.believer-number{display:block;font-family:"Farquharson",Rye,serif;font-size:clamp(3.3rem,5vw,5.5rem);line-height:.9;color:#edf8f8;text-shadow:0 0 14px rgba(37,201,216,.13)}.identity-sigil{width:92px;height:92px;object-fit:contain;opacity:.75;filter:drop-shadow(0 0 15px rgba(37,201,216,.15))}.identity-meta{display:flex;justify-content:space-between;gap:16px;padding-top:11px;margin-top:11px;border-top:1px solid rgba(255,255,255,.06);font-size:.68rem;letter-spacing:.15em}.identity-meta span{color:#68777a}.identity-meta b{color:#cceced;font-weight:500}
-
-.strength-header{display:flex;justify-content:space-between;align-items:end;margin:3px 0 14px}.strength-header span{font-size:.74rem;letter-spacing:.18em;color:#a9b5b7}.strength-header strong{font-family:"Farquharson",Rye,serif;font-size:2.7rem;font-weight:400;color:#dffbfc}
-.signal-meter{height:38px;position:relative;overflow:hidden;border:1px solid rgba(37,201,216,.72);background:#030708;box-shadow:inset 0 0 18px rgba(0,0,0,.75)}
-.signal-meter-fill{position:absolute;inset:4px auto 4px 4px;width:calc(var(--signal-strength) - 8px);max-width:calc(100% - 8px);background:linear-gradient(90deg,#0c7883,#25c9d8 55%,#7cf4f5);box-shadow:0 0 17px rgba(37,201,216,.5);animation:meterFlicker 4.8s steps(1,end) infinite}
-.signal-meter-grid{position:absolute;inset:0;background:repeating-linear-gradient(90deg,transparent 0 14px,#020405 15px 17px);mix-blend-mode:multiply;opacity:.8}
-.signal-scale{display:grid;grid-template-columns:repeat(4,1fr);gap:4px;margin-top:8px;color:#536164;font-size:.5rem;letter-spacing:.09em}.signal-scale span:nth-child(2),.signal-scale span:nth-child(3){text-align:center}.signal-scale span:last-child{text-align:right}.strength-note{margin:25px 0 0;color:#6d7d80;font-size:.59rem;letter-spacing:.17em;line-height:1.6}
-
-.archive-card{grid-column:span 2;min-height:unset}.archive-list{display:grid;gap:8px}.archive-item{display:grid;grid-template-columns:48px 1fr auto;align-items:center;gap:13px;border:1px solid rgba(37,201,216,.13);padding:13px 14px;background:rgba(0,0,0,.18);transition:.2s}.archive-item:hover{border-color:rgba(37,201,216,.6);background:rgba(37,201,216,.045);transform:translateX(4px)}.archive-item span{color:var(--cyan);font-size:.69rem;letter-spacing:.18em}.archive-item b{font-size:.76rem;letter-spacing:.12em;font-weight:500}.archive-item small{font-size:.58rem;letter-spacing:.14em;color:#657376}.archive-item.recovered small{color:#79cbd0}.archive-item.encrypted{opacity:.58}.archive-item.encrypted b{letter-spacing:.04em;color:#738083}
-
-.secret-card{grid-column:span 2;min-height:230px;display:grid;grid-template-columns:160px 1fr;align-items:center;gap:26px}.easter-mark{width:128px;height:128px;margin:auto;border:1px dashed rgba(37,201,216,.23);background:radial-gradient(circle,rgba(37,201,216,.05),transparent 65%);display:grid;place-items:center;cursor:pointer;opacity:.29;transition:.45s;transform:rotate(-2deg)}.easter-mark img{width:76%;height:76%;object-fit:contain;filter:grayscale(1) brightness(.55)}.easter-mark:hover,.easter-mark:focus{opacity:.9;border-color:var(--cyan);transform:rotate(2deg) scale(1.04);outline:none;box-shadow:0 0 30px rgba(37,201,216,.08)}.easter-mark:hover img,.easter-mark:focus img{filter:none;animation:hiddenSignal 1.1s steps(1,end) infinite}.secret-copy{font-family:"Farquharson",Rye,serif;font-size:clamp(1.9rem,3.3vw,3.5rem);line-height:.93;color:#9aa5a7;margin:0;text-transform:uppercase}.secret-copy span{color:var(--cyan)}.secret-status{position:absolute;right:20px;bottom:18px;color:#506064;font-size:.57rem;letter-spacing:.17em}
-
-/* Signal intensity personalities. Later Supabase/JS swaps the class. */
-.signal-stage-low .signal-chroma{opacity:0}
-.signal-stage-mid .signal-chroma{opacity:.10;background:repeating-radial-gradient(ellipse at 70% 35%,rgba(37,201,216,.2) 0 1px,transparent 2px 16px);animation:midSignalWarp 9s ease-in-out infinite}
-.signal-stage-high .signal-chroma{opacity:.24;background:conic-gradient(from 180deg at 72% 42%,rgba(37,201,216,.16),rgba(135,31,255,.17),rgba(255,20,141,.13),rgba(37,201,216,.16));filter:saturate(1.6);animation:highSignalWarp 5.5s ease-in-out infinite}
-.signal-stage-high .believer-card:nth-child(odd){animation:cardDriftA 6s ease-in-out infinite}.signal-stage-high .believer-card:nth-child(even){animation:cardDriftB 7s ease-in-out infinite}
-.signal-stage-locked .signal-chroma{opacity:.38;background:conic-gradient(from 40deg at 65% 45%,rgba(37,201,216,.24),rgba(101,26,255,.28),rgba(255,18,135,.23),rgba(10,230,196,.22),rgba(37,201,216,.24));filter:saturate(2) contrast(1.2);animation:lockedSignalWarp 3.8s linear infinite}
-.signal-stage-locked .believer-card{box-shadow:inset 0 0 45px rgba(37,201,216,.05),5px 0 0 rgba(255,23,141,.07),-5px 0 0 rgba(67,35,255,.08)}
-
-@keyframes believerScan{to{transform:translateY(34px)}}
-@keyframes riddlePulse{0%,72%,100%{opacity:.45}74%,78%{opacity:1;transform:translateX(2px)}80%{opacity:.5;transform:none}}
-@keyframes meterFlicker{0%,94%,100%{opacity:1}95%{opacity:.55;transform:translateX(3px)}96%{opacity:1;transform:translateX(-2px)}97%{transform:none}}
-@keyframes hiddenSignal{0%,100%{transform:none}17%{transform:translateX(4px);filter:hue-rotate(35deg) drop-shadow(-5px 0 0 rgba(255,20,141,.35))}34%{transform:translateX(-3px);filter:hue-rotate(-25deg) drop-shadow(5px 0 0 rgba(35,75,255,.35))}52%{transform:none}}
-@keyframes midSignalWarp{0%,100%{transform:translate(0) scale(1)}50%{transform:translate(1.5%,-1%) scale(1.03)}}
-@keyframes highSignalWarp{0%,100%{transform:translate(0) rotate(0)}33%{transform:translate(2%,-1%) rotate(.4deg)}66%{transform:translate(-1%,1.5%) rotate(-.4deg)}}
-@keyframes lockedSignalWarp{to{transform:rotate(360deg) scale(1.12)}}
-@keyframes cardDriftA{0%,100%{transform:translate(0)}50%{transform:translate(2px,-3px) skewX(.15deg)}}
-@keyframes cardDriftB{0%,100%{transform:translate(0)}50%{transform:translate(-2px,2px) skewX(-.15deg)}}
-
-@media(max-width:1050px){
-  .believer-shell{grid-template-columns:1fr;gap:42px}.believer-intro{position:relative;top:auto}.believer-dashboard{max-width:900px}.signal-experience{padding:95px 7vw}
-}
-@media(max-width:680px){
-  .signal-experience{padding:82px 6vw}.believer-dashboard{grid-template-columns:1fr}.archive-card,.secret-card{grid-column:auto}.secret-card{grid-template-columns:1fr;text-align:center}.secret-status{position:static;margin-top:10px}.archive-item{grid-template-columns:38px 1fr}.archive-item small{grid-column:2}.believer-card{padding:17px}.identity-sigil{width:72px;height:72px}.signal-scale{font-size:.44rem}
-}
-@media(prefers-reduced-motion:reduce){
-  .signal-atmosphere,.signal-chroma,.riddle-mark,.signal-meter-fill,.easter-mark img,.signal-stage-high .believer-card{animation:none!important}
-}
-
-
-/* ==========================================================
-   GLOBAL SIGNAL DISTORTION SYSTEM
-   script.js applies one stage class to <body> based on signal strength.
-   0-24 low | 25-49 mid | 50-74 high | 75-99 psychedelic | 100 locked
-   ========================================================== */
-.page-signal-distortion{
-  position:fixed;
-  inset:-8%;
-  z-index:98;
-  pointer-events:none;
-  opacity:0;
-  mix-blend-mode:screen;
-  transform-origin:center;
-  will-change:transform,filter,opacity;
-}
-
-/* Low: mostly clean. */
-body.signal-stage-low .page-signal-distortion{opacity:0}
-body.signal-stage-low .noise{opacity:.045}
-
-/* Mid: cyan interference starts leaking into the entire page. */
-body.signal-stage-mid .page-signal-distortion{
-  opacity:.055;
-  background:
-    repeating-linear-gradient(0deg,transparent 0 8px,rgba(37,201,216,.12) 9px 10px),
-    radial-gradient(circle at 72% 28%,rgba(37,201,216,.18),transparent 28%);
-  animation:pageSignalMid 9s ease-in-out infinite;
-}
-body.signal-stage-mid .noise{opacity:.07}
-body.signal-stage-mid .scanline{box-shadow:0 0 28px rgba(37,201,216,.34)}
-
-/* High: chromatic splitting and occasional geometry drift. */
-body.signal-stage-high .page-signal-distortion{
-  opacity:.12;
-  background:
-    linear-gradient(90deg,rgba(37,201,216,.12),transparent 32%,rgba(130,35,255,.07) 68%,rgba(255,22,139,.07)),
-    repeating-linear-gradient(0deg,transparent 0 5px,rgba(37,201,216,.09) 6px 7px);
-  filter:saturate(1.55) contrast(1.08);
-  animation:pageSignalHigh 5.5s steps(2,end) infinite;
-}
-body.signal-stage-high .noise{opacity:.085}
-body.signal-stage-high .hero-image,
-body.signal-stage-high .manifesto-photo img,
-body.signal-stage-high .photo-card img{
-  filter:contrast(1.12) saturate(1.12) hue-rotate(3deg);
-}
-body.signal-stage-high .site-header,
-body.signal-stage-high footer{animation:signalMicroJitter 7s steps(1,end) infinite}
-
-/* 75-99: the signal becomes psychedelic and increasingly unstable. */
-body.signal-stage-psychedelic .page-signal-distortion{
-  opacity:.20;
-  background:
-    conic-gradient(from 130deg at 68% 34%,rgba(37,201,216,.18),rgba(118,35,255,.17),rgba(255,20,141,.14),rgba(10,230,196,.15),rgba(37,201,216,.18)),
-    repeating-radial-gradient(ellipse at 52% 44%,transparent 0 16px,rgba(37,201,216,.06) 17px 19px);
-  filter:saturate(2) contrast(1.12);
-  animation:pageSignalPsychedelic 3.6s ease-in-out infinite;
-}
-body.signal-stage-psychedelic .noise{opacity:.105}
-body.signal-stage-psychedelic .hero-image,
-body.signal-stage-psychedelic .manifesto-photo img,
-body.signal-stage-psychedelic .photo-card img{
-  filter:contrast(1.18) saturate(1.38) hue-rotate(8deg);
-}
-body.signal-stage-psychedelic .hero-title,
-body.signal-stage-psychedelic h2{
-  text-shadow:-3px 0 rgba(37,201,216,.36),3px 0 rgba(255,20,141,.18),0 0 22px rgba(37,201,216,.15);
-}
-body.signal-stage-psychedelic .believer-card:nth-child(odd),
-body.signal-stage-psychedelic .transmission-card:nth-child(odd){animation:cardDriftA 4.4s ease-in-out infinite}
-body.signal-stage-psychedelic .believer-card:nth-child(even),
-body.signal-stage-psychedelic .transmission-card:nth-child(even){animation:cardDriftB 5.1s ease-in-out infinite}
-
-/* 100: signal lock. The chaos resolves into an unnaturally clean connection. */
-body.signal-stage-locked .page-signal-distortion{
-  opacity:.035;
-  background:radial-gradient(circle at 50% 35%,rgba(124,244,245,.18),transparent 35%);
-  animation:lockedBreath 7s ease-in-out infinite;
-}
-body.signal-stage-locked .noise{opacity:.025}
-body.signal-stage-locked .scanline{opacity:.35;animation-duration:16s}
-body.signal-stage-locked .hero-image,
-body.signal-stage-locked .manifesto-photo img,
-body.signal-stage-locked .photo-card img{filter:contrast(1.1) saturate(1.04)}
-body.signal-stage-locked .believer-card,
-body.signal-stage-locked .transmission-card{animation:none!important;border-color:rgba(124,244,245,.42)}
-body.signal-stage-locked .hero-title{filter:drop-shadow(0 0 12px rgba(124,244,245,.22))}
-
-/* Keep the believer module synchronized with the body stage. */
-body.signal-stage-low .signal-experience .signal-chroma{opacity:0}
-body.signal-stage-mid .signal-experience .signal-chroma{opacity:.10;background:repeating-radial-gradient(ellipse at 70% 35%,rgba(37,201,216,.2) 0 1px,transparent 2px 16px);animation:midSignalWarp 9s ease-in-out infinite}
-body.signal-stage-high .signal-experience .signal-chroma{opacity:.24;background:conic-gradient(from 180deg at 72% 42%,rgba(37,201,216,.16),rgba(135,31,255,.17),rgba(255,20,141,.13),rgba(37,201,216,.16));filter:saturate(1.6);animation:highSignalWarp 5.5s ease-in-out infinite}
-body.signal-stage-psychedelic .signal-experience .signal-chroma{opacity:.34;background:conic-gradient(from 120deg at 62% 42%,rgba(37,201,216,.22),rgba(135,31,255,.26),rgba(255,20,141,.22),rgba(10,230,196,.20),rgba(37,201,216,.22));filter:saturate(2);animation:lockedSignalWarp 5.2s linear infinite}
-body.signal-stage-locked .signal-experience .signal-chroma{opacity:.08;background:radial-gradient(circle at 60% 42%,rgba(124,244,245,.16),transparent 40%);animation:none}
-
-@keyframes pageSignalMid{
-  0%,100%{transform:translate(0) scale(1)}
-  48%{transform:translate(.35%,-.25%) scale(1.006)}
-  50%{transform:translate(-.3%,.2%) scale(1.004)}
-}
-@keyframes pageSignalHigh{
-  0%,82%,100%{transform:translate(0) skewX(0)}
-  84%{transform:translate(5px,-2px) skewX(.15deg)}
-  86%{transform:translate(-4px,2px) skewX(-.12deg)}
-  88%{transform:translate(0)}
-}
-@keyframes pageSignalPsychedelic{
-  0%,100%{transform:translate(0) scale(1) rotate(0);filter:saturate(1.8) hue-rotate(0deg)}
-  33%{transform:translate(1%,-.7%) scale(1.018) rotate(.12deg);filter:saturate(2.1) hue-rotate(5deg)}
-  66%{transform:translate(-.8%,.9%) scale(1.012) rotate(-.12deg);filter:saturate(2) hue-rotate(-4deg)}
-}
-@keyframes signalMicroJitter{
-  0%,91%,100%{transform:translate(0)}
-  92%{transform:translateX(2px)}
-  93%{transform:translateX(-2px)}
-  94%{transform:translate(0)}
-}
-@keyframes lockedBreath{0%,100%{opacity:.025;transform:scale(1)}50%{opacity:.055;transform:scale(1.015)}}
-
-@media(prefers-reduced-motion:reduce){
-  .page-signal-distortion,
-  body.signal-stage-high .site-header,
-  body.signal-stage-high footer,
-  body.signal-stage-psychedelic .transmission-card{animation:none!important}
-}
-/* ==========================================================
-   PSYCHEDELIC SIGNAL OVERLOAD
-   Activated by adding .trip-mode to <body>
-   ========================================================== */
-
-.trip-mode{
-  animation:tripGlobalHue 10s linear infinite;
-}
-
-
-/* ----------------------------------------------------------
-   GLOBAL PSYCHEDELIC COLOR SHIFT
-   ---------------------------------------------------------- */
-
-@keyframes tripGlobalHue{
-  0%{
-    filter:hue-rotate(0deg) saturate(1.05);
-  }
-
-  25%{
-    filter:hue-rotate(70deg) saturate(1.25);
-  }
-
-  50%{
-    filter:hue-rotate(160deg) saturate(1.4);
-  }
-
-  75%{
-    filter:hue-rotate(260deg) saturate(1.25);
-  }
-
-  100%{
-    filter:hue-rotate(360deg) saturate(1.05);
-  }
-}
-
-
-/* ----------------------------------------------------------
-   HERO BREATHING / DRIFT
-   ---------------------------------------------------------- */
-
-.trip-mode .hero-image{
-  animation:
-    tripHeroBreath 6s ease-in-out infinite,
-    tripHeroDrift 9s ease-in-out infinite;
-
-  transform-origin:center center;
-
-  filter:
-    saturate(1.65)
-    contrast(1.12)
-    brightness(1.04);
-}
-
-@keyframes tripHeroBreath{
-  0%,100%{
-    transform:scale(1);
-  }
-
-  50%{
-    transform:scale(1.055);
-  }
-}
-
-@keyframes tripHeroDrift{
-  0%,100%{
-    object-position:60% 28%;
-  }
-
-  25%{
-    object-position:61% 27%;
-  }
-
-  50%{
-    object-position:59% 29%;
-  }
-
-  75%{
-    object-position:60.5% 28.5%;
-  }
-}
-
-
-/* ----------------------------------------------------------
-   STATIC BECOMES MUCH MORE VISIBLE
-   ---------------------------------------------------------- */
-
-.trip-mode .hero-static-video{
-  opacity:.42 !important;
-
-  filter:
-    contrast(2)
-    brightness(1.08)
-    saturate(2.2)
-    hue-rotate(125deg);
-
-  animation:
-    tripStaticPulse 1.8s steps(2,end) infinite;
-}
-
-@keyframes tripStaticPulse{
-  0%,100%{
-    opacity:.22;
-    transform:scale(1);
-  }
-
-  20%{
-    opacity:.48;
-    transform:scale(1.015);
-  }
-
-  23%{
-    opacity:.2;
-    transform:scale(.995);
-  }
-
-  55%{
-    opacity:.56;
-    transform:scale(1.025);
-  }
-
-  60%{
-    opacity:.26;
-    transform:scale(1);
-  }
-
-  83%{
-    opacity:.5;
-    transform:scale(1.018);
-  }
-}
-
-
-/* ----------------------------------------------------------
-   IMAGE GHOSTING / CHROMATIC SEPARATION
-   ---------------------------------------------------------- */
-
-.trip-mode .hero-image-glitch-a{
-  opacity:.32;
-  animation:tripGhostA 2.6s ease-in-out infinite;
-}
-
-.trip-mode .hero-image-glitch-b{
-  opacity:.28;
-  animation:tripGhostB 3.1s ease-in-out infinite;
-}
-
-@keyframes tripGhostA{
-  0%,100%{
-    transform:translate(0,0) scale(1);
-    clip-path:inset(0 0 0 0);
-  }
-
-  25%{
-    transform:translate(10px,-4px) scale(1.01);
-    clip-path:inset(8% 0 5% 0);
-  }
-
-  50%{
-    transform:translate(-8px,5px) scale(1.02);
-    clip-path:inset(3% 0 10% 0);
-  }
-
-  75%{
-    transform:translate(6px,3px) scale(1.01);
-    clip-path:inset(10% 0 2% 0);
-  }
-}
-
-@keyframes tripGhostB{
-  0%,100%{
-    transform:translate(0,0) scale(1);
-    clip-path:inset(0 0 0 0);
-  }
-
-  25%{
-    transform:translate(-12px,3px) scale(1.018);
-    clip-path:inset(4% 0 11% 0);
-  }
-
-  50%{
-    transform:translate(7px,-5px) scale(1.012);
-    clip-path:inset(12% 0 3% 0);
-  }
-
-  75%{
-    transform:translate(-5px,-2px) scale(1.02);
-    clip-path:inset(6% 0 7% 0);
-  }
-}
-
-
-/* ----------------------------------------------------------
-   TEXT DRIFT
-   ---------------------------------------------------------- */
-
-.trip-mode .hero-content,
-.trip-mode .signal-copy,
-.trip-mode .section-head,
-.trip-mode .manifesto-copy,
-.trip-mode .merch-copy,
-.trip-mode .follow-section{
-  animation:tripTextFloat 4.5s ease-in-out infinite;
-}
-
-@keyframes tripTextFloat{
-  0%,100%{
-    transform:translate(0,0) rotate(0deg);
-  }
-
-  25%{
-    transform:translate(2px,-3px) rotate(.15deg);
-  }
-
-  50%{
-    transform:translate(-3px,2px) rotate(-.12deg);
-  }
-
-  75%{
-    transform:translate(2px,2px) rotate(.1deg);
-  }
-}
-
-
-/* ----------------------------------------------------------
-   TEXT CHROMATIC SHADOWING
-   ---------------------------------------------------------- */
-
-.trip-mode .hero-title,
-.trip-mode .signal-copy h2,
-.trip-mode .manifesto-copy h2,
-.trip-mode .section-head h2,
-.trip-mode .merch-copy h2,
-.trip-mode .follow-section h2{
-  text-shadow:
-    5px 0 0 rgba(255,0,145,.28),
-    -5px 0 0 rgba(0,255,255,.28),
-    0 0 26px rgba(37,201,216,.3);
-}
-
-
-/* ----------------------------------------------------------
-   COLOR CLOUD OVERLAY
-   ---------------------------------------------------------- */
-
-.trip-mode::before{
-  content:"";
-  position:fixed;
-  inset:0;
-  z-index:9996;
-  pointer-events:none;
-
-  background:
-    radial-gradient(
-      circle at 18% 25%,
-      rgba(255,0,150,.16),
-      transparent 33%
-    ),
-    radial-gradient(
-      circle at 82% 38%,
-      rgba(0,255,230,.15),
-      transparent 36%
-    ),
-    radial-gradient(
-      circle at 48% 78%,
-      rgba(120,0,255,.14),
-      transparent 38%
-    ),
-    radial-gradient(
-      circle at 65% 15%,
-      rgba(0,110,255,.11),
-      transparent 30%
-    );
-
-  mix-blend-mode:screen;
-
-  animation:
-    tripCloudMove 9s ease-in-out infinite alternate;
-}
-
-@keyframes tripCloudMove{
-  0%{
-    transform:
-      scale(1)
-      rotate(0deg)
-      translate(0,0);
-  }
-
-  100%{
-    transform:
-      scale(1.18)
-      rotate(5deg)
-      translate(2%,-1%);
-  }
-}
-
-
-/* ----------------------------------------------------------
-   PSYCHEDELIC RINGS / TUNNEL
-   ---------------------------------------------------------- */
-
-.trip-mode::after{
-  content:"";
-  position:fixed;
-  inset:-12%;
-  z-index:9995;
-  pointer-events:none;
-
-  background:
-    repeating-radial-gradient(
-      circle at center,
-      rgba(37,201,216,.055) 0 6px,
-      rgba(255,0,160,.04) 7px 13px,
-      rgba(100,0,255,.035) 14px 20px,
-      transparent 21px 34px
-    );
-
-  mix-blend-mode:screen;
-
-  animation:
-    tripTunnel 9s linear infinite;
-}
-
-@keyframes tripTunnel{
-  0%{
-    transform:
-      scale(1)
-      rotate(0deg);
-  }
-
-  50%{
-    transform:
-      scale(1.12)
-      rotate(4deg);
-  }
-
-  100%{
-    transform:
-      scale(1.24)
-      rotate(8deg);
-  }
-}
-
-
-/* ----------------------------------------------------------
-   SIGNAL BREAK GOES FULL INTERFERENCE
-   ---------------------------------------------------------- */
-
-.trip-mode .signal-break video{
-  opacity:.65 !important;
-
-  filter:
-    contrast(2.2)
-    brightness(.9)
-    saturate(1.8)
-    hue-rotate(90deg);
-
-  animation:
-    tripSignalBreak 1.4s steps(2,end) infinite;
-}
-
-@keyframes tripSignalBreak{
-  0%,100%{
-    transform:translate(0,0) scale(1);
-  }
-
-  30%{
-    transform:translate(-2%,1%) scale(1.04);
-  }
-
-  33%{
-    transform:translate(2%,-1%) scale(1.02);
-  }
-
-  68%{
-    transform:translate(1%,1%) scale(1.05);
-  }
-
-  73%{
-    transform:translate(-1%,-1%) scale(1.03);
-  }
-}
-
-
-/* ----------------------------------------------------------
-   SIGIL PULSE
-   ---------------------------------------------------------- */
-
-.trip-mode .hero-sigil img,
-.trip-mode .signal-art img,
-.trip-mode .merch-sigil img{
-  animation:tripSigilPulse 3.4s ease-in-out infinite;
-
-  filter:
-    drop-shadow(0 0 20px rgba(37,201,216,.45))
-    drop-shadow(0 0 45px rgba(255,0,150,.22));
-}
-
-@keyframes tripSigilPulse{
-  0%,100%{
-    transform:scale(1);
-  }
-
-  50%{
-    transform:scale(1.08);
-  }
-}
-
-
-/* ----------------------------------------------------------
-   MOBILE
-   ---------------------------------------------------------- */
-
-@media(max-width:900px){
-
-  .trip-mode .hero-image{
-    animation:
-      tripHeroBreathMobile 6s ease-in-out infinite;
-  }
-
-  @keyframes tripHeroBreathMobile{
-    0%,100%{
-      transform:scale(1);
+    if (!Number.isFinite(parsed)) {
+      return 0;
     }
 
-    50%{
-      transform:scale(1.035);
+    return Math.max(
+      0,
+      Math.min(
+        100,
+        Math.round(parsed)
+      )
+    );
+  }
+
+
+  function getStage(strength) {
+    if (strength >= 100) {
+      return "signal-stage-locked";
+    }
+
+    if (strength >= 75) {
+      return "signal-stage-psychedelic";
+    }
+
+    if (strength >= 50) {
+      return "signal-stage-high";
+    }
+
+    if (strength >= 25) {
+      return "signal-stage-mid";
+    }
+
+    return "signal-stage-low";
+  }
+
+
+  function getStatus(strength) {
+    if (strength >= 100) {
+      return "SIGNAL LOCKED";
+    }
+
+    if (strength >= 75) {
+      return "TRUE BELIEVER";
+    }
+
+    if (strength >= 50) {
+      return "SIGNAL ACQUIRED";
+    }
+
+    return "SIGNAL DETECTED";
+  }
+
+
+  /* ========================================================
+     APPLY SIGNAL STRENGTH TO THE WEBSITE
+
+     This controls:
+     - progression percentage
+     - status
+     - distortion stage
+     - CSS variables
+     ======================================================== */
+
+  function applySignalStrength(value) {
+    const strength = clampStrength(value);
+    const stage = getStage(strength);
+    const status = getStatus(strength);
+
+
+    /* Remove old distortion stage */
+
+    document.body.classList.remove(...STAGES);
+
+
+    /* Apply current distortion stage */
+
+    document.body.classList.add(stage);
+
+
+    /* Global CSS signal variable */
+
+    document.documentElement.style.setProperty(
+      "--live-signal-strength",
+      `${strength}%`
+    );
+
+
+    /* Update believer section */
+
+    if (believerSection) {
+      believerSection.style.setProperty(
+        "--signal-strength",
+        `${strength}%`
+      );
+
+      believerSection.dataset.signalStrength =
+        String(strength);
+    }
+
+
+    /* Update displayed percentage */
+
+    if (strengthValue) {
+      strengthValue.textContent =
+        `${strength}%`;
+    }
+
+
+    /* Update accessibility information */
+
+    if (meter) {
+      meter.setAttribute(
+        "aria-label",
+        `Signal strength ${strength} percent`
+      );
+    }
+
+
+    /* Update status */
+
+    if (statusValue) {
+      statusValue.textContent = status;
+    }
+
+
+    /* Broadcast signal change */
+
+    window.dispatchEvent(
+      new CustomEvent(
+        "viralvoice:signalchange",
+        {
+          detail: {
+            strength,
+            stage,
+            status
+          }
+        }
+      )
+    );
+
+
+    return {
+      strength,
+      stage,
+      status
+    };
+  }
+
+
+  /* Allow manual testing from DevTools */
+
+  window.setSignalStrength =
+    applySignalStrength;
+
+
+  /* ========================================================
+     FORMAT TRUE BELIEVER NUMBER
+
+     1   -> #0001
+     27  -> #0027
+     418 -> #0418
+     ======================================================== */
+
+  function formatBelieverNumber(number) {
+    const parsed = Number(number);
+
+    if (!Number.isFinite(parsed)) {
+      return "#----";
+    }
+
+    return (
+      "#" +
+      String(parsed).padStart(4, "0")
+    );
+  }
+
+
+  /* ========================================================
+     UPDATE TRUE BELIEVER UI
+     ======================================================== */
+
+  function updateBelieverInterface(data) {
+
+    if (!data) {
+      return;
+    }
+
+
+    if (believerNumberElement) {
+      believerNumberElement.textContent =
+        formatBelieverNumber(
+          data.believer_number
+        );
+    }
+
+
+    if (visitCountElement) {
+      visitCountElement.textContent =
+        String(
+          data.visit_count || 1
+        ).padStart(2, "0");
+    }
+
+
+    applySignalStrength(
+      data.signal_strength || 0
+    );
+  }
+
+
+  /* ========================================================
+     INITIALIZE SUPABASE
+     ======================================================== */
+
+  function createSupabaseClient() {
+
+    if (
+      !window.supabase ||
+      typeof window.supabase.createClient !==
+        "function"
+    ) {
+
+      console.error(
+        "[THE VIRAL VOICE] Supabase library not loaded."
+      );
+
+      return null;
+    }
+
+
+    return window.supabase.createClient(
+      SUPABASE_URL,
+      SUPABASE_PUBLISHABLE_KEY
+    );
+  }
+
+
+  /* ========================================================
+     REGISTER NEW TRUE BELIEVER
+     ======================================================== */
+
+  async function registerBeliever(client) {
+
+    console.log(
+      "[THE VIRAL VOICE] NEW SIGNAL DETECTED"
+    );
+
+
+    const { data, error } =
+      await client.rpc(
+        "register_believer"
+      );
+
+
+    if (error) {
+      throw error;
+    }
+
+
+    if (!data || data.length === 0) {
+      throw new Error(
+        "Registration returned no believer."
+      );
+    }
+
+
+    const believer = data[0];
+
+
+    /* Save identity locally */
+
+    localStorage.setItem(
+      VISITOR_TOKEN_KEY,
+      believer.visitor_token
+    );
+
+
+    updateBelieverInterface(
+      believer
+    );
+
+
+    console.log(
+      `[THE VIRAL VOICE] SIGNAL ESTABLISHED // ${formatBelieverNumber(
+        believer.believer_number
+      )}`
+    );
+
+
+    return believer;
+  }
+
+
+  /* ========================================================
+     RECOGNIZE RETURNING TRUE BELIEVER
+     ======================================================== */
+
+  async function recognizeBeliever(
+    client,
+    visitorToken
+  ) {
+
+    console.log(
+      "[THE VIRAL VOICE] KNOWN SIGNAL DETECTED"
+    );
+
+
+    const { data, error } =
+      await client.rpc(
+        "recognize_believer",
+        {
+          p_visitor_token:
+            visitorToken
+        }
+      );
+
+
+    if (error) {
+      throw error;
+    }
+
+
+    /*
+      If the token exists locally but the database
+      no longer recognizes it, remove it and allow
+      a fresh registration.
+    */
+
+    if (!data || data.length === 0) {
+
+      console.warn(
+        "[THE VIRAL VOICE] STORED SIGNAL INVALID"
+      );
+
+
+      localStorage.removeItem(
+        VISITOR_TOKEN_KEY
+      );
+
+
+      return null;
+    }
+
+
+    const believer = data[0];
+
+
+    updateBelieverInterface(
+      believer
+    );
+
+
+    console.log(
+      `[THE VIRAL VOICE] SIGNAL RE-ESTABLISHED // ${formatBelieverNumber(
+        believer.believer_number
+      )}`
+    );
+
+
+    return believer;
+  }
+
+
+  /* ========================================================
+     ESTABLISH VISITOR IDENTITY
+     ======================================================== */
+
+  async function establishSignal() {
+
+    const client =
+      createSupabaseClient();
+
+
+    if (!client) {
+
+      /*
+        Keep the website usable even if Supabase
+        fails to load.
+      */
+
+      applySignalStrength(10);
+
+      return;
+    }
+
+
+    try {
+
+      const storedToken =
+        localStorage.getItem(
+          VISITOR_TOKEN_KEY
+        );
+
+
+      let believer = null;
+
+
+      /* ----------------------------------------
+         RETURNING VISITOR
+         ---------------------------------------- */
+
+      if (storedToken) {
+
+        believer =
+          await recognizeBeliever(
+            client,
+            storedToken
+          );
+      }
+
+
+      /* ----------------------------------------
+         NEW VISITOR
+         ---------------------------------------- */
+
+      if (!believer) {
+
+        believer =
+          await registerBeliever(
+            client
+          );
+      }
+
+
+      /*
+        Make the current believer available
+        to future systems.
+
+        Easter eggs, transmissions, QR/NFC,
+        archive systems, etc. can use this.
+      */
+
+      window.viralVoiceBeliever =
+        believer;
+
+      window.viralVoiceSupabase =
+        client;
+
+
+      /* ----------------------------------------
+         Broadcast identity established event
+         ---------------------------------------- */
+
+      window.dispatchEvent(
+        new CustomEvent(
+          "viralvoice:believerready",
+          {
+            detail: believer
+          }
+        )
+      );
+
+    }
+
+    catch (error) {
+
+      console.error(
+        "[THE VIRAL VOICE] SIGNAL CONNECTION FAILED",
+        error
+      );
+
+
+      /*
+        Graceful fallback.
+
+        The site still works visually if
+        Supabase temporarily goes down.
+      */
+
+      applySignalStrength(10);
     }
   }
 
-  .trip-mode .hero-static-video{
-    opacity:.32 !important;
-  }
 
-  .trip-mode::after{
-    opacity:.75;
-  }
-}
+  /* ========================================================
+     START SYSTEM
 
+     The website now starts using the visitor's actual
+     stored signal strength.
 
-@media(max-width:520px){
+     Psychedelic trip mode is NOT triggered automatically.
+     ======================================================== */
 
-  .trip-mode .hero-static-video{
-    opacity:.27 !important;
-  }
+  document.addEventListener(
+    "DOMContentLoaded",
+    () => {
 
-  .trip-mode::before{
-    opacity:.8;
-  }
+      establishSignal();
 
-  .trip-mode::after{
-    opacity:.55;
-  }
-
-}
+    }
+  );
 
 
-/* ----------------------------------------------------------
-   ACCESSIBILITY
-   ---------------------------------------------------------- */
+  /* ========================================================
+     MANUAL VISUAL TESTING HELPERS
 
-@media(prefers-reduced-motion:reduce){
+     Browser console commands:
 
-  .trip-mode,
-  .trip-mode *,
-  .trip-mode::before,
-  .trip-mode::after{
-    animation:none !important;
-  }
+     startTrip()
+     stopTrip()
 
-}
+     setSignalStrength(10)
+     setSignalStrength(25)
+     setSignalStrength(50)
+     setSignalStrength(75)
+     setSignalStrength(100)
+
+     ======================================================== */
+
+  window.startTrip = function () {
+    document.body.classList.add("trip-mode");
+  };
+
+
+  window.stopTrip = function () {
+    document.body.classList.remove("trip-mode");
+  };
+
+
+})();
