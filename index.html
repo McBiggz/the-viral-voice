@@ -19,6 +19,8 @@
 <main id="top">
   <section class="hero">
     <img class="hero-image" src="assets/asset-2.png" alt="Liam McGinn, The Viral Voice">
+    <div class="hero-image-glitch hero-image-glitch-a" aria-hidden="true"></div>
+    <div class="hero-image-glitch hero-image-glitch-b" aria-hidden="true"></div>
     <video class="hero-static-video" autoplay muted loop playsinline preload="metadata" aria-hidden="true">
       <source src="assets/static-hero.mp4" type="video/mp4">
     </video>
@@ -26,7 +28,11 @@
     <div class="hero-grid" aria-hidden="true"></div>
     <div class="hero-content">
       <p class="micro-label">LIAM McGINN // THE SIGNAL IS LIVE</p>
-      <h1><span class="small-the">THE</span> VIRAL<br>VOICE</h1>
+      <h1 class="hero-title" aria-label="The Viral Voice">
+        <span class="glitch-line glitch-line-the" data-text="THE">THE</span>
+        <span class="glitch-line" data-text="VIRAL">VIRAL</span>
+        <span class="glitch-line" data-text="VOICE">VOICE</span>
+      </h1>
       <div class="rule"></div>
       <picture class="follow-signal hero-follow-signal">
         <source media="(max-width: 520px)" srcset="assets/follow-the-signal-stacked.png">

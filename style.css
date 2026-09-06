@@ -97,3 +97,192 @@
   .hero-static-video,.signal-break video{display:none}
   .scanline,.orbit-two{animation:none}
 }
+
+
+/* ==========================================================
+   VIRAL VOICE HERO REFRESH
+   Farquharson display face + signal-colored glitch system
+   ========================================================== */
+
+@font-face{
+  font-family:"Farquharson";
+  src:url("assets/Farquharson.otf") format("opentype");
+  font-weight:400;
+  font-style:normal;
+  font-display:swap;
+}
+
+:root{
+  --signal-cyan:var(--cyan);
+  --signal-blue:var(--cyan2);
+  --signal-glow:rgba(37,201,216,.56);
+}
+
+/* H1 only: keep the rest of the site's existing heading system intact. */
+.hero .hero-title{
+  position:relative;
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+  width:max-content;
+  max-width:100%;
+  margin:.16em 0;
+  font-family:"Farquharson",Rye,Georgia,serif;
+  font-weight:400;
+  font-size:clamp(4.4rem,10.7vw,10.8rem);
+  line-height:.78;
+  letter-spacing:-.025em;
+  text-transform:uppercase;
+  text-shadow:
+    0 3px 0 #000,
+    0 0 24px rgba(37,201,216,.08);
+  isolation:isolate;
+}
+
+.hero-title .glitch-line{
+  position:relative;
+  display:block;
+  color:var(--ink);
+}
+
+.hero-title .glitch-line-the{
+  margin:0 0 .35em .14em;
+  font-family:Oswald,Arial,sans-serif;
+  font-size:.17em;
+  line-height:1;
+  letter-spacing:.5em;
+  color:#d8f8fa;
+}
+
+.hero-title .glitch-line::before,
+.hero-title .glitch-line::after{
+  content:attr(data-text);
+  position:absolute;
+  inset:0;
+  opacity:0;
+  pointer-events:none;
+}
+
+.hero-title .glitch-line::before{
+  color:var(--signal-cyan);
+  text-shadow:4px 0 15px var(--signal-glow);
+  animation:titleGlitchCyan 5.4s steps(1,end) infinite;
+}
+
+.hero-title .glitch-line::after{
+  color:var(--signal-blue);
+  text-shadow:-4px 0 12px rgba(11,120,130,.58);
+  animation:titleGlitchBlue 5.4s steps(1,end) infinite;
+}
+
+@keyframes titleGlitchCyan{
+  0%,8%,11%,37%,40%,69%,72%,100%{opacity:0;transform:none;clip-path:inset(0 0 0 0)}
+  8.4%{opacity:.95;transform:translate(7px,-1px);clip-path:inset(12% 0 64% 0)}
+  9.1%{opacity:.8;transform:translate(-5px,1px);clip-path:inset(58% 0 18% 0)}
+  10%{opacity:.9;transform:translate(4px,0);clip-path:inset(34% 0 42% 0)}
+  37.4%{opacity:.8;transform:translate(-7px,1px);clip-path:inset(68% 0 7% 0)}
+  38.1%{opacity:.92;transform:translate(5px,-1px);clip-path:inset(18% 0 61% 0)}
+  69.4%{opacity:.9;transform:translate(8px,0);clip-path:inset(42% 0 34% 0)}
+  70.2%{opacity:.75;transform:translate(-4px,1px);clip-path:inset(8% 0 72% 0)}
+}
+
+@keyframes titleGlitchBlue{
+  0%,8%,11%,37%,40%,69%,72%,100%{opacity:0;transform:none;clip-path:inset(0 0 0 0)}
+  8.7%{opacity:.72;transform:translate(-8px,1px);clip-path:inset(64% 0 10% 0)}
+  9.5%{opacity:.88;transform:translate(5px,-1px);clip-path:inset(24% 0 54% 0)}
+  38%{opacity:.8;transform:translate(7px,0);clip-path:inset(48% 0 27% 0)}
+  39%{opacity:.7;transform:translate(-5px,-1px);clip-path:inset(6% 0 74% 0)}
+  70%{opacity:.82;transform:translate(-7px,1px);clip-path:inset(59% 0 14% 0)}
+  71%{opacity:.68;transform:translate(4px,0);clip-path:inset(20% 0 60% 0)}
+}
+
+/* Photo glitch layers. These reuse asset-2.png, so the source photo itself is never altered. */
+.hero-image-glitch{
+  position:absolute;
+  inset:0;
+  z-index:1;
+  pointer-events:none;
+  opacity:0;
+  background-image:
+    linear-gradient(var(--signal-cyan),var(--signal-cyan)),
+    url("assets/asset-2.png");
+  background-size:cover;
+  background-position:60% 28%;
+  background-repeat:no-repeat;
+  background-blend-mode:color,normal;
+  mix-blend-mode:screen;
+  will-change:transform,clip-path,opacity;
+}
+
+.hero-image-glitch-a{
+  animation:heroGlitchA 6.6s steps(1,end) infinite;
+}
+
+.hero-image-glitch-b{
+  background-image:
+    linear-gradient(var(--signal-blue),var(--signal-blue)),
+    url("assets/asset-2.png");
+  animation:heroGlitchB 6.6s steps(1,end) infinite;
+}
+
+@keyframes heroGlitchA{
+  0%,14%,18%,44%,48%,73%,77%,100%{opacity:0;transform:none;clip-path:inset(0 0 0 0)}
+  14.3%{opacity:.55;transform:translateX(18px);clip-path:inset(9% 0 72% 0)}
+  15.1%{opacity:.68;transform:translateX(-12px);clip-path:inset(42% 0 36% 0)}
+  16.2%{opacity:.48;transform:translateX(9px);clip-path:inset(72% 0 11% 0)}
+  44.4%{opacity:.62;transform:translateX(-17px);clip-path:inset(22% 0 60% 0)}
+  45.2%{opacity:.46;transform:translateX(12px);clip-path:inset(61% 0 19% 0)}
+  73.4%{opacity:.7;transform:translateX(20px);clip-path:inset(35% 0 41% 0)}
+  74.2%{opacity:.5;transform:translateX(-9px);clip-path:inset(78% 0 5% 0)}
+}
+
+@keyframes heroGlitchB{
+  0%,14%,18%,44%,48%,73%,77%,100%{opacity:0;transform:none;clip-path:inset(0 0 0 0)}
+  14.7%{opacity:.45;transform:translateX(-20px);clip-path:inset(68% 0 14% 0)}
+  15.6%{opacity:.58;transform:translateX(10px);clip-path:inset(28% 0 49% 0)}
+  45%{opacity:.52;transform:translateX(18px);clip-path:inset(52% 0 27% 0)}
+  46%{opacity:.4;transform:translateX(-11px);clip-path:inset(7% 0 76% 0)}
+  74%{opacity:.58;transform:translateX(-19px);clip-path:inset(18% 0 64% 0)}
+  75%{opacity:.44;transform:translateX(12px);clip-path:inset(66% 0 16% 0)}
+}
+
+/* Make the existing VHS/static layer much easier to see and keep it in the same signal palette. */
+.hero-static-video{
+  z-index:2;
+  opacity:.16;
+  mix-blend-mode:screen;
+  filter:contrast(1.55) brightness(.82) saturate(1.35) hue-rotate(145deg);
+  animation:heroStaticPulse 6.6s steps(1,end) infinite;
+}
+
+@keyframes heroStaticPulse{
+  0%,14%,18%,44%,48%,73%,77%,100%{opacity:.10}
+  14.3%,15.1%,44.4%,45.2%,73.4%,74.2%{opacity:.27}
+  16.2%,46%,75%{opacity:.20}
+}
+
+.hero-vignette,.hero-grid{z-index:3}
+.hero-content{z-index:5}
+.hero-sidecode{z-index:6}
+.hero-sigil{z-index:4}
+
+@media(max-width:900px){
+  .hero .hero-title{font-size:clamp(4.2rem,18vw,7.2rem)}
+  .hero-image-glitch{background-position:56% 25%}
+  .hero-static-video{opacity:.13}
+}
+
+@media(max-width:520px){
+  .hero .hero-title{font-size:clamp(4rem,22vw,6.1rem)}
+  .hero-static-video{opacity:.11}
+}
+
+@media(prefers-reduced-motion:reduce){
+  .hero-title .glitch-line::before,
+  .hero-title .glitch-line::after,
+  .hero-image-glitch,
+  .hero-static-video{
+    animation:none;
+  }
+  .hero-image-glitch{display:none}
+}
