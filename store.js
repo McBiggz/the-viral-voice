@@ -32,90 +32,42 @@
   ];
 
   const PRODUCTS = [
-    {
-      id: "VV-APP-001",
-      category: "apparel",
-      title: "Distressed Sigil Tee",
-      image: "image: "assets/VVshirt1.png",",
-      description: "Garment-dyed natural tee. Small distressed sigil front. Oversized Viral Voice and sigil back print.",
-      badge: "Front + Back",
-      price: PRICING.shirt,
-      sizes: ["S", "M", "L", "XL", "2XL", "3XL"],
-      available: false,
-      status: "COMING SOON"
-    },
-    {
-      id: "VV-APP-002",
-      category: "apparel",
-      title: "Viral Voice Portrait Tee",
-      image: "image: "assets/VVshirt2.png",",
-      description: "Garment-dyed black tee with the Viral Voice portrait, sigil, and distressed broadcast artwork.",
-      badge: "Portrait",
-      price: PRICING.shirt,
-      sizes: ["S", "M", "L", "XL", "2XL", "3XL"],
-      available: false,
-      status: "COMING SOON"
-    },
-    {
-      id: "VV-APP-003",
-      category: "apparel",
-      title: "True Believer Tee",
-      image: "image: "assets/VVshirt3.png",",
-      description: "Garment-dyed black tee with the full I'M A TRUE BELIEVER front print and Think For Yourself message.",
-      badge: "Movement",
-      price: PRICING.shirt,
-      sizes: ["S", "M", "L", "XL", "2XL", "3XL"],
-      available: false,
-      status: "COMING SOON"
-    },
-    {
-      id: "VV-SIG-001",
-      category: "stickers",
-      title: "Classic Sigil",
-      image: "assets/viral_voice_top_left_logo.png",
-      description: "Clean cyan-on-black circular sigil marker.",
-      badge: "Standard",
-      price: PRICING.stickerSingle,
-      available: true,
-      bundleEligible: true,
-      status: "$5 // BUNDLE ELIGIBLE"
-    },
-    {
-      id: "VV-SIG-002",
-      category: "stickers",
-      title: "Distressed Sigil",
-      image: "assets/viral_voice_top_right_distressed_logo.png",
-      description: "Dripping, distressed version of the primary signal mark.",
-      badge: "Standard",
-      price: PRICING.stickerSingle,
-      available: true,
-      bundleEligible: true,
-      status: "$5 // BUNDLE ELIGIBLE"
-    },
-    {
-      id: "VV-SIG-003",
-      category: "stickers",
-      title: "Viral Voice Logo",
-      image: "assets/viral_voice_top_center_name_logo.png",
-      description: "Sigil plus full Viral Voice wordmark in one irregular die-cut piece.",
-      badge: "Standard",
-      price: PRICING.stickerSingle,
-      available: true,
-      bundleEligible: true,
-      status: "$5 // BUNDLE ELIGIBLE"
-    },
-    {
-      id: "VV-SIG-004",
-      category: "stickers",
-      title: "Holographic Sigil",
-      image: "assets/viral_voice_holographic_logo.png",
-      description: "Iridescent holographic signal mark with shifting color under light.",
-      badge: "Holographic",
-      price: PRICING.holographicSticker,
-      available: false,
-      status: "PRICE TBA"
-    }
-  ];
+  {
+    id: "VV-APP-001",
+    category: "apparel",
+    title: "Distressed Sigil Tee",
+    image: "assets/VVshirt1.png",
+    description: "Garment-dyed natural tee. Small distressed sigil front. Oversized Viral Voice and sigil back print.",
+    badge: "Front + Back",
+    price: PRICING.shirt,
+    sizes: ["S", "M", "L", "XL", "2XL", "3XL"],
+    available: false,
+    status: "COMING SOON"
+  },
+  {
+    id: "VV-APP-002",
+    category: "apparel",
+    title: "Viral Voice Portrait Tee",
+    image: "assets/VVshirt2.png",
+    description: "Garment-dyed black tee with the Viral Voice portrait, sigil, and distressed broadcast artwork.",
+    badge: "Portrait",
+    price: PRICING.shirt,
+    sizes: ["S", "M", "L", "XL", "2XL", "3XL"],
+    available: false,
+    status: "COMING SOON"
+  },
+  {
+    id: "VV-APP-003",
+    category: "apparel",
+    title: "True Believer Tee",
+    image: "assets/VVshirt3.png",
+    description: "Garment-dyed black tee with the full I'M A TRUE BELIEVER front print and Think For Yourself message.",
+    badge: "Movement",
+    price: PRICING.shirt,
+    sizes: ["S", "M", "L", "XL", "2XL", "3XL"],
+    available: false,
+    status: "COMING SOON"
+  },
 
   const CART_KEY = "viral_voice_signal_supply_cart";
   let cart = loadCart().filter(item => getProduct(item.id)?.available);
