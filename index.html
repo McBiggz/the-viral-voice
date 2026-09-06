@@ -13,6 +13,9 @@
 <link rel="icon" type="image/png" href="assets/asset-1.png" />
 <link rel="apple-touch-icon" href="assets/asset-1.png" />
 <title>The Viral Voice | Liam McGinn</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -22,7 +25,7 @@
 <header class="site-header">
   <a class="brand-mark" href="#top"><img src="assets/asset-1.png" alt="The Viral Voice sigil"></a>
   <div class="header-tag">TRANSMISSION // ACTIVE</div>
-  <nav><a href="#signal">Signal</a><a href="#believer">Believer</a><a href="#watch">Archive</a><a href="#merch">Merch</a><a href="#follow">Follow</a></nav>
+  <nav><a href="#signal">Signal</a><a href="#believer">Believer</a><a href="#watch">Archive</a><a href="store.html">Merch</a><a href="#follow">Follow</a></nav>
 </header>
 <main id="top">
   <section class="hero">
@@ -122,7 +125,14 @@
           <button class="easter-mark" type="button" aria-label="Unknown signal marker">
             <img src="assets/asset-1.png" alt="">
           </button>
-          <p class="secret-copy">SOME SIGNALS DON'T APPEAR.<br><span>THEY'RE DISCOVERED.</span></p>
+          <p class="secret-copy dynamic-signal-copy" aria-label="Some signals don't appear. They're discovered.">
+            <span class="secret-word secret-word-some" aria-hidden="true">SOME</span>
+            <span class="secret-word secret-word-signals" aria-hidden="true">SIGNALS</span>
+            <span class="secret-word secret-word-dont" aria-hidden="true">DON'T</span>
+            <span class="secret-word secret-word-appear" aria-hidden="true">APPEAR.</span>
+            <span class="secret-word secret-word-theyre" aria-hidden="true">THEY'RE</span>
+            <span class="secret-word secret-word-discovered" aria-hidden="true">DISCOVERED.</span>
+          </p>
           <div class="secret-status">ACCESS // UNKNOWN</div>
         </article>
       </div>
@@ -159,7 +169,7 @@
 
   <section id="merch" class="merch-strip">
     <div class="merch-sigil"><img src="assets/asset-1.png" alt=""></div>
-    <div class="merch-copy"><p class="eyebrow">03 // REPRESENT</p><h2>WEAR THE SIGNAL.</h2><p>Stickers, signed 8×10s, shirts, pins, and limited drops.</p><div class="coming">MERCH TRANSMISSION INCOMING</div></div>
+    <div class="merch-copy"><p class="eyebrow">03 // REPRESENT</p><h2>WEAR THE SIGNAL.</h2><p>Stickers, signed 8×10s, shirts, pins, and limited drops.</p><a class="coming merch-store-link" href="store.html">ENTER SIGNAL SUPPLY ↗</a></div>
     <div class="merch-type" aria-hidden="true">TRUE<br>BELIEVER</div>
   </section>
 
