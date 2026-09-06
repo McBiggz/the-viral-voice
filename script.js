@@ -557,99 +557,51 @@
 
       establishSignal();
 
+      /* ======================================================
+         PSYCHEDELIC TESTING MODE
+         Starts 2 seconds after page load.
+         Runs for 8 seconds.
+         Then shuts itself off.
+         ====================================================== */
+
+      setTimeout(() => {
+
+        document.body.classList.add("trip-mode");
+
+        setTimeout(() => {
+          document.body.classList.remove("trip-mode");
+        }, 8000);
+
+      }, 2000);
+
     }
   );
-.trip-mode{
-  animation:tripHue 8s linear infinite;
-}
 
-.trip-mode .hero-image,
-.trip-mode .hero-static-video,
-.trip-mode .follow-signal-art,
-.trip-mode img{
-  animation:
-    tripWobble 3.5s ease-in-out infinite,
-    tripPulse 5s ease-in-out infinite;
-  filter:
-    hue-rotate(0deg)
-    saturate(1.8)
-    contrast(1.15);
-}
 
-.trip-mode .hero-image{
-  transform-origin:center;
-}
+  /* ========================================================
+     MANUAL VISUAL TESTING HELPERS
 
-.trip-mode .hero-content,
-.trip-mode .section-head,
-.trip-mode .signal-copy{
-  animation:tripText 2.8s ease-in-out infinite;
-  text-shadow:
-    4px 0 0 rgba(255,0,120,.45),
-    -4px 0 0 rgba(0,220,255,.45);
-}
+     Browser console commands:
 
-.trip-mode::before{
-  content:"";
-  position:fixed;
-  inset:0;
-  z-index:9998;
-  pointer-events:none;
-  background:
-    radial-gradient(circle at 20% 30%, rgba(255,0,180,.12), transparent 35%),
-    radial-gradient(circle at 80% 60%, rgba(0,255,220,.12), transparent 40%),
-    radial-gradient(circle at 50% 80%, rgba(120,0,255,.10), transparent 35%);
-  mix-blend-mode:screen;
-  animation:tripClouds 7s ease-in-out infinite alternate;
-}
+     startTrip()
+     stopTrip()
 
-.trip-mode::after{
-  content:"";
-  position:fixed;
-  inset:-5%;
-  z-index:9997;
-  pointer-events:none;
-  background:
-    repeating-radial-gradient(
-      circle at center,
-      rgba(0,255,255,.025) 0 4px,
-      rgba(255,0,180,.025) 5px 9px,
-      transparent 10px 18px
-    );
-  animation:tripTunnel 8s linear infinite;
-}
+     setSignalStrength(10)
+     setSignalStrength(25)
+     setSignalStrength(50)
+     setSignalStrength(75)
+     setSignalStrength(100)
 
-@keyframes tripHue{
-  0%{filter:hue-rotate(0deg)}
-  100%{filter:hue-rotate(360deg)}
-}
+     ======================================================== */
 
-@keyframes tripWobble{
-  0%,100%{transform:translate(0,0) skew(0deg)}
-  25%{transform:translate(4px,-3px) skew(.6deg)}
-  50%{transform:translate(-3px,4px) skew(-.7deg)}
-  75%{transform:translate(2px,2px) skew(.4deg)}
-}
+  window.startTrip = function () {
+    document.body.classList.add("trip-mode");
+  };
 
-@keyframes tripPulse{
-  0%,100%{scale:1}
-  50%{scale:1.025}
-}
 
-@keyframes tripText{
-  0%,100%{transform:translate(0,0)}
-  25%{transform:translate(2px,-1px)}
-  50%{transform:translate(-2px,2px)}
-  75%{transform:translate(1px,1px)}
-}
+  window.stopTrip = function () {
+    document.body.classList.remove("trip-mode");
+  };
 
-@keyframes tripClouds{
-  0%{transform:scale(1) rotate(0deg)}
-  100%{transform:scale(1.12) rotate(4deg)}
-}
 
-@keyframes tripTunnel{
-  0%{transform:scale(1) rotate(0deg)}
-  100%{transform:scale(1.18) rotate(8deg)}
-}
 })();
