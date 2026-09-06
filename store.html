@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#020405" />
+  <meta name="description" content="Signal Supply. Official Viral Voice merch by Liam McGinn." />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="Signal Supply" />
+  <link rel="icon" type="image/png" href="assets/asset-1.png" />
+  <link rel="apple-touch-icon" href="assets/asset-1.png" />
+  <title>Signal Supply | The Viral Voice</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="store.css" />
+</head>
+<body>
+  <div class="noise" aria-hidden="true"></div>
+  <div class="scanline" aria-hidden="true"></div>
+  <div class="page-signal-distortion" aria-hidden="true"></div>
+
+  <header class="site-header store-header">
+    <a class="brand-mark" href="index.html" aria-label="Back to The Viral Voice">
+      <img src="assets/asset-1.png" alt="The Viral Voice sigil" />
+    </a>
+    <div class="header-tag">SIGNAL SUPPLY // ONLINE</div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="#apparel">Apparel</a>
+      <a href="#stickers">Stickers</a>
+      <button class="cart-trigger" type="button" data-cart-open>
+        Cart <span data-cart-count>0</span>
+      </button>
+    </nav>
+  </header>
+
+  <main>
+    <section class="store-hero">
+      <div class="store-hero-grid" aria-hidden="true"></div>
+      <div class="store-hero-copy">
+        <p class="eyebrow">ARCHIVE NODE // COMMERCE CHANNEL</p>
+        <h1>SIGNAL<br><span>SUPPLY</span></h1>
+        <p class="store-lead">Physical artifacts from The Viral Voice. Wear the signal. Spread the signal. Think for yourself.</p>
+        <div class="store-identity">
+          <span>TRUE BELIEVER</span>
+          <strong data-believer-number>#----</strong>
+          <small>IDENTITY LINK ACTIVE</small>
+        </div>
+      </div>
+      <div class="store-hero-art" aria-hidden="true">
+        <img src="assets/asset-1.png" alt="" />
+        <div class="store-orbit store-orbit-a"></div>
+        <div class="store-orbit store-orbit-b"></div>
+      </div>
+    </section>
+
+    <section class="store-controls" aria-label="Store filters">
+      <div>
+        <span class="store-control-label">FILTER SIGNAL</span>
+        <div class="filter-row">
+          <button class="filter-button active" type="button" data-filter="all">All</button>
+          <button class="filter-button" type="button" data-filter="apparel">Apparel</button>
+          <button class="filter-button" type="button" data-filter="stickers">Stickers</button>
+        </div>
+      </div>
+      <button class="mobile-cart-button" type="button" data-cart-open>
+        CART // <span data-cart-count>0</span>
+      </button>
+    </section>
+
+    <section id="apparel" class="store-section">
+      <div class="store-section-head">
+        <div>
+          <p class="eyebrow">001 // APPAREL</p>
+          <h2>WEAR THE<br>SIGNAL.</h2>
+        </div>
+        <p>Shirt designs are in the archive now. Final pricing and inventory are still incoming, so apparel remains preview-only for the moment.</p>
+      </div>
+      <div class="product-grid" data-product-grid="apparel"></div>
+    </section>
+
+    <div class="store-break" aria-hidden="true">
+      <span>/// SIGNAL SUPPLY /// SIGNAL SUPPLY /// SIGNAL SUPPLY /// SIGNAL SUPPLY ///</span>
+    </div>
+
+    <section id="stickers" class="store-section sticker-section">
+      <div class="store-section-head">
+        <div>
+          <p class="eyebrow">002 // SIGNAL MARKERS</p>
+          <h2>LEAVE A<br>TRACE.</h2>
+        </div>
+        <p>Three standard signal markers are live now. $5 each, any 2 for $8, or acquire the complete 3-sticker set for $10.</p>
+      </div>
+
+      <div class="sticker-pricing-strip" aria-label="Sticker pricing">
+        <div><span>ONE</span><strong>$5</strong></div>
+        <div><span>ANY TWO</span><strong>$8</strong></div>
+        <div><span>COMPLETE 3-SET</span><strong>$10</strong></div>
+        <small>STANDARD STICKERS ONLY // HOLOGRAPHIC PRICING TBA</small>
+      </div>
+      <div class="product-grid sticker-grid" data-product-grid="stickers"></div>
+    </section>
+
+    <section class="store-manifesto">
+      <img src="assets/follow-the-signal-horizontal.png" alt="Follow the Signal" />
+      <p>THE SIGNAL DOESN'T NEED EVERYONE.</p>
+      <strong>IT NEEDS THE RIGHT PEOPLE.</strong>
+      <a href="index.html#believer">RETURN TO THE ARCHIVE ↗</a>
+    </section>
+  </main>
+
+  <footer class="store-footer">
+    <img src="assets/asset-1.png" alt="" />
+    <span>THE VIRAL VOICE // LIAM McGINN</span>
+    <span>SIGNAL SUPPLY // END TRANSMISSION</span>
+  </footer>
+
+  <div class="cart-backdrop" data-cart-close></div>
+  <aside class="cart-drawer" aria-label="Shopping cart" aria-hidden="true">
+    <div class="cart-head">
+      <div>
+        <span>CURRENT TRANSMISSION</span>
+        <h2>YOUR CART</h2>
+      </div>
+      <button type="button" class="cart-close" data-cart-close aria-label="Close cart">×</button>
+    </div>
+
+    <div class="cart-items" data-cart-items></div>
+
+    <div class="cart-empty" data-cart-empty>
+      <img src="assets/asset-1.png" alt="" />
+      <strong>NO ARTIFACTS ACQUIRED.</strong>
+      <span>The cart is currently receiving nothing. Profound.</span>
+    </div>
+
+    <div class="cart-footer">
+      <div class="cart-bundle-status" data-cart-bundle hidden></div>
+      <div class="cart-total-row">
+        <span>SUBTOTAL</span>
+        <strong data-cart-total>$0</strong>
+      </div>
+      <button class="checkout-button" type="button" disabled>
+        CHECKOUT LINKING NEXT
+      </button>
+      <small>Standard sticker pricing is live. Checkout activates after payment processing is connected.</small>
+    </div>
+  </aside>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="script.js"></script>
+  <script src="store.js"></script>
+</body>
+</html>
