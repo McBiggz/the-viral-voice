@@ -52,7 +52,6 @@
       <a class="signal-button" href="#signal"><span>ENTER THE SIGNAL</span><b>↘</b></a>
     </div>
     <div class="hero-sidecode">TVV // 001<br>QUESTION<br>THINK<br>DECIDE</div>
-    <button class="signal-easter signal-easter-hero" type="button" data-secret-transmission="1" data-video="assets/secret-transmission-001.mp4" aria-label="Hidden transmission marker 1">+</button>
     <div class="hero-sigil"><img src="assets/asset-1.png" alt=""></div>
   </section>
 
@@ -68,7 +67,6 @@
       <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
       <img src="assets/asset-1.png" alt="Viral Voice sigil">
       <div class="stamp">TRUE<br>BELIEVERS<br>THINK<br>INDEPENDENTLY</div>
-      <button class="signal-easter signal-easter-orbit" type="button" data-secret-transmission="2" data-video="assets/secret-transmission-002.mp4" aria-label="Hidden transmission marker 2">◌</button>
     </div>
   </section>
 
@@ -82,10 +80,10 @@
         <h2>THE SIGNAL<br><span>REMEMBERS YOU.</span></h2>
         <p class="believer-lead">Your discoveries, recovered transmissions, and signal strength persist here. The deeper you go, the stranger the signal becomes.</p>
 
-        <div class="curiosity-riddle" tabindex="0">
+        <button class="curiosity-riddle curiosity-transmission" type="button" data-secret-transmission="2" data-video="assets/transmission-002.mp4" aria-label="Investigate the curious signal">
           <span class="riddle-mark">+</span>
-          <p><strong>NOT EVERYTHING ON THIS PAGE WAS MEANT TO BE SEEN.</strong><br>Some signals answer only to the curious.<br><em>Look closer. Curiosity is rewarded.</em></p>
-        </div>
+          <span class="curiosity-copy"><strong>NOT EVERYTHING ON THIS PAGE WAS MEANT TO BE SEEN.</strong><br>Some signals answer only to the curious.<br><em>Look closer. Curiosity is rewarded.</em></span>
+        </button>
       </div>
 
       <div class="believer-dashboard">
@@ -113,18 +111,24 @@
           <p class="strength-note">THE STRONGER THE SIGNAL, THE LESS STABLE THE INTERFACE.</p>
         </article>
 
-        <article class="believer-card archive-card">
-          <div class="hud-label">RECOVERED SIGNALS // ARCHIVE</div>
-          <div class="archive-list">
-            <a href="#watch" class="archive-item recovered"><span>001</span><b>SIGNAL ACQUIRED</b><small>PUBLIC</small></a>
-            <a href="#watch" class="archive-item recovered"><span>002</span><b>THE FIRST LOCKED SIGNAL</b><small>RECOVERED</small></a>
-            <a href="#unknown-signal" class="archive-item encrypted"><span>???</span><b>████████████████</b><small>ENCRYPTED</small></a>
+        <article class="believer-card archive-card transmission-tracker-card">
+          <div class="hud-label">RECOVERED TRANSMISSIONS // PRIVATE ARCHIVE</div>
+          <div class="transmission-tracker" aria-label="Recovered transmission progress">
+            <div class="tracker-row" data-tracker-id="1"><span>001</span><b>UNKNOWN</b><small>HIDDEN</small></div>
+            <div class="tracker-row" data-tracker-id="2"><span>002</span><b>UNKNOWN</b><small>HIDDEN</small></div>
+            <div class="tracker-row" data-tracker-id="3"><span>003</span><b>UNKNOWN</b><small>HIDDEN</small></div>
+            <div class="tracker-row tracker-locked" data-tracker-id="4"><span>004</span><b>LOCKED</b><small>REQUIRES 001–003</small></div>
+            <div class="tracker-row tracker-locked" data-tracker-id="5"><span>005</span><b>████████</b><small>NO SIGNAL</small></div>
+          </div>
+          <div class="tracker-footer">
+            <span class="tracker-count">0 / 5 RECOVERED</span>
+            <span class="tracker-completion">ARCHIVE // INCOMPLETE</span>
           </div>
         </article>
 
         <article id="unknown-signal" class="believer-card secret-card">
           <div class="hud-label">UNKNOWN SIGNAL // LOCKED</div>
-          <button class="easter-mark" type="button" data-secret-transmission="3" data-video="assets/secret-transmission-003.mp4" aria-label="Hidden transmission marker 3">
+          <button class="easter-mark" type="button" data-secret-transmission="3" data-video="assets/transmission-003.mp4" aria-label="Hidden transmission marker 3">
             <img src="assets/asset-1.png" alt="">
           </button>
           <p class="secret-copy dynamic-signal-copy" aria-label="Some signals don't appear. They're discovered.">
@@ -135,14 +139,14 @@
             <span class="secret-word secret-word-theyre" aria-hidden="true">THEY'RE</span>
             <span class="secret-word secret-word-discovered" aria-hidden="true">DISCOVERED.</span>
           </p>
-          <div class="secret-status">ACCESS // UNKNOWN</div>
+          <button class="secret-status access-unknown-trigger" type="button" data-secret-transmission="1" data-video="assets/transmission-001.mp4">ACCESS // UNKNOWN</button>
         </article>
       </div>
     </div>
   </section>
 
   <section class="manifesto">
-    <button class="signal-easter signal-easter-manifesto" type="button" data-secret-transmission="4" data-video="assets/secret-transmission-004.mp4" aria-label="Hidden transmission marker 4">//</button>
+    <button class="signal-easter signal-easter-manifesto" type="button" data-secret-transmission="4" data-video="assets/transmission-004.mp4" data-requires="1,2,3" aria-label="Hidden transmission marker 4">//</button>
     <div class="manifesto-photo"><img src="assets/asset-2.png" alt="The Viral Voice"><div class="redwash"></div></div>
     <div class="manifesto-copy">
       <p class="eyebrow">THE VIRAL VOICE</p>
@@ -166,7 +170,7 @@
     <div class="transmission-grid">
       <a href="#" class="transmission-card"><span class="card-no">01</span><div class="card-art sigil-card"><img src="assets/asset-1.png" alt=""></div><div class="card-bottom"><strong>PROMOS</strong><small>COMING SOON</small></div></a>
       <a href="#" class="transmission-card featured"><span class="card-no">02</span><div class="card-art photo-card"><img src="assets/asset-2.png" alt=""></div><div class="card-bottom"><strong>MATCHES</strong><small>COMING SOON</small></div></a>
-      <a href="#" class="transmission-card"><span class="card-no">03</span><div class="card-art type-card"><img class="follow-signal-card" src="assets/follow-the-signal-stacked.png" alt="Follow the Signal"></div><div class="card-bottom"><strong>SECRET TRANSMISSIONS</strong><small>COMING SOON</small></div></a>
+      <div class="transmission-card archive-frequency-card" data-archive-frequency><span class="card-no">03</span><div class="card-art type-card"><img class="follow-signal-card" src="assets/follow-the-signal-stacked.png" alt="Follow the Signal"></div><div class="card-bottom"><strong data-archive-frequency-title>UNKNOWN FREQUENCY</strong><small data-archive-frequency-status>SIGNAL CORRUPTED</small></div></div>
     </div>
   </section>
 
@@ -189,7 +193,7 @@
       <a class="merch-store-link" href="store.html">ENTER SIGNAL SUPPLY <span>↗</span></a>
     </div>
     <div class="merch-preview-code" aria-hidden="true">SUPPLY // LIVE<br>ARTIFACTS // FOUND</div>
-    <button class="signal-easter signal-easter-merch" type="button" data-secret-transmission="5" data-video="assets/secret-transmission-005.mp4" aria-label="Hidden transmission marker 5">•</button>
+    <button class="signal-easter signal-easter-merch" type="button" data-secret-transmission="5" data-video="assets/transmission-005.mp4" data-requires="1,2,3,4" aria-label="Hidden transmission marker 5">•</button>
   </section>
 
   <section id="follow" class="follow-section section-pad">
@@ -214,17 +218,41 @@
       <button type="button" class="secret-transmission-close" data-secret-close aria-label="Close secret transmission">×</button>
     </div>
     <div class="secret-transmission-static" aria-hidden="true"></div>
-    <p class="secret-transmission-kicker">RECOVERED TRANSMISSION</p>
-    <h2 id="secret-transmission-title">SECRET TRANSMISSION // 001</h2>
-    <div class="secret-video-frame">
-      <video class="secret-transmission-video" controls playsinline preload="metadata"></video>
-      <div class="secret-video-scan" aria-hidden="true"></div>
+
+    <div class="secret-stage secret-stage-decode">
+      <p class="secret-transmission-kicker">SIGNAL INTERRUPTION</p>
+      <h2 id="secret-transmission-title">UNAUTHORIZED FREQUENCY DETECTED</h2>
+      <div class="decode-console">
+        <span>SOURCE // UNKNOWN</span>
+        <span class="decode-label">DECODING TRANSMISSION // 001</span>
+        <div class="decode-bar"><i></i></div>
+        <strong class="decode-percent">0%</strong>
+      </div>
     </div>
-    <div class="secret-transmission-meta">
-      <span class="secret-recovered-count">RECOVERED // 0 OF 5</span>
-      <span>THE SIGNAL REWARDS CURIOSITY.</span>
+
+    <div class="secret-stage secret-stage-video" hidden>
+      <p class="secret-transmission-kicker">SIGNAL ACQUIRED</p>
+      <h2 class="secret-video-title">TRANSMISSION // 001</h2>
+      <div class="secret-video-frame">
+        <video class="secret-transmission-video" controls playsinline preload="metadata"></video>
+        <div class="secret-video-scan" aria-hidden="true"></div>
+      </div>
+      <p class="secret-video-missing" hidden>TRANSMISSION DATA UNAVAILABLE. THE SIGNAL HAS BEEN RECOVERED, BUT THE VIDEO FILE IS NOT PRESENT YET.</p>
     </div>
-    <p class="secret-video-missing" hidden>TRANSMISSION FILE NOT YET AVAILABLE. DROP THE MATCHING MP4 INTO /assets/.</p>
+
+    <div class="secret-stage secret-stage-result" hidden>
+      <p class="secret-transmission-kicker">TRANSMISSION RECOVERED</p>
+      <h2 class="secret-result-title">TRANSMISSION // 001</h2>
+      <div class="secret-result-grid">
+        <div><span>ARCHIVE STATUS</span><strong class="secret-recovered-count">1 OF 5</strong></div>
+        <div><span>SIGNAL GAIN</span><strong class="secret-signal-reward">+8</strong></div>
+      </div>
+      <div class="secret-progress-blocks" aria-label="Transmission recovery progress">
+        <i></i><i></i><i></i><i></i><i></i>
+      </div>
+      <p class="secret-result-message">SOMETHING ELSE IS HERE.</p>
+      <button class="secret-result-close" type="button" data-secret-close>RETURN TO SIGNAL</button>
+    </div>
   </section>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
