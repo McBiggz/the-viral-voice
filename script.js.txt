@@ -1,0 +1,190 @@
+/* ==========================================================
+   THE VIRAL VOICE // SIGNAL DISTORTION CONTROLLER
+   ----------------------------------------------------------
+   Today: reads the preview strength from #believer.
+   Later: call window.setSignalStrength(value) with the
+   signal_strength returned by Supabase.
+   ========================================================== */
+
+(() => {
+  const STAGES = [
+    'signal-stage-low',
+    'signal-stage-mid',
+    'signal-stage-high',
+    'signal-stage-psychedelic',
+    'signal-stage-locked'
+  ];
+
+  const believerSection = document.querySelector('#believer');
+  const strengthValue = document.querySelector('.strength-header strong');
+  const meter = document.querySelector('.signal-meter');
+  const statusValue = document.querySelector('.identity-meta b');
+
+  function clampStrength(value) {
+    const parsed = Number(value);
+
+    if (!Number.isFinite(parsed)) {
+      return 0;
+    }
+
+    return Math.max(
+      0,
+      Math.min(
+        100,
+        Math.round(parsed)
+      )
+    );
+  }
+
+  function getStage(strength) {
+    if (strength >= 100) {
+      return 'signal-stage-locked';
+    }
+
+    if (strength >= 75) {
+      return 'signal-stage-psychedelic';
+    }
+
+    if (strength >= 50) {
+      return 'signal-stage-high';
+    }
+
+    if (strength >= 25) {
+      return 'signal-stage-mid';
+    }
+
+    return 'signal-stage-low';
+  }
+
+  function getStatus(strength) {
+    if (strength >= 100) {
+      return 'SIGNAL LOCKED';
+    }
+
+    if (strength >= 75) {
+      return 'TRUE BELIEVER';
+    }
+
+    if (strength >= 50) {
+      return 'SIGNAL ACQUIRED';
+    }
+
+    return 'SIGNAL DETECTED';
+  }
+
+  function applySignalStrength(value) {
+    const strength = clampStrength(value);
+    const stage = getStage(strength);
+
+    /*
+      Remove any old stage class,
+      then apply the correct one.
+    */
+    document.body.classList.remove(...STAGES);
+    document.body.classList.add(stage);
+
+    /*
+      Global CSS variable.
+
+      Your CSS can use:
+
+      var(--live-signal-strength)
+    */
+    document.documentElement.style.setProperty(
+      '--live-signal-strength',
+      `${strength}%`
+    );
+
+    /*
+      Update the True Believer section.
+    */
+    if (believerSection) {
+      believerSection.style.setProperty(
+        '--signal-strength',
+        `${strength}%`
+      );
+
+      believerSection.dataset.signalStrength =
+        String(strength);
+    }
+
+    /*
+      Update displayed percentage.
+    */
+    if (strengthValue) {
+      strengthValue.textContent =
+        `${strength}%`;
+    }
+
+    /*
+      Accessibility label for the meter.
+    */
+    if (meter) {
+      meter.setAttribute(
+        'aria-label',
+        `Signal strength ${strength} percent`
+      );
+    }
+
+    /*
+      Update the believer status text.
+    */
+    if (statusValue) {
+      statusValue.textContent =
+        getStatus(strength);
+    }
+
+    /*
+      Broadcast a custom event.
+
+      Other future systems can listen for this,
+      including Easter eggs, audio changes,
+      hidden transmissions, etc.
+    */
+    window.dispatchEvent(
+      new CustomEvent(
+        'viralvoice:signalchange',
+        {
+          detail: {
+            strength,
+            stage,
+            status: getStatus(strength)
+          }
+        }
+      )
+    );
+
+    return {
+      strength,
+      stage,
+      status: getStatus(strength)
+    };
+  }
+
+  /*
+    Public function.
+
+    Later Supabase will be able to do:
+
+    window.setSignalStrength(68);
+  */
+  window.setSignalStrength =
+    applySignalStrength;
+
+  /*
+    TEMPORARY PREVIEW VALUE
+
+    For now, the script reads the value from:
+
+    data-signal-strength="42"
+
+    inside the believer section in index.html.
+
+    Change that number to test the site.
+  */
+  const initialStrength =
+    believerSection?.dataset.signalStrength
+    ?? 42;
+
+  applySignalStrength(initialStrength);
+})();

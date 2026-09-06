@@ -479,3 +479,130 @@
 @media(prefers-reduced-motion:reduce){
   .signal-atmosphere,.signal-chroma,.riddle-mark,.signal-meter-fill,.easter-mark img,.signal-stage-high .believer-card{animation:none!important}
 }
+
+
+/* ==========================================================
+   GLOBAL SIGNAL DISTORTION SYSTEM
+   script.js applies one stage class to <body> based on signal strength.
+   0-24 low | 25-49 mid | 50-74 high | 75-99 psychedelic | 100 locked
+   ========================================================== */
+.page-signal-distortion{
+  position:fixed;
+  inset:-8%;
+  z-index:98;
+  pointer-events:none;
+  opacity:0;
+  mix-blend-mode:screen;
+  transform-origin:center;
+  will-change:transform,filter,opacity;
+}
+
+/* Low: mostly clean. */
+body.signal-stage-low .page-signal-distortion{opacity:0}
+body.signal-stage-low .noise{opacity:.045}
+
+/* Mid: cyan interference starts leaking into the entire page. */
+body.signal-stage-mid .page-signal-distortion{
+  opacity:.055;
+  background:
+    repeating-linear-gradient(0deg,transparent 0 8px,rgba(37,201,216,.12) 9px 10px),
+    radial-gradient(circle at 72% 28%,rgba(37,201,216,.18),transparent 28%);
+  animation:pageSignalMid 9s ease-in-out infinite;
+}
+body.signal-stage-mid .noise{opacity:.07}
+body.signal-stage-mid .scanline{box-shadow:0 0 28px rgba(37,201,216,.34)}
+
+/* High: chromatic splitting and occasional geometry drift. */
+body.signal-stage-high .page-signal-distortion{
+  opacity:.12;
+  background:
+    linear-gradient(90deg,rgba(37,201,216,.12),transparent 32%,rgba(130,35,255,.07) 68%,rgba(255,22,139,.07)),
+    repeating-linear-gradient(0deg,transparent 0 5px,rgba(37,201,216,.09) 6px 7px);
+  filter:saturate(1.55) contrast(1.08);
+  animation:pageSignalHigh 5.5s steps(2,end) infinite;
+}
+body.signal-stage-high .noise{opacity:.085}
+body.signal-stage-high .hero-image,
+body.signal-stage-high .manifesto-photo img,
+body.signal-stage-high .photo-card img{
+  filter:contrast(1.12) saturate(1.12) hue-rotate(3deg);
+}
+body.signal-stage-high .site-header,
+body.signal-stage-high footer{animation:signalMicroJitter 7s steps(1,end) infinite}
+
+/* 75-99: the signal becomes psychedelic and increasingly unstable. */
+body.signal-stage-psychedelic .page-signal-distortion{
+  opacity:.20;
+  background:
+    conic-gradient(from 130deg at 68% 34%,rgba(37,201,216,.18),rgba(118,35,255,.17),rgba(255,20,141,.14),rgba(10,230,196,.15),rgba(37,201,216,.18)),
+    repeating-radial-gradient(ellipse at 52% 44%,transparent 0 16px,rgba(37,201,216,.06) 17px 19px);
+  filter:saturate(2) contrast(1.12);
+  animation:pageSignalPsychedelic 3.6s ease-in-out infinite;
+}
+body.signal-stage-psychedelic .noise{opacity:.105}
+body.signal-stage-psychedelic .hero-image,
+body.signal-stage-psychedelic .manifesto-photo img,
+body.signal-stage-psychedelic .photo-card img{
+  filter:contrast(1.18) saturate(1.38) hue-rotate(8deg);
+}
+body.signal-stage-psychedelic .hero-title,
+body.signal-stage-psychedelic h2{
+  text-shadow:-3px 0 rgba(37,201,216,.36),3px 0 rgba(255,20,141,.18),0 0 22px rgba(37,201,216,.15);
+}
+body.signal-stage-psychedelic .believer-card:nth-child(odd),
+body.signal-stage-psychedelic .transmission-card:nth-child(odd){animation:cardDriftA 4.4s ease-in-out infinite}
+body.signal-stage-psychedelic .believer-card:nth-child(even),
+body.signal-stage-psychedelic .transmission-card:nth-child(even){animation:cardDriftB 5.1s ease-in-out infinite}
+
+/* 100: signal lock. The chaos resolves into an unnaturally clean connection. */
+body.signal-stage-locked .page-signal-distortion{
+  opacity:.035;
+  background:radial-gradient(circle at 50% 35%,rgba(124,244,245,.18),transparent 35%);
+  animation:lockedBreath 7s ease-in-out infinite;
+}
+body.signal-stage-locked .noise{opacity:.025}
+body.signal-stage-locked .scanline{opacity:.35;animation-duration:16s}
+body.signal-stage-locked .hero-image,
+body.signal-stage-locked .manifesto-photo img,
+body.signal-stage-locked .photo-card img{filter:contrast(1.1) saturate(1.04)}
+body.signal-stage-locked .believer-card,
+body.signal-stage-locked .transmission-card{animation:none!important;border-color:rgba(124,244,245,.42)}
+body.signal-stage-locked .hero-title{filter:drop-shadow(0 0 12px rgba(124,244,245,.22))}
+
+/* Keep the believer module synchronized with the body stage. */
+body.signal-stage-low .signal-experience .signal-chroma{opacity:0}
+body.signal-stage-mid .signal-experience .signal-chroma{opacity:.10;background:repeating-radial-gradient(ellipse at 70% 35%,rgba(37,201,216,.2) 0 1px,transparent 2px 16px);animation:midSignalWarp 9s ease-in-out infinite}
+body.signal-stage-high .signal-experience .signal-chroma{opacity:.24;background:conic-gradient(from 180deg at 72% 42%,rgba(37,201,216,.16),rgba(135,31,255,.17),rgba(255,20,141,.13),rgba(37,201,216,.16));filter:saturate(1.6);animation:highSignalWarp 5.5s ease-in-out infinite}
+body.signal-stage-psychedelic .signal-experience .signal-chroma{opacity:.34;background:conic-gradient(from 120deg at 62% 42%,rgba(37,201,216,.22),rgba(135,31,255,.26),rgba(255,20,141,.22),rgba(10,230,196,.20),rgba(37,201,216,.22));filter:saturate(2);animation:lockedSignalWarp 5.2s linear infinite}
+body.signal-stage-locked .signal-experience .signal-chroma{opacity:.08;background:radial-gradient(circle at 60% 42%,rgba(124,244,245,.16),transparent 40%);animation:none}
+
+@keyframes pageSignalMid{
+  0%,100%{transform:translate(0) scale(1)}
+  48%{transform:translate(.35%,-.25%) scale(1.006)}
+  50%{transform:translate(-.3%,.2%) scale(1.004)}
+}
+@keyframes pageSignalHigh{
+  0%,82%,100%{transform:translate(0) skewX(0)}
+  84%{transform:translate(5px,-2px) skewX(.15deg)}
+  86%{transform:translate(-4px,2px) skewX(-.12deg)}
+  88%{transform:translate(0)}
+}
+@keyframes pageSignalPsychedelic{
+  0%,100%{transform:translate(0) scale(1) rotate(0);filter:saturate(1.8) hue-rotate(0deg)}
+  33%{transform:translate(1%,-.7%) scale(1.018) rotate(.12deg);filter:saturate(2.1) hue-rotate(5deg)}
+  66%{transform:translate(-.8%,.9%) scale(1.012) rotate(-.12deg);filter:saturate(2) hue-rotate(-4deg)}
+}
+@keyframes signalMicroJitter{
+  0%,91%,100%{transform:translate(0)}
+  92%{transform:translateX(2px)}
+  93%{transform:translateX(-2px)}
+  94%{transform:translate(0)}
+}
+@keyframes lockedBreath{0%,100%{opacity:.025;transform:scale(1)}50%{opacity:.055;transform:scale(1.015)}}
+
+@media(prefers-reduced-motion:reduce){
+  .page-signal-distortion,
+  body.signal-stage-high .site-header,
+  body.signal-stage-high footer,
+  body.signal-stage-psychedelic .transmission-card{animation:none!important}
+}
