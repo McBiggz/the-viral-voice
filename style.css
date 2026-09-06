@@ -1927,218 +1927,204 @@ body.signal-stage-locked .signal-experience .signal-chroma{opacity:.08;backgroun
 }
 
 /* ==========================================================
-   TYPOGRAPHY SYSTEM REFRESH
-   Farquharson = signature display moments
-   Barlow Condensed = interface / editorial headings
-   IBM Plex Sans = readable body copy
+   DYNAMIC DISCOVERY TYPOGRAPHY // 2026-09-06
+   Horizontal, editorial composition rather than six stacked words.
    ========================================================== */
-
-:root{
-  --font-display:"Farquharson",Rye,Georgia,serif;
-  --font-editorial:"Barlow Condensed",Oswald,"Arial Narrow",Arial,sans-serif;
-  --font-body:"IBM Plex Sans",Arial,sans-serif;
+.dynamic-signal-copy{
+  display:grid;
+  grid-template-columns:minmax(88px,.42fr) minmax(0,1.58fr);
+  grid-template-areas:
+    "some signals"
+    "dont appear"
+    "theyre discovered";
+  align-items:end;
+  column-gap:clamp(10px,1.4vw,22px);
+  row-gap:clamp(3px,.4vw,8px);
+  width:100%;
+  max-width:760px;
+  margin:0;
+  text-align:left;
+  line-height:.78;
+  overflow:visible;
 }
-
-body{
-  font-family:var(--font-body);
-  font-weight:400;
-}
-
-/* Utility text keeps the compressed broadcast / technical feel. */
-.site-header,
-.header-tag,
-.site-header nav,
-.micro-label,
-.eyebrow,
-.hero-sidecode,
-.section-number,
-.mantra,
-.stamp,
-.signal-button,
-.hud-label,
-.identity-kicker,
-.identity-meta,
-.strength-header,
-.signal-scale,
-.strength-note,
-.archive-item,
-.secret-status,
-.signature,
-.signal-break-label,
-.card-no,
-.card-bottom,
-.coming,
-.social-grid,
-.follow-footer,
-footer{
-  font-family:var(--font-editorial);
-}
-
-/* Body copy gets breathing room and loses the all-condensed feel. */
-.hero-copy,
-.lead,
-.believer-lead,
-.curiosity-riddle p,
-.manifesto-copy>p:not(.eyebrow):not(.signature),
-.manifesto-copy blockquote,
-.head-note,
-.merch-copy p{
-  font-family:var(--font-body);
-  letter-spacing:0;
-}
-
-/* Most section headlines switch to a strong editorial condensed face.
-   Farquharson is now reserved for the hero and selected signal moments. */
-.signal-copy h2,
-.manifesto-copy h2,
-.section-head h2,
-.merch-copy h2,
-.follow-section h2,
-.believer-intro h2{
-  font-family:var(--font-editorial);
+.dynamic-signal-copy .secret-word{
+  display:block;
+  min-width:0;
+  white-space:nowrap;
+  font-family:"Barlow Condensed",Impact,sans-serif;
   font-weight:700;
-  letter-spacing:-.025em;
-  line-height:.82;
-  text-shadow:0 3px 0 #000;
+  letter-spacing:-.045em;
+  color:#dbe7e8;
 }
+.dynamic-signal-copy .secret-word-some{grid-area:some;font-size:clamp(1.1rem,2vw,2rem);letter-spacing:.08em;padding-bottom:.18em;color:#8b989a}
+.dynamic-signal-copy .secret-word-signals{grid-area:signals;font-family:"Farquharson",Georgia,serif;font-weight:400;font-size:clamp(3rem,5.5vw,6rem);color:#dce4e5}
+.dynamic-signal-copy .secret-word-dont{grid-area:dont;font-size:clamp(1.7rem,2.8vw,3rem);color:#7e898b}
+.dynamic-signal-copy .secret-word-appear{grid-area:appear;font-size:clamp(2.8rem,4.8vw,5rem);color:#b9c4c5}
+.dynamic-signal-copy .secret-word-theyre{grid-area:theyre;font-size:clamp(1.25rem,2.2vw,2.2rem);letter-spacing:.04em;color:#7e898b;padding-bottom:.18em}
+.dynamic-signal-copy .secret-word-discovered{grid-area:discovered;font-family:"Farquharson",Georgia,serif;font-weight:400;font-size:clamp(3.2rem,6vw,6.6rem);color:var(--cyan);text-shadow:0 0 22px rgba(37,201,216,.12)}
 
-.hero .hero-title{
-  font-family:var(--font-display);
-}
-
-.believer-number,
-.strength-header strong{
-  font-family:var(--font-editorial);
-  font-weight:600;
-  letter-spacing:.02em;
+.secret-card{
+  grid-template-columns:140px minmax(0,1fr);
 }
 
 /* ==========================================================
-   DYNAMIC UNKNOWN-SIGNAL TYPOGRAPHY
-   Horizontal hierarchy inspired by editorial poster layouts.
+   SIGNAL SUPPLY // HOMEPAGE PREVIEW
    ========================================================== */
-
-.secret-card{
-  grid-template-columns:150px minmax(0,1fr);
-  gap:clamp(22px,3vw,46px);
-  padding-right:clamp(22px,4vw,56px);
+.merch-preview-strip{
+  grid-template-columns:minmax(360px,.95fr) minmax(360px,1.05fr) minmax(120px,.28fr);
+  gap:clamp(28px,4vw,70px);
+  min-height:560px;
 }
-
-.dynamic-signal-copy{
-  width:100%;
-  max-width:820px;
-  margin:0;
+.merch-preview{
+  position:relative;
+  z-index:3;
+  min-height:420px;
+  width:min(560px,46vw);
+  justify-self:center;
+}
+.merch-preview-card{
+  position:absolute;
   display:grid;
-  grid-template-columns:repeat(12,minmax(0,1fr));
-  grid-template-rows:auto auto auto;
-  column-gap:clamp(5px,.7vw,12px);
-  row-gap:clamp(0px,.25vw,4px);
-  align-items:end;
-  font-family:var(--font-editorial);
+  place-items:center;
+  border:1px solid rgba(37,201,216,.22);
+  background:linear-gradient(145deg,rgba(8,15,16,.96),rgba(2,4,5,.88));
+  box-shadow:0 24px 70px rgba(0,0,0,.42),inset 0 0 26px rgba(37,201,216,.025);
+  transition:transform .25s ease,border-color .25s ease,filter .25s ease;
+  overflow:hidden;
+}
+.merch-preview-card:hover{border-color:var(--cyan);z-index:9;filter:brightness(1.08)}
+.merch-preview-card img{display:block;width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 14px 24px rgba(0,0,0,.4))}
+.merch-preview-shirt{left:5%;top:3%;width:58%;height:88%;transform:rotate(-3deg)}
+.merch-preview-shirt:hover{transform:rotate(-1deg) translateY(-7px) scale(1.02)}
+.merch-preview-sticker-a{right:1%;top:11%;width:38%;height:40%;transform:rotate(5deg)}
+.merch-preview-sticker-a:hover{transform:rotate(2deg) translateY(-7px) scale(1.04)}
+.merch-preview-sticker-b{right:8%;bottom:5%;width:34%;height:38%;transform:rotate(-7deg)}
+.merch-preview-sticker-b:hover{transform:rotate(-3deg) translateY(-7px) scale(1.04)}
+.merch-copy{position:relative;z-index:4}
+.merch-copy p{max-width:570px;font-family:"IBM Plex Sans",Arial,sans-serif;line-height:1.7}
+.merch-store-link{
+  display:inline-flex;
+  align-items:center;
+  gap:18px;
+  margin-top:24px;
+  border:1px solid var(--cyan);
+  padding:13px 18px;
+  color:var(--cyan);
+  font-family:"Barlow Condensed",Arial,sans-serif;
+  font-size:.82rem;
+  font-weight:600;
+  letter-spacing:.18em;
   text-transform:uppercase;
-  line-height:.73;
-  color:#aab4b6;
+  transition:.2s ease;
 }
+.merch-store-link:hover{background:var(--cyan);color:#001013;transform:translateY(-2px)}
+.merch-preview-code{position:relative;z-index:2;justify-self:end;writing-mode:vertical-rl;transform:rotate(180deg);font-family:"Barlow Condensed",Arial,sans-serif;font-size:.68rem;letter-spacing:.2em;line-height:1.8;color:#637174}
 
-.dynamic-signal-copy .secret-word{
-  display:block;
-  white-space:nowrap;
+/* ==========================================================
+   SECRET TRANSMISSIONS // FIVE EASTER EGGS
+   ========================================================== */
+.signal-easter{
+  position:absolute;
+  z-index:12;
+  width:28px;
+  height:28px;
+  display:grid;
+  place-items:center;
+  padding:0;
+  border:1px solid transparent;
+  background:transparent;
+  color:rgba(127,163,166,.25);
+  font:600 14px/1 "Barlow Condensed",Arial,sans-serif;
+  cursor:pointer;
+  opacity:.34;
+  transition:opacity .2s ease,color .2s ease,border-color .2s ease,text-shadow .2s ease,transform .2s ease;
 }
-
-.secret-word-some{
-  grid-column:1 / 4;
-  grid-row:1;
-  align-self:end;
-  font-family:var(--font-editorial);
-  font-size:clamp(1.25rem,2.1vw,2.2rem);
-  font-weight:600;
-  letter-spacing:.08em;
-  padding-bottom:.08em;
-}
-
-.secret-word-signals{
-  grid-column:4 / 13;
-  grid-row:1;
-  font-family:var(--font-display);
-  font-size:clamp(2.55rem,5.25vw,5.8rem);
-  font-weight:400;
-  letter-spacing:-.025em;
-  color:#d7e0e1;
-}
-
-.secret-word-dont{
-  grid-column:1 / 4;
-  grid-row:2;
-  font-family:var(--font-editorial);
-  font-size:clamp(1.65rem,2.9vw,3.15rem);
-  font-weight:700;
-  letter-spacing:.015em;
-  padding-bottom:.04em;
-}
-
-.secret-word-appear{
-  grid-column:4 / 13;
-  grid-row:2;
-  font-family:var(--font-editorial);
-  font-size:clamp(2.7rem,5.45vw,6rem);
-  font-weight:700;
-  letter-spacing:-.045em;
-  color:#bec8ca;
-}
-
-.secret-word-theyre{
-  grid-column:1 / 4;
-  grid-row:3;
-  align-self:end;
-  font-family:var(--font-editorial);
-  font-size:clamp(1.4rem,2.6vw,2.8rem);
-  font-weight:600;
-  letter-spacing:.035em;
+.signal-easter:hover,.signal-easter:focus-visible,.signal-easter.is-recovered{
+  opacity:1;
   color:var(--cyan);
-  padding-bottom:.08em;
+  border-color:rgba(37,201,216,.45);
+  text-shadow:0 0 10px rgba(37,201,216,.6);
+  outline:none;
 }
+.signal-easter:hover{transform:scale(1.12)}
+.signal-easter-hero{left:2.2vw;bottom:12vh}
+.signal-easter-orbit{right:4%;top:12%}
+.signal-easter-manifesto{right:2.5vw;top:4.5rem;letter-spacing:-.08em}
+.signal-easter-merch{right:2.4vw;bottom:2.2rem}
+.easter-mark.is-recovered{opacity:.85;border-color:var(--cyan);box-shadow:0 0 24px rgba(37,201,216,.1)}
 
-.secret-word-discovered{
-  grid-column:4 / 13;
-  grid-row:3;
-  font-family:var(--font-display);
-  font-size:clamp(2.85rem,5.85vw,6.5rem);
-  font-weight:400;
-  letter-spacing:-.03em;
-  color:var(--cyan);
-  text-shadow:0 0 22px rgba(37,201,216,.10);
+.secret-transmission-modal[hidden]{display:none}
+.secret-transmission-modal{
+  position:fixed;
+  inset:0;
+  z-index:10050;
+  display:grid;
+  place-items:center;
+  padding:clamp(18px,4vw,50px);
 }
+.secret-transmission-backdrop{
+  position:absolute;
+  inset:0;
+  background:rgba(0,2,3,.88);
+  backdrop-filter:blur(7px);
+}
+.secret-transmission-panel{
+  position:relative;
+  z-index:2;
+  width:min(980px,94vw);
+  max-height:92vh;
+  overflow:auto;
+  border:1px solid rgba(37,201,216,.52);
+  background:linear-gradient(145deg,#071012,#020405 62%,#090507);
+  padding:clamp(20px,3vw,38px);
+  box-shadow:0 0 0 1px rgba(255,255,255,.025),0 35px 120px rgba(0,0,0,.72),0 0 45px rgba(37,201,216,.08);
+}
+.secret-transmission-panel::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  opacity:.12;
+  background:repeating-linear-gradient(0deg,transparent 0 5px,rgba(37,201,216,.09) 6px 7px);
+}
+.secret-transmission-hud{position:relative;z-index:2;display:flex;justify-content:space-between;align-items:center;padding-bottom:12px;border-bottom:1px solid rgba(37,201,216,.18);font-family:"Barlow Condensed",Arial,sans-serif;font-size:.68rem;letter-spacing:.22em;color:#729296}
+.secret-transmission-close{width:34px;height:34px;border:1px solid rgba(37,201,216,.32);background:#020405;color:var(--cyan);font-size:1.35rem;cursor:pointer}
+.secret-transmission-kicker{position:relative;z-index:2;margin:25px 0 6px;font-family:"Barlow Condensed",Arial,sans-serif;font-size:.7rem;letter-spacing:.27em;color:var(--cyan)}
+.secret-transmission-panel h2{position:relative;z-index:2;margin:0 0 22px;font-family:"Farquharson",Georgia,serif;font-size:clamp(2rem,5vw,4.6rem);font-weight:400;line-height:.9;color:#eaf5f5;text-transform:uppercase}
+.secret-video-frame{position:relative;z-index:2;aspect-ratio:16/9;border:1px solid rgba(37,201,216,.25);background:#000;overflow:hidden}
+.secret-transmission-video{width:100%;height:100%;display:block;background:#000;object-fit:contain}
+.secret-video-scan{position:absolute;inset:0;pointer-events:none;background:repeating-linear-gradient(0deg,transparent 0 3px,rgba(255,255,255,.025) 4px 5px);mix-blend-mode:screen}
+.secret-transmission-meta{position:relative;z-index:2;display:flex;justify-content:space-between;gap:18px;margin-top:15px;font-family:"Barlow Condensed",Arial,sans-serif;font-size:.62rem;letter-spacing:.17em;color:#6f8184}
+.secret-video-missing{position:relative;z-index:2;margin:17px 0 0;color:#bd747d;font-family:"Barlow Condensed",Arial,sans-serif;font-size:.72rem;letter-spacing:.13em}
+body.secret-transmission-open{overflow:hidden}
 
 @media(max-width:900px){
-  .secret-card{
-    grid-template-columns:110px minmax(0,1fr);
-    gap:20px;
-  }
-  .dynamic-signal-copy{
-    grid-column:2;
-  }
+  .dynamic-signal-copy{grid-template-columns:minmax(70px,.38fr) minmax(0,1.62fr);column-gap:10px}
+  .merch-preview-strip{grid-template-columns:1fr;padding-top:70px;padding-bottom:80px}
+  .merch-preview{width:min(560px,88vw);min-height:400px;order:2;margin:28px auto 0}
+  .merch-copy{order:1;text-align:center}
+  .merch-copy p{margin-left:auto;margin-right:auto}
+  .merch-preview-code{display:none}
+  .signal-easter-manifesto{right:12px;top:18px}
+  .secret-transmission-meta{flex-direction:column}
 }
 
-@media(max-width:620px){
-  .secret-card{
-    grid-template-columns:1fr;
-    padding:24px 18px 54px;
-  }
-  .easter-mark{
-    width:92px;
-    height:92px;
-    margin:4px 0 12px;
-  }
-  .dynamic-signal-copy{
-    grid-column:1;
-    max-width:100%;
-    grid-template-columns:repeat(10,minmax(0,1fr));
-    column-gap:5px;
-  }
-  .secret-word-some{grid-column:1 / 4;font-size:clamp(1.1rem,5vw,1.55rem)}
-  .secret-word-signals{grid-column:4 / 11;font-size:clamp(2.2rem,10.5vw,3.5rem)}
-  .secret-word-dont{grid-column:1 / 4;font-size:clamp(1.35rem,6vw,2rem)}
-  .secret-word-appear{grid-column:4 / 11;font-size:clamp(2.25rem,10.5vw,3.55rem)}
-  .secret-word-theyre{grid-column:1 / 4;font-size:clamp(1.2rem,5.4vw,1.8rem)}
-  .secret-word-discovered{grid-column:4 / 11;font-size:clamp(2.2rem,10vw,3.4rem)}
+@media(max-width:520px){
+  .secret-card{grid-template-columns:1fr}
+  .dynamic-signal-copy{grid-template-columns:minmax(62px,.34fr) minmax(0,1.66fr);column-gap:8px;max-width:100%}
+  .dynamic-signal-copy .secret-word-some{font-size:1rem}
+  .dynamic-signal-copy .secret-word-signals{font-size:clamp(2.2rem,12.5vw,3.7rem)}
+  .dynamic-signal-copy .secret-word-dont{font-size:clamp(1.35rem,7vw,2rem)}
+  .dynamic-signal-copy .secret-word-appear{font-size:clamp(2rem,10vw,3.1rem)}
+  .dynamic-signal-copy .secret-word-theyre{font-size:1.05rem}
+  .dynamic-signal-copy .secret-word-discovered{font-size:clamp(2.25rem,12vw,3.8rem)}
+  .merch-preview{min-height:330px}
+  .merch-preview-shirt{width:61%;height:86%}
+  .merch-preview-sticker-a{width:41%;height:38%}
+  .merch-preview-sticker-b{width:38%;height:36%}
+  .signal-easter{width:32px;height:32px}
+  .signal-easter-hero{left:4vw;bottom:9vh}
+  .signal-easter-orbit{right:2%;top:8%}
+  .secret-transmission-panel{padding:18px 14px}
+  .secret-transmission-hud span{max-width:78%;line-height:1.5}
 }

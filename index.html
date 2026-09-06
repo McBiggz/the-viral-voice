@@ -52,6 +52,7 @@
       <a class="signal-button" href="#signal"><span>ENTER THE SIGNAL</span><b>↘</b></a>
     </div>
     <div class="hero-sidecode">TVV // 001<br>QUESTION<br>THINK<br>DECIDE</div>
+    <button class="signal-easter signal-easter-hero" type="button" data-secret-transmission="1" data-video="assets/secret-transmission-001.mp4" aria-label="Hidden transmission marker 1">+</button>
     <div class="hero-sigil"><img src="assets/asset-1.png" alt=""></div>
   </section>
 
@@ -67,6 +68,7 @@
       <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
       <img src="assets/asset-1.png" alt="Viral Voice sigil">
       <div class="stamp">TRUE<br>BELIEVERS<br>THINK<br>INDEPENDENTLY</div>
+      <button class="signal-easter signal-easter-orbit" type="button" data-secret-transmission="2" data-video="assets/secret-transmission-002.mp4" aria-label="Hidden transmission marker 2">◌</button>
     </div>
   </section>
 
@@ -122,7 +124,7 @@
 
         <article id="unknown-signal" class="believer-card secret-card">
           <div class="hud-label">UNKNOWN SIGNAL // LOCKED</div>
-          <button class="easter-mark" type="button" aria-label="Unknown signal marker">
+          <button class="easter-mark" type="button" data-secret-transmission="3" data-video="assets/secret-transmission-003.mp4" aria-label="Hidden transmission marker 3">
             <img src="assets/asset-1.png" alt="">
           </button>
           <p class="secret-copy dynamic-signal-copy" aria-label="Some signals don't appear. They're discovered.">
@@ -140,6 +142,7 @@
   </section>
 
   <section class="manifesto">
+    <button class="signal-easter signal-easter-manifesto" type="button" data-secret-transmission="4" data-video="assets/secret-transmission-004.mp4" aria-label="Hidden transmission marker 4">//</button>
     <div class="manifesto-photo"><img src="assets/asset-2.png" alt="The Viral Voice"><div class="redwash"></div></div>
     <div class="manifesto-copy">
       <p class="eyebrow">THE VIRAL VOICE</p>
@@ -167,10 +170,26 @@
     </div>
   </section>
 
-  <section id="merch" class="merch-strip">
-    <div class="merch-sigil"><img src="assets/asset-1.png" alt=""></div>
-    <div class="merch-copy"><p class="eyebrow">03 // REPRESENT</p><h2>WEAR THE SIGNAL.</h2><p>Stickers, signed 8×10s, shirts, pins, and limited drops.</p><a class="coming merch-store-link" href="store.html">ENTER SIGNAL SUPPLY ↗</a></div>
-    <div class="merch-type" aria-hidden="true">TRUE<br>BELIEVER</div>
+  <section id="merch" class="merch-strip merch-preview-strip">
+    <div class="merch-preview" aria-label="Signal Supply preview">
+      <a class="merch-preview-card merch-preview-shirt" href="store.html" aria-label="View Viral Voice shirts in Signal Supply">
+        <img src="assets/VVshirt3.png" alt="Viral Voice shirt preview">
+      </a>
+      <a class="merch-preview-card merch-preview-sticker-a" href="store.html" aria-label="View Viral Voice stickers in Signal Supply">
+        <img src="assets/viral_voice_top_center_name_logo.png" alt="Viral Voice sticker preview">
+      </a>
+      <a class="merch-preview-card merch-preview-sticker-b" href="store.html" aria-label="View holographic Viral Voice sticker in Signal Supply">
+        <img src="assets/viral_voice_holographic_logo.png" alt="Holographic Viral Voice sticker preview">
+      </a>
+    </div>
+    <div class="merch-copy">
+      <p class="eyebrow">03 // SIGNAL SUPPLY</p>
+      <h2>WEAR THE SIGNAL.</h2>
+      <p>Physical pieces of the broadcast. Shirts, stickers, and limited drops for the people who found the signal.</p>
+      <a class="merch-store-link" href="store.html">ENTER SIGNAL SUPPLY <span>↗</span></a>
+    </div>
+    <div class="merch-preview-code" aria-hidden="true">SUPPLY // LIVE<br>ARTIFACTS // FOUND</div>
+    <button class="signal-easter signal-easter-merch" type="button" data-secret-transmission="5" data-video="assets/secret-transmission-005.mp4" aria-label="Hidden transmission marker 5">•</button>
   </section>
 
   <section id="follow" class="follow-section section-pad">
@@ -187,6 +206,27 @@
   </section>
 </main>
 <footer><img src="assets/asset-1.png" alt=""><span>THE VIRAL VOICE // LIAM McGINN</span><span>TRANSMISSION ENDS // KEEP THINKING</span></footer>
+<div class="secret-transmission-modal" id="secret-transmission-modal" hidden aria-hidden="true">
+  <div class="secret-transmission-backdrop" data-secret-close></div>
+  <section class="secret-transmission-panel" role="dialog" aria-modal="true" aria-labelledby="secret-transmission-title">
+    <div class="secret-transmission-hud">
+      <span>INTERCEPTED SIGNAL // PRIVATE CHANNEL</span>
+      <button type="button" class="secret-transmission-close" data-secret-close aria-label="Close secret transmission">×</button>
+    </div>
+    <div class="secret-transmission-static" aria-hidden="true"></div>
+    <p class="secret-transmission-kicker">RECOVERED TRANSMISSION</p>
+    <h2 id="secret-transmission-title">SECRET TRANSMISSION // 001</h2>
+    <div class="secret-video-frame">
+      <video class="secret-transmission-video" controls playsinline preload="metadata"></video>
+      <div class="secret-video-scan" aria-hidden="true"></div>
+    </div>
+    <div class="secret-transmission-meta">
+      <span class="secret-recovered-count">RECOVERED // 0 OF 5</span>
+      <span>THE SIGNAL REWARDS CURIOSITY.</span>
+    </div>
+    <p class="secret-video-missing" hidden>TRANSMISSION FILE NOT YET AVAILABLE. DROP THE MATCHING MP4 INTO /assets/.</p>
+  </section>
+</div>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="script.js"></script>
 </body>
