@@ -1925,3 +1925,220 @@ body.signal-stage-locked .signal-experience .signal-chroma{opacity:.08;backgroun
     max-width:none;
   }
 }
+
+/* ==========================================================
+   TYPOGRAPHY SYSTEM REFRESH
+   Farquharson = signature display moments
+   Barlow Condensed = interface / editorial headings
+   IBM Plex Sans = readable body copy
+   ========================================================== */
+
+:root{
+  --font-display:"Farquharson",Rye,Georgia,serif;
+  --font-editorial:"Barlow Condensed",Oswald,"Arial Narrow",Arial,sans-serif;
+  --font-body:"IBM Plex Sans",Arial,sans-serif;
+}
+
+body{
+  font-family:var(--font-body);
+  font-weight:400;
+}
+
+/* Utility text keeps the compressed broadcast / technical feel. */
+.site-header,
+.header-tag,
+.site-header nav,
+.micro-label,
+.eyebrow,
+.hero-sidecode,
+.section-number,
+.mantra,
+.stamp,
+.signal-button,
+.hud-label,
+.identity-kicker,
+.identity-meta,
+.strength-header,
+.signal-scale,
+.strength-note,
+.archive-item,
+.secret-status,
+.signature,
+.signal-break-label,
+.card-no,
+.card-bottom,
+.coming,
+.social-grid,
+.follow-footer,
+footer{
+  font-family:var(--font-editorial);
+}
+
+/* Body copy gets breathing room and loses the all-condensed feel. */
+.hero-copy,
+.lead,
+.believer-lead,
+.curiosity-riddle p,
+.manifesto-copy>p:not(.eyebrow):not(.signature),
+.manifesto-copy blockquote,
+.head-note,
+.merch-copy p{
+  font-family:var(--font-body);
+  letter-spacing:0;
+}
+
+/* Most section headlines switch to a strong editorial condensed face.
+   Farquharson is now reserved for the hero and selected signal moments. */
+.signal-copy h2,
+.manifesto-copy h2,
+.section-head h2,
+.merch-copy h2,
+.follow-section h2,
+.believer-intro h2{
+  font-family:var(--font-editorial);
+  font-weight:700;
+  letter-spacing:-.025em;
+  line-height:.82;
+  text-shadow:0 3px 0 #000;
+}
+
+.hero .hero-title{
+  font-family:var(--font-display);
+}
+
+.believer-number,
+.strength-header strong{
+  font-family:var(--font-editorial);
+  font-weight:600;
+  letter-spacing:.02em;
+}
+
+/* ==========================================================
+   DYNAMIC UNKNOWN-SIGNAL TYPOGRAPHY
+   Horizontal hierarchy inspired by editorial poster layouts.
+   ========================================================== */
+
+.secret-card{
+  grid-template-columns:150px minmax(0,1fr);
+  gap:clamp(22px,3vw,46px);
+  padding-right:clamp(22px,4vw,56px);
+}
+
+.dynamic-signal-copy{
+  width:100%;
+  max-width:820px;
+  margin:0;
+  display:grid;
+  grid-template-columns:repeat(12,minmax(0,1fr));
+  grid-template-rows:auto auto auto;
+  column-gap:clamp(5px,.7vw,12px);
+  row-gap:clamp(0px,.25vw,4px);
+  align-items:end;
+  font-family:var(--font-editorial);
+  text-transform:uppercase;
+  line-height:.73;
+  color:#aab4b6;
+}
+
+.dynamic-signal-copy .secret-word{
+  display:block;
+  white-space:nowrap;
+}
+
+.secret-word-some{
+  grid-column:1 / 4;
+  grid-row:1;
+  align-self:end;
+  font-family:var(--font-editorial);
+  font-size:clamp(1.25rem,2.1vw,2.2rem);
+  font-weight:600;
+  letter-spacing:.08em;
+  padding-bottom:.08em;
+}
+
+.secret-word-signals{
+  grid-column:4 / 13;
+  grid-row:1;
+  font-family:var(--font-display);
+  font-size:clamp(2.55rem,5.25vw,5.8rem);
+  font-weight:400;
+  letter-spacing:-.025em;
+  color:#d7e0e1;
+}
+
+.secret-word-dont{
+  grid-column:1 / 4;
+  grid-row:2;
+  font-family:var(--font-editorial);
+  font-size:clamp(1.65rem,2.9vw,3.15rem);
+  font-weight:700;
+  letter-spacing:.015em;
+  padding-bottom:.04em;
+}
+
+.secret-word-appear{
+  grid-column:4 / 13;
+  grid-row:2;
+  font-family:var(--font-editorial);
+  font-size:clamp(2.7rem,5.45vw,6rem);
+  font-weight:700;
+  letter-spacing:-.045em;
+  color:#bec8ca;
+}
+
+.secret-word-theyre{
+  grid-column:1 / 4;
+  grid-row:3;
+  align-self:end;
+  font-family:var(--font-editorial);
+  font-size:clamp(1.4rem,2.6vw,2.8rem);
+  font-weight:600;
+  letter-spacing:.035em;
+  color:var(--cyan);
+  padding-bottom:.08em;
+}
+
+.secret-word-discovered{
+  grid-column:4 / 13;
+  grid-row:3;
+  font-family:var(--font-display);
+  font-size:clamp(2.85rem,5.85vw,6.5rem);
+  font-weight:400;
+  letter-spacing:-.03em;
+  color:var(--cyan);
+  text-shadow:0 0 22px rgba(37,201,216,.10);
+}
+
+@media(max-width:900px){
+  .secret-card{
+    grid-template-columns:110px minmax(0,1fr);
+    gap:20px;
+  }
+  .dynamic-signal-copy{
+    grid-column:2;
+  }
+}
+
+@media(max-width:620px){
+  .secret-card{
+    grid-template-columns:1fr;
+    padding:24px 18px 54px;
+  }
+  .easter-mark{
+    width:92px;
+    height:92px;
+    margin:4px 0 12px;
+  }
+  .dynamic-signal-copy{
+    grid-column:1;
+    max-width:100%;
+    grid-template-columns:repeat(10,minmax(0,1fr));
+    column-gap:5px;
+  }
+  .secret-word-some{grid-column:1 / 4;font-size:clamp(1.1rem,5vw,1.55rem)}
+  .secret-word-signals{grid-column:4 / 11;font-size:clamp(2.2rem,10.5vw,3.5rem)}
+  .secret-word-dont{grid-column:1 / 4;font-size:clamp(1.35rem,6vw,2rem)}
+  .secret-word-appear{grid-column:4 / 11;font-size:clamp(2.25rem,10.5vw,3.55rem)}
+  .secret-word-theyre{grid-column:1 / 4;font-size:clamp(1.2rem,5.4vw,1.8rem)}
+  .secret-word-discovered{grid-column:4 / 11;font-size:clamp(2.2rem,10vw,3.4rem)}
+}
