@@ -606,3 +606,474 @@ body.signal-stage-locked .signal-experience .signal-chroma{opacity:.08;backgroun
   body.signal-stage-high footer,
   body.signal-stage-psychedelic .transmission-card{animation:none!important}
 }
+/* ==========================================================
+   PSYCHEDELIC SIGNAL OVERLOAD
+   Activated by adding .trip-mode to <body>
+   ========================================================== */
+
+.trip-mode{
+  animation:tripGlobalHue 10s linear infinite;
+}
+
+
+/* ----------------------------------------------------------
+   GLOBAL PSYCHEDELIC COLOR SHIFT
+   ---------------------------------------------------------- */
+
+@keyframes tripGlobalHue{
+  0%{
+    filter:hue-rotate(0deg) saturate(1.05);
+  }
+
+  25%{
+    filter:hue-rotate(70deg) saturate(1.25);
+  }
+
+  50%{
+    filter:hue-rotate(160deg) saturate(1.4);
+  }
+
+  75%{
+    filter:hue-rotate(260deg) saturate(1.25);
+  }
+
+  100%{
+    filter:hue-rotate(360deg) saturate(1.05);
+  }
+}
+
+
+/* ----------------------------------------------------------
+   HERO BREATHING / DRIFT
+   ---------------------------------------------------------- */
+
+.trip-mode .hero-image{
+  animation:
+    tripHeroBreath 6s ease-in-out infinite,
+    tripHeroDrift 9s ease-in-out infinite;
+
+  transform-origin:center center;
+
+  filter:
+    saturate(1.65)
+    contrast(1.12)
+    brightness(1.04);
+}
+
+@keyframes tripHeroBreath{
+  0%,100%{
+    transform:scale(1);
+  }
+
+  50%{
+    transform:scale(1.055);
+  }
+}
+
+@keyframes tripHeroDrift{
+  0%,100%{
+    object-position:60% 28%;
+  }
+
+  25%{
+    object-position:61% 27%;
+  }
+
+  50%{
+    object-position:59% 29%;
+  }
+
+  75%{
+    object-position:60.5% 28.5%;
+  }
+}
+
+
+/* ----------------------------------------------------------
+   STATIC BECOMES MUCH MORE VISIBLE
+   ---------------------------------------------------------- */
+
+.trip-mode .hero-static-video{
+  opacity:.42 !important;
+
+  filter:
+    contrast(2)
+    brightness(1.08)
+    saturate(2.2)
+    hue-rotate(125deg);
+
+  animation:
+    tripStaticPulse 1.8s steps(2,end) infinite;
+}
+
+@keyframes tripStaticPulse{
+  0%,100%{
+    opacity:.22;
+    transform:scale(1);
+  }
+
+  20%{
+    opacity:.48;
+    transform:scale(1.015);
+  }
+
+  23%{
+    opacity:.2;
+    transform:scale(.995);
+  }
+
+  55%{
+    opacity:.56;
+    transform:scale(1.025);
+  }
+
+  60%{
+    opacity:.26;
+    transform:scale(1);
+  }
+
+  83%{
+    opacity:.5;
+    transform:scale(1.018);
+  }
+}
+
+
+/* ----------------------------------------------------------
+   IMAGE GHOSTING / CHROMATIC SEPARATION
+   ---------------------------------------------------------- */
+
+.trip-mode .hero-image-glitch-a{
+  opacity:.32;
+  animation:tripGhostA 2.6s ease-in-out infinite;
+}
+
+.trip-mode .hero-image-glitch-b{
+  opacity:.28;
+  animation:tripGhostB 3.1s ease-in-out infinite;
+}
+
+@keyframes tripGhostA{
+  0%,100%{
+    transform:translate(0,0) scale(1);
+    clip-path:inset(0 0 0 0);
+  }
+
+  25%{
+    transform:translate(10px,-4px) scale(1.01);
+    clip-path:inset(8% 0 5% 0);
+  }
+
+  50%{
+    transform:translate(-8px,5px) scale(1.02);
+    clip-path:inset(3% 0 10% 0);
+  }
+
+  75%{
+    transform:translate(6px,3px) scale(1.01);
+    clip-path:inset(10% 0 2% 0);
+  }
+}
+
+@keyframes tripGhostB{
+  0%,100%{
+    transform:translate(0,0) scale(1);
+    clip-path:inset(0 0 0 0);
+  }
+
+  25%{
+    transform:translate(-12px,3px) scale(1.018);
+    clip-path:inset(4% 0 11% 0);
+  }
+
+  50%{
+    transform:translate(7px,-5px) scale(1.012);
+    clip-path:inset(12% 0 3% 0);
+  }
+
+  75%{
+    transform:translate(-5px,-2px) scale(1.02);
+    clip-path:inset(6% 0 7% 0);
+  }
+}
+
+
+/* ----------------------------------------------------------
+   TEXT DRIFT
+   ---------------------------------------------------------- */
+
+.trip-mode .hero-content,
+.trip-mode .signal-copy,
+.trip-mode .section-head,
+.trip-mode .manifesto-copy,
+.trip-mode .merch-copy,
+.trip-mode .follow-section{
+  animation:tripTextFloat 4.5s ease-in-out infinite;
+}
+
+@keyframes tripTextFloat{
+  0%,100%{
+    transform:translate(0,0) rotate(0deg);
+  }
+
+  25%{
+    transform:translate(2px,-3px) rotate(.15deg);
+  }
+
+  50%{
+    transform:translate(-3px,2px) rotate(-.12deg);
+  }
+
+  75%{
+    transform:translate(2px,2px) rotate(.1deg);
+  }
+}
+
+
+/* ----------------------------------------------------------
+   TEXT CHROMATIC SHADOWING
+   ---------------------------------------------------------- */
+
+.trip-mode .hero-title,
+.trip-mode .signal-copy h2,
+.trip-mode .manifesto-copy h2,
+.trip-mode .section-head h2,
+.trip-mode .merch-copy h2,
+.trip-mode .follow-section h2{
+  text-shadow:
+    5px 0 0 rgba(255,0,145,.28),
+    -5px 0 0 rgba(0,255,255,.28),
+    0 0 26px rgba(37,201,216,.3);
+}
+
+
+/* ----------------------------------------------------------
+   COLOR CLOUD OVERLAY
+   ---------------------------------------------------------- */
+
+.trip-mode::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  z-index:9996;
+  pointer-events:none;
+
+  background:
+    radial-gradient(
+      circle at 18% 25%,
+      rgba(255,0,150,.16),
+      transparent 33%
+    ),
+    radial-gradient(
+      circle at 82% 38%,
+      rgba(0,255,230,.15),
+      transparent 36%
+    ),
+    radial-gradient(
+      circle at 48% 78%,
+      rgba(120,0,255,.14),
+      transparent 38%
+    ),
+    radial-gradient(
+      circle at 65% 15%,
+      rgba(0,110,255,.11),
+      transparent 30%
+    );
+
+  mix-blend-mode:screen;
+
+  animation:
+    tripCloudMove 9s ease-in-out infinite alternate;
+}
+
+@keyframes tripCloudMove{
+  0%{
+    transform:
+      scale(1)
+      rotate(0deg)
+      translate(0,0);
+  }
+
+  100%{
+    transform:
+      scale(1.18)
+      rotate(5deg)
+      translate(2%,-1%);
+  }
+}
+
+
+/* ----------------------------------------------------------
+   PSYCHEDELIC RINGS / TUNNEL
+   ---------------------------------------------------------- */
+
+.trip-mode::after{
+  content:"";
+  position:fixed;
+  inset:-12%;
+  z-index:9995;
+  pointer-events:none;
+
+  background:
+    repeating-radial-gradient(
+      circle at center,
+      rgba(37,201,216,.055) 0 6px,
+      rgba(255,0,160,.04) 7px 13px,
+      rgba(100,0,255,.035) 14px 20px,
+      transparent 21px 34px
+    );
+
+  mix-blend-mode:screen;
+
+  animation:
+    tripTunnel 9s linear infinite;
+}
+
+@keyframes tripTunnel{
+  0%{
+    transform:
+      scale(1)
+      rotate(0deg);
+  }
+
+  50%{
+    transform:
+      scale(1.12)
+      rotate(4deg);
+  }
+
+  100%{
+    transform:
+      scale(1.24)
+      rotate(8deg);
+  }
+}
+
+
+/* ----------------------------------------------------------
+   SIGNAL BREAK GOES FULL INTERFERENCE
+   ---------------------------------------------------------- */
+
+.trip-mode .signal-break video{
+  opacity:.65 !important;
+
+  filter:
+    contrast(2.2)
+    brightness(.9)
+    saturate(1.8)
+    hue-rotate(90deg);
+
+  animation:
+    tripSignalBreak 1.4s steps(2,end) infinite;
+}
+
+@keyframes tripSignalBreak{
+  0%,100%{
+    transform:translate(0,0) scale(1);
+  }
+
+  30%{
+    transform:translate(-2%,1%) scale(1.04);
+  }
+
+  33%{
+    transform:translate(2%,-1%) scale(1.02);
+  }
+
+  68%{
+    transform:translate(1%,1%) scale(1.05);
+  }
+
+  73%{
+    transform:translate(-1%,-1%) scale(1.03);
+  }
+}
+
+
+/* ----------------------------------------------------------
+   SIGIL PULSE
+   ---------------------------------------------------------- */
+
+.trip-mode .hero-sigil img,
+.trip-mode .signal-art img,
+.trip-mode .merch-sigil img{
+  animation:tripSigilPulse 3.4s ease-in-out infinite;
+
+  filter:
+    drop-shadow(0 0 20px rgba(37,201,216,.45))
+    drop-shadow(0 0 45px rgba(255,0,150,.22));
+}
+
+@keyframes tripSigilPulse{
+  0%,100%{
+    transform:scale(1);
+  }
+
+  50%{
+    transform:scale(1.08);
+  }
+}
+
+
+/* ----------------------------------------------------------
+   MOBILE
+   ---------------------------------------------------------- */
+
+@media(max-width:900px){
+
+  .trip-mode .hero-image{
+    animation:
+      tripHeroBreathMobile 6s ease-in-out infinite;
+  }
+
+  @keyframes tripHeroBreathMobile{
+    0%,100%{
+      transform:scale(1);
+    }
+
+    50%{
+      transform:scale(1.035);
+    }
+  }
+
+  .trip-mode .hero-static-video{
+    opacity:.32 !important;
+  }
+
+  .trip-mode::after{
+    opacity:.75;
+  }
+}
+
+
+@media(max-width:520px){
+
+  .trip-mode .hero-static-video{
+    opacity:.27 !important;
+  }
+
+  .trip-mode::before{
+    opacity:.8;
+  }
+
+  .trip-mode::after{
+    opacity:.55;
+  }
+
+}
+
+
+/* ----------------------------------------------------------
+   ACCESSIBILITY
+   ---------------------------------------------------------- */
+
+@media(prefers-reduced-motion:reduce){
+
+  .trip-mode,
+  .trip-mode *,
+  .trip-mode::before,
+  .trip-mode::after{
+    animation:none !important;
+  }
+
+}
