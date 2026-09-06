@@ -60,7 +60,7 @@
       id: "VV-APP-003",
       category: "apparel",
       title: "True Believer Tee",
-      image: "assets/VVshirt3.png",
+      image: "assets/VVshirt3-final.png",
       description: "Garment-dyed black tee with the full I'M A TRUE BELIEVER front print and Think For Yourself message.",
       badge: "Movement",
       price: PRICING.shirt,
