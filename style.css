@@ -1,595 +1,461 @@
 /* ==========================================================
-   THE VIRAL VOICE
-   SUPABASE + TRUE BELIEVER + SIGNAL DISTORTION SYSTEM
+   VIRAL VOICE MOBILE OPTIMIZATION
    ========================================================== */
 
-(() => {
-  "use strict";
+@media (max-width: 900px){
 
-  /* ========================================================
-     SUPABASE CONFIGURATION
+  html,
+  body{
+    width:100%;
+    overflow-x:hidden;
+  }
 
-     The publishable key is designed for browser use.
-     NEVER put a secret/service_role key in this file.
-     ======================================================== */
+  .site-header{
+    height:62px;
+    padding:0 6vw;
+  }
 
-  const SUPABASE_URL =
-    "https://vogyjohoxerhcjpbifim.supabase.co";
+  .brand-mark img{
+    width:40px;
+    height:40px;
+  }
 
-  const SUPABASE_PUBLISHABLE_KEY =
-    "sb_publishable_8QXKs6ZGfecrasgNzQfAjw_beTJIpMg";
-
-
-  /* ========================================================
-     LOCAL STORAGE
-     This is how this browser remembers which True Believer
-     it has already been assigned.
-     ======================================================== */
-
-  const VISITOR_TOKEN_KEY =
-    "viral_voice_visitor_token";
-
-
-  /* ========================================================
-     SIGNAL STAGES
-     ======================================================== */
-
-  const STAGES = [
-    "signal-stage-low",
-    "signal-stage-mid",
-    "signal-stage-high",
-    "signal-stage-psychedelic",
-    "signal-stage-locked"
-  ];
-
-
-  /* ========================================================
-     PAGE ELEMENTS
-     ======================================================== */
-
-  const believerSection =
-    document.querySelector("#believer");
-
-  const believerNumberElement =
-    document.querySelector("[data-believer-number]");
-
-  const visitCountElement =
-    document.querySelector("[data-visit-count]");
-
-  const strengthValue =
-    document.querySelector(".strength-header strong");
-
-  const meter =
-    document.querySelector(".signal-meter");
-
-  const statusValue =
-    document.querySelector("[data-believer-status]") ||
-    document.querySelector(".identity-meta b");
-
-
-  /* ========================================================
-     SIGNAL STRENGTH HELPERS
-     ======================================================== */
-
-  function clampStrength(value) {
-    const parsed = Number(value);
-
-    if (!Number.isFinite(parsed)) {
-      return 0;
-    }
-
-    return Math.max(
-      0,
-      Math.min(
-        100,
-        Math.round(parsed)
-      )
-    );
+  .header-tag,
+  .site-header nav{
+    display:none;
   }
 
 
-  function getStage(strength) {
-    if (strength >= 100) {
-      return "signal-stage-locked";
-    }
+  /* HERO */
 
-    if (strength >= 75) {
-      return "signal-stage-psychedelic";
-    }
+  .hero{
+    min-height:100svh;
+    align-items:flex-end;
+  }
 
-    if (strength >= 50) {
-      return "signal-stage-high";
-    }
+  .hero-image{
+    object-position:58% 26%;
+  }
 
-    if (strength >= 25) {
-      return "signal-stage-mid";
-    }
+  .hero-content{
+    width:100%;
+    padding:
+      0
+      7vw
+      max(7vh,55px);
+  }
 
-    return "signal-stage-low";
+  .hero .hero-title{
+    font-size:clamp(
+      4rem,
+      18vw,
+      7rem
+    );
+
+    line-height:.78;
+    max-width:94vw;
+  }
+
+  .hero-title .glitch-line-the{
+    font-size:.16em;
+  }
+
+  .hero-copy{
+    max-width:88vw;
+    font-size:1rem;
+    line-height:1.55;
+  }
+
+  .hero-follow-signal{
+    width:min(520px,86vw);
+  }
+
+  .signal-button{
+    width:min(330px,86vw);
+  }
+
+  .hero-sidecode{
+    display:none;
+  }
+
+  .hero-sigil{
+    right:-18vw;
+    bottom:-10vw;
+  }
+
+  .hero-sigil img{
+    width:85vw;
+    min-width:0;
   }
 
 
-  function getStatus(strength) {
-    if (strength >= 100) {
-      return "SIGNAL LOCKED";
-    }
+  /* SIGNAL SECTION */
 
-    if (strength >= 75) {
-      return "TRUE BELIEVER";
-    }
+  .signal-section{
+    min-height:0;
 
-    if (strength >= 50) {
-      return "SIGNAL ACQUIRED";
-    }
+    grid-template-columns:1fr;
 
-    return "SIGNAL DETECTED";
+    gap:40px;
+
+    padding:
+      85px
+      7vw;
   }
 
-
-  /* ========================================================
-     APPLY SIGNAL STRENGTH TO THE WEBSITE
-
-     This controls:
-     - progression percentage
-     - status
-     - distortion stage
-     - CSS variables
-     ======================================================== */
-
-  function applySignalStrength(value) {
-    const strength = clampStrength(value);
-    const stage = getStage(strength);
-    const status = getStatus(strength);
-
-
-    /* Remove old distortion stage */
-
-    document.body.classList.remove(...STAGES);
-
-
-    /* Apply current distortion stage */
-
-    document.body.classList.add(stage);
-
-
-    /* Global CSS signal variable */
-
-    document.documentElement.style.setProperty(
-      "--live-signal-strength",
-      `${strength}%`
-    );
-
-
-    /* Update believer section */
-
-    if (believerSection) {
-      believerSection.style.setProperty(
-        "--signal-strength",
-        `${strength}%`
-      );
-
-      believerSection.dataset.signalStrength =
-        String(strength);
-    }
-
-
-    /* Update displayed percentage */
-
-    if (strengthValue) {
-      strengthValue.textContent =
-        `${strength}%`;
-    }
-
-
-    /* Update accessibility information */
-
-    if (meter) {
-      meter.setAttribute(
-        "aria-label",
-        `Signal strength ${strength} percent`
-      );
-    }
-
-
-    /* Update status */
-
-    if (statusValue) {
-      statusValue.textContent = status;
-    }
-
-
-    /* Broadcast signal change */
-
-    window.dispatchEvent(
-      new CustomEvent(
-        "viralvoice:signalchange",
-        {
-          detail: {
-            strength,
-            stage,
-            status
-          }
-        }
-      )
-    );
-
-
-    return {
-      strength,
-      stage,
-      status
-    };
+  .section-number{
+    font-size:4.5rem;
   }
 
-
-  /* Allow manual testing from DevTools */
-
-  window.setSignalStrength =
-    applySignalStrength;
-
-
-  /* ========================================================
-     FORMAT TRUE BELIEVER NUMBER
-
-     1   -> #0001
-     27  -> #0027
-     418 -> #0418
-     ======================================================== */
-
-  function formatBelieverNumber(number) {
-    const parsed = Number(number);
-
-    if (!Number.isFinite(parsed)) {
-      return "#----";
-    }
-
-    return (
-      "#" +
-      String(parsed).padStart(4, "0")
+  .signal-copy h2{
+    font-size:clamp(
+      3.3rem,
+      15vw,
+      5.6rem
     );
   }
 
+  .lead{
+    font-size:1rem;
+    line-height:1.65;
+  }
 
-  /* ========================================================
-     UPDATE TRUE BELIEVER UI
-     ======================================================== */
+  .mantra{
+    flex-wrap:wrap;
+    gap:10px 14px;
+  }
 
-  function updateBelieverInterface(data) {
+  .signal-art{
+    min-height:350px;
+    overflow:hidden;
+  }
 
-    if (!data) {
-      return;
-    }
+  .signal-art img{
+    width:min(360px,78vw);
+  }
 
+  .orbit-one{
+    width:300px;
+    height:300px;
+  }
 
-    if (believerNumberElement) {
-      believerNumberElement.textContent =
-        formatBelieverNumber(
-          data.believer_number
-        );
-    }
+  .orbit-two{
+    width:360px;
+    height:360px;
+  }
 
-
-    if (visitCountElement) {
-      visitCountElement.textContent =
-        String(
-          data.visit_count || 1
-        ).padStart(2, "0");
-    }
-
-
-    applySignalStrength(
-      data.signal_strength || 0
-    );
+  .stamp{
+    right:0;
   }
 
 
-  /* ========================================================
-     INITIALIZE SUPABASE
-     ======================================================== */
+  /* MANIFESTO */
 
-  function createSupabaseClient() {
+  .manifesto{
+    grid-template-columns:1fr;
+  }
 
-    if (
-      !window.supabase ||
-      typeof window.supabase.createClient !==
-        "function"
-    ) {
+  .manifesto-photo{
+    min-height:460px;
+  }
 
-      console.error(
-        "[THE VIRAL VOICE] Supabase library not loaded."
-      );
+  .manifesto-photo img{
+    object-position:50% 28%;
+  }
 
-      return null;
-    }
+  .manifesto-copy{
+    padding:
+      70px
+      7vw
+      80px;
+  }
 
-
-    return window.supabase.createClient(
-      SUPABASE_URL,
-      SUPABASE_PUBLISHABLE_KEY
+  .manifesto-copy h2{
+    font-size:clamp(
+      3rem,
+      14vw,
+      5rem
     );
   }
 
+  .manifesto-copy blockquote{
+    margin-top:24px;
 
-  /* ========================================================
-     REGISTER NEW TRUE BELIEVER
-     ======================================================== */
+    padding-left:18px;
 
-  async function registerBeliever(client) {
-
-    console.log(
-      "[THE VIRAL VOICE] NEW SIGNAL DETECTED"
-    );
-
-
-    const { data, error } =
-      await client.rpc(
-        "register_believer"
-      );
-
-
-    if (error) {
-      throw error;
-    }
-
-
-    if (!data || data.length === 0) {
-      throw new Error(
-        "Registration returned no believer."
-      );
-    }
-
-
-    const believer = data[0];
-
-
-    /* Save identity locally */
-
-    localStorage.setItem(
-      VISITOR_TOKEN_KEY,
-      believer.visitor_token
-    );
-
-
-    updateBelieverInterface(
-      believer
-    );
-
-
-    console.log(
-      `[THE VIRAL VOICE] SIGNAL ESTABLISHED // ${formatBelieverNumber(
-        believer.believer_number
-      )}`
-    );
-
-
-    return believer;
+    font-size:1.2rem;
   }
 
 
-  /* ========================================================
-     RECOGNIZE RETURNING TRUE BELIEVER
-     ======================================================== */
+  /* TRANSMISSIONS */
 
-  async function recognizeBeliever(
-    client,
-    visitorToken
-  ) {
+  .section-pad{
+    padding:
+      85px
+      7vw;
+  }
 
-    console.log(
-      "[THE VIRAL VOICE] KNOWN SIGNAL DETECTED"
+  .section-head{
+    display:block;
+  }
+
+  .section-head h2{
+    font-size:clamp(
+      3rem,
+      14vw,
+      5.2rem
     );
+  }
 
+  .head-note{
+    margin-top:18px;
+  }
 
-    const { data, error } =
-      await client.rpc(
-        "recognize_believer",
-        {
-          p_visitor_token:
-            visitorToken
-        }
-      );
+  .transmission-grid{
+    grid-template-columns:1fr;
+    gap:20px;
+    margin-top:38px;
+  }
 
+  .transmission-card,
+  .featured{
+    transform:none;
+  }
 
-    if (error) {
-      throw error;
-    }
+  .transmission-card{
+    min-height:400px;
+  }
 
-
-    /*
-      If the token exists locally but the database
-      no longer recognizes it, remove it and allow
-      a fresh registration.
-    */
-
-    if (!data || data.length === 0) {
-
-      console.warn(
-        "[THE VIRAL VOICE] STORED SIGNAL INVALID"
-      );
-
-
-      localStorage.removeItem(
-        VISITOR_TOKEN_KEY
-      );
-
-
-      return null;
-    }
-
-
-    const believer = data[0];
-
-
-    updateBelieverInterface(
-      believer
-    );
-
-
-    console.log(
-      `[THE VIRAL VOICE] SIGNAL RE-ESTABLISHED // ${formatBelieverNumber(
-        believer.believer_number
-      )}`
-    );
-
-
-    return believer;
+  .card-art{
+    height:320px;
   }
 
 
-  /* ========================================================
-     ESTABLISH VISITOR IDENTITY
-     ======================================================== */
+  /* TRUE BELIEVER */
 
-  async function establishSignal() {
+  .signal-experience{
+    padding:
+      80px
+      6vw
+      90px;
+  }
 
-    const client =
-      createSupabaseClient();
+  .believer-shell{
+    grid-template-columns:1fr;
+    gap:38px;
+  }
 
+  .believer-intro{
+    position:relative;
+    top:auto;
+  }
 
-    if (!client) {
+  .believer-intro h2{
+    font-size:clamp(
+      3rem,
+      14vw,
+      5.5rem
+    );
+  }
 
-      /*
-        Keep the website usable even if Supabase
-        fails to load.
-      */
+  .believer-dashboard{
+    grid-template-columns:1fr;
+  }
 
-      applySignalStrength(10);
+  .archive-card,
+  .secret-card{
+    grid-column:auto;
+  }
 
-      return;
-    }
-
-
-    try {
-
-      const storedToken =
-        localStorage.getItem(
-          VISITOR_TOKEN_KEY
-        );
-
-
-      let believer = null;
-
-
-      /* ----------------------------------------
-         RETURNING VISITOR
-         ---------------------------------------- */
-
-      if (storedToken) {
-
-        believer =
-          await recognizeBeliever(
-            client,
-            storedToken
-          );
-      }
-
-
-      /* ----------------------------------------
-         NEW VISITOR
-         ---------------------------------------- */
-
-      if (!believer) {
-
-        believer =
-          await registerBeliever(
-            client
-          );
-      }
-
-
-      /*
-        Make the current believer available
-        to future systems.
-
-        Easter eggs, transmissions, QR/NFC,
-        archive systems, etc. can use this.
-      */
-
-      window.viralVoiceBeliever =
-        believer;
-
-      window.viralVoiceSupabase =
-        client;
-
-
-      /* ----------------------------------------
-         Broadcast identity established event
-         ---------------------------------------- */
-
-      window.dispatchEvent(
-        new CustomEvent(
-          "viralvoice:believerready",
-          {
-            detail: believer
-          }
-        )
-      );
-
-    }
-
-    catch (error) {
-
-      console.error(
-        "[THE VIRAL VOICE] SIGNAL CONNECTION FAILED",
-        error
-      );
-
-
-      /*
-        Graceful fallback.
-
-        The site still works visually if
-        Supabase temporarily goes down.
-      */
-
-      applySignalStrength(10);
-    }
+  .secret-card{
+    grid-template-columns:1fr;
+    text-align:center;
   }
 
 
-  /* ========================================================
-     START SYSTEM
+  /* MERCH */
 
-     The website now starts using the visitor's actual
-     stored signal strength.
+  .merch-strip{
+    min-height:0;
 
-     Psychedelic trip mode is NOT triggered automatically.
-     ======================================================== */
+    grid-template-columns:1fr;
 
-  document.addEventListener(
-    "DOMContentLoaded",
-    () => {
+    padding:
+      70px
+      7vw;
 
-      establishSignal();
+    text-align:center;
+  }
 
-    }
-  );
+  .merch-copy h2{
+    font-size:clamp(
+      3rem,
+      14vw,
+      5rem
+    );
+  }
 
+  .merch-sigil{
+    margin-top:35px;
+  }
 
-  /* ========================================================
-     MANUAL VISUAL TESTING HELPERS
+  .merch-sigil img{
+    width:min(280px,65vw);
+  }
 
-     Browser console commands:
-
-     startTrip()
-     stopTrip()
-
-     setSignalStrength(10)
-     setSignalStrength(25)
-     setSignalStrength(50)
-     setSignalStrength(75)
-     setSignalStrength(100)
-
-     ======================================================== */
-
-  window.startTrip = function () {
-    document.body.classList.add("trip-mode");
-  };
+  .merch-type{
+    display:none;
+  }
 
 
-  window.stopTrip = function () {
-    document.body.classList.remove("trip-mode");
-  };
+  /* FOLLOW */
+
+  .follow-section h2{
+    font-size:clamp(
+      3rem,
+      13vw,
+      5.2rem
+    );
+  }
+
+  .logo-lockup{
+    width:min(500px,88vw);
+  }
+
+  .social-grid{
+    grid-template-columns:1fr 1fr;
+  }
 
 
-})();
+  /* FOOTER */
+
+  footer{
+    grid-template-columns:auto 1fr;
+
+    padding:
+      24px
+      6vw;
+  }
+
+  footer span:last-child{
+    display:none;
+  }
+
+}
+
+
+/* ==========================================================
+   SMALL PHONES
+   ========================================================== */
+
+@media (max-width: 520px){
+
+  .hero-content{
+    padding-left:6vw;
+    padding-right:6vw;
+  }
+
+  .hero .hero-title{
+    font-size:clamp(
+      3.7rem,
+      21vw,
+      5.8rem
+    );
+  }
+
+  .hero-image{
+    object-position:60% 24%;
+  }
+
+  .hero-copy{
+    font-size:.95rem;
+  }
+
+  .hero-follow-signal{
+    width:min(
+      300px,
+      72vw
+    );
+  }
+
+  .signal-button{
+    width:100%;
+  }
+
+
+  .signal-section,
+  .section-pad{
+    padding-left:6vw;
+    padding-right:6vw;
+  }
+
+
+  .signal-art{
+    min-height:300px;
+  }
+
+  .signal-art img{
+    width:80vw;
+  }
+
+  .orbit-one{
+    width:260px;
+    height:260px;
+  }
+
+  .orbit-two{
+    width:315px;
+    height:315px;
+  }
+
+
+  .manifesto-photo{
+    min-height:400px;
+  }
+
+  .manifesto-copy{
+    padding-left:6vw;
+    padding-right:6vw;
+  }
+
+
+  .transmission-card{
+    min-height:385px;
+  }
+
+  .card-art{
+    height:300px;
+  }
+
+
+  .social-grid{
+    grid-template-columns:1fr;
+  }
+
+
+  .follow-footer{
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    gap:12px;
+  }
+
+
+  .signal-experience{
+    padding-left:5vw;
+    padding-right:5vw;
+  }
+
+  .believer-card{
+    padding:16px;
+  }
+
+  .identity-sigil{
+    width:68px;
+    height:68px;
+  }
+
+}
