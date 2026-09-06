@@ -1909,3 +1909,19 @@ body.signal-stage-locked .signal-experience .signal-chroma{opacity:.08;backgroun
   }
 
 }
+
+/* ==========================================================
+   FOLLOW THE SIGNAL // MOBILE HORIZONTAL LOCK
+   Keep horizontal artwork on mobile and scale it cleanly.
+   ========================================================== */
+@media(max-width:520px){
+  .hero-follow-signal{
+    width:min(320px,78vw);
+    margin:10px 0 4px;
+  }
+
+  .footer-follow-signal{
+    width:min(260px,68vw);
+    max-width:none;
+  }
+}

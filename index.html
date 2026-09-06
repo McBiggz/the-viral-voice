@@ -43,7 +43,6 @@
       </h1>
       <div class="rule"></div>
       <picture class="follow-signal hero-follow-signal">
-        <source media="(max-width: 520px)" srcset="assets/follow-the-signal-stacked.png">
         <img src="assets/follow-the-signal-horizontal.png" alt="Follow the Signal">
       </picture>
       <p class="hero-copy">A voice for people tired of being told what to think.</p>
@@ -68,7 +67,7 @@
     </div>
   </section>
 
-  <section id="believer" class="signal-experience" data-signal-strength="42" style="--signal-strength:42%">
+  <section id="believer" class="signal-experience" data-signal-strength="10" style="--signal-strength:10%">
     <div class="signal-atmosphere" aria-hidden="true"></div>
     <div class="signal-chroma" aria-hidden="true"></div>
 
@@ -90,18 +89,18 @@
           <div class="identity-row">
             <div>
               <span class="identity-kicker">TRUE BELIEVER</span>
-              <strong class="believer-number">#0001</strong>
+              <strong class="believer-number">#----</strong>
             </div>
             <img src="assets/asset-1.png" alt="" class="identity-sigil">
           </div>
           <div class="identity-meta"><span>STATUS</span><b>SIGNAL DETECTED</b></div>
-          <div class="identity-meta"><span>VISITS</span><b>02</b></div>
+          <div class="identity-meta"><span>VISITS</span><b class="believer-visits">--</b></div>
         </article>
 
         <article class="believer-card strength-card">
           <div class="hud-label">SIGNAL STRENGTH // LIVE</div>
-          <div class="strength-header"><span>CONNECTION</span><strong>42%</strong></div>
-          <div class="signal-meter" role="img" aria-label="Signal strength 42 percent">
+          <div class="strength-header"><span>CONNECTION</span><strong>10%</strong></div>
+          <div class="signal-meter" role="img" aria-label="Signal strength 10 percent">
             <div class="signal-meter-fill"></div>
             <div class="signal-meter-grid" aria-hidden="true"></div>
           </div>
@@ -172,13 +171,13 @@
     <div class="follow-footer">
       <span>@THEVIRALVOICE</span>
       <picture class="follow-signal footer-follow-signal">
-        <source media="(max-width: 520px)" srcset="assets/follow-the-signal-stacked.png">
         <img src="assets/follow-the-signal-horizontal.png" alt="Follow the Signal">
       </picture>
     </div>
   </section>
 </main>
 <footer><img src="assets/asset-1.png" alt=""><span>THE VIRAL VOICE // LIAM McGINN</span><span>TRANSMISSION ENDS // KEEP THINKING</span></footer>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="script.js"></script>
 </body>
 </html>
