@@ -41,50 +41,22 @@
   // ----------------------------------------------------------
   function clampStrength(value) {
     const parsed = Number(value);
-
-    if (!Number.isFinite(parsed)) {
-      return 0;
-    }
-
-    return Math.max(
-      0,
-      Math.min(100, Math.round(parsed))
-    );
+    if (!Number.isFinite(parsed)) return 0;
+    return Math.max(0, Math.min(100, Math.round(parsed)));
   }
 
   function getStage(strength) {
-    if (strength >= 100) {
-      return 'signal-stage-locked';
-    }
-
-    if (strength >= 75) {
-      return 'signal-stage-psychedelic';
-    }
-
-    if (strength >= 50) {
-      return 'signal-stage-high';
-    }
-
-    if (strength >= 25) {
-      return 'signal-stage-mid';
-    }
-
+    if (strength >= 100) return 'signal-stage-locked';
+    if (strength >= 75) return 'signal-stage-psychedelic';
+    if (strength >= 50) return 'signal-stage-high';
+    if (strength >= 25) return 'signal-stage-mid';
     return 'signal-stage-low';
   }
 
   function getStatus(strength) {
-    if (strength >= 100) {
-      return 'SIGNAL LOCKED';
-    }
-
-    if (strength >= 75) {
-      return 'TRUE BELIEVER';
-    }
-
-    if (strength >= 50) {
-      return 'SIGNAL ACQUIRED';
-    }
-
+    if (strength >= 100) return 'SIGNAL LOCKED';
+    if (strength >= 75) return 'TRUE BELIEVER';
+    if (strength >= 50) return 'SIGNAL ACQUIRED';
     return 'SIGNAL DETECTED';
   }
 
@@ -95,526 +67,239 @@
 
     document.body.classList.remove(...STAGES);
     document.body.classList.add(stage);
-
     document.documentElement.style.setProperty(
       '--live-signal-strength',
       `${strength}%`
     );
 
     if (believerSection) {
-      believerSection.style.setProperty(
-        '--signal-strength',
-        `${strength}%`
-      );
-
-      believerSection.dataset.signalStrength =
-        String(strength);
+      believerSection.style.setProperty('--signal-strength', `${strength}%`);
+      believerSection.dataset.signalStrength = String(strength);
     }
 
-    if (strengthValue) {
-      strengthValue.textContent =
-        `${strength}%`;
-    }
-
+    if (strengthValue) strengthValue.textContent = `${strength}%`;
     if (meter) {
       meter.setAttribute(
         'aria-label',
         `Signal strength ${strength} percent`
       );
     }
-
-    if (statusValue) {
-      statusValue.textContent = status;
-    }
+    if (statusValue) statusValue.textContent = status;
 
     window.dispatchEvent(
-      new CustomEvent(
-        'viralvoice:signalchange',
-        {
-          detail: {
-            strength,
-            stage,
-            status
-          }
-        }
-      )
+      new CustomEvent('viralvoice:signalchange', {
+        detail: { strength, stage, status }
+      })
     );
 
-    return {
-      strength,
-      stage,
-      status
-    };
+    return { strength, stage, status };
   }
 
-  // Public DevTools testing helper.
-  window.setSignalStrength =
-    applySignalStrength;
+  // Keep this public so you can still test stages in DevTools.
+  window.setSignalStrength = applySignalStrength;
 
   // ----------------------------------------------------------
   // TRUE BELIEVER UI
   // ----------------------------------------------------------
   function formatBelieverNumber(value) {
     const number = Number(value);
-
-    if (!Number.isFinite(number)) {
-      return '#----';
-    }
-
-    return `#${String(
-      Math.trunc(number)
-    ).padStart(4, '0')}`;
+    if (!Number.isFinite(number)) return '#----';
+    return `#${String(Math.trunc(number)).padStart(4, '0')}`;
   }
 
   function updateBelieverUI(record) {
-    if (!record) {
-      return;
-    }
+    if (!record) return;
 
     if (believerNumber) {
-      believerNumber.textContent =
-        formatBelieverNumber(
-          record.believer_number
-        );
+      believerNumber.textContent = formatBelieverNumber(
+        record.believer_number
+      );
     }
 
-    if (
-      believerVisits &&
-      record.visit_count != null
-    ) {
-      believerVisits.textContent =
-        String(
-          record.visit_count
-        ).padStart(2, '0');
+    if (believerVisits && record.visit_count != null) {
+      believerVisits.textContent = String(record.visit_count).padStart(2, '0');
     }
 
-    applySignalStrength(
-      record.signal_strength ?? 0
-    );
+    applySignalStrength(record.signal_strength ?? 0);
   }
 
   // ----------------------------------------------------------
   // SUPABASE RPC HELPERS
   // ----------------------------------------------------------
   async function registerBeliever() {
-    const {
-      data,
-      error
-    } = await supabaseClient.rpc(
-      'register_believer'
-    );
+    const { data, error } = await supabaseClient.rpc('register_believer');
 
-    if (error) {
-      throw error;
-    }
+    if (error) throw error;
 
-    const record =
-      Array.isArray(data)
-        ? data[0]
-        : data;
+    const record = Array.isArray(data) ? data[0] : data;
 
     if (!record?.visitor_token) {
-      throw new Error(
-        'Registration returned no visitor token.'
-      );
+      throw new Error('Registration returned no visitor token.');
     }
 
-    localStorage.setItem(
-      VISITOR_TOKEN_KEY,
-      record.visitor_token
-    );
-
+    localStorage.setItem(VISITOR_TOKEN_KEY, record.visitor_token);
     return record;
   }
 
-  async function recognizeBeliever(
-    visitorToken
-  ) {
-    const {
-      data,
-      error
-    } = await supabaseClient.rpc(
+  async function recognizeBeliever(visitorToken) {
+    const { data, error } = await supabaseClient.rpc(
       'recognize_believer',
-      {
-        p_visitor_token:
-          visitorToken
-      }
+      { p_visitor_token: visitorToken }
     );
 
-    if (error) {
-      throw error;
-    }
+    if (error) throw error;
 
-    return Array.isArray(data)
-      ? data[0] ?? null
-      : data ?? null;
+    return Array.isArray(data) ? data[0] ?? null : data ?? null;
   }
 
   async function establishSignal() {
     if (!window.supabase?.createClient) {
-      throw new Error(
-        'Supabase client library did not load.'
-      );
+      throw new Error('Supabase client library did not load.');
     }
 
-    supabaseClient =
-      window.supabase.createClient(
-        SUPABASE_URL,
-        SUPABASE_PUBLISHABLE_KEY
-      );
+    supabaseClient = window.supabase.createClient(
+      SUPABASE_URL,
+      SUPABASE_PUBLISHABLE_KEY
+    );
 
-    const savedToken =
-      localStorage.getItem(
-        VISITOR_TOKEN_KEY
-      );
-
+    const savedToken = localStorage.getItem(VISITOR_TOKEN_KEY);
     let believer = null;
     let returning = false;
 
     if (savedToken) {
-      believer =
-        await recognizeBeliever(
-          savedToken
-        );
+      believer = await recognizeBeliever(savedToken);
+      returning = Boolean(believer);
 
-      returning =
-        Boolean(believer);
-
-      // If the DB was reset or the record vanished,
-      // create a fresh identity.
+      // A token can become stale if the database is reset or the record
+      // is deliberately removed. In that case, start a fresh identity.
       if (!believer) {
-        localStorage.removeItem(
-          VISITOR_TOKEN_KEY
-        );
-
-        believer =
-          await registerBeliever();
+        localStorage.removeItem(VISITOR_TOKEN_KEY);
+        believer = await registerBeliever();
       }
     } else {
-      believer =
-        await registerBeliever();
+      believer = await registerBeliever();
     }
 
     updateBelieverUI(believer);
 
-    document.body.dataset
-      .signalConnection = 'online';
-
-    document.body.dataset
-      .believerState =
-        returning
-          ? 'returning'
-          : 'new';
+    document.body.dataset.signalConnection = 'online';
+    document.body.dataset.believerState = returning ? 'returning' : 'new';
 
     window.dispatchEvent(
-      new CustomEvent(
-        'viralvoice:believerready',
-        {
-          detail: {
-            believerNumber:
-              believer.believer_number,
-
-            signalStrength:
-              believer.signal_strength,
-
-            visitCount:
-              believer.visit_count,
-
-            returning
-          }
+      new CustomEvent('viralvoice:believerready', {
+        detail: {
+          believerNumber: believer.believer_number,
+          signalStrength: believer.signal_strength,
+          visitCount: believer.visit_count,
+          returning
         }
-      )
+      })
     );
 
     console.info(
-      `[THE VIRAL VOICE] ${
-        returning
-          ? 'SIGNAL RE-ESTABLISHED'
-          : 'SIGNAL ESTABLISHED'
-      } // ${formatBelieverNumber(
-        believer.believer_number
-      )}`
+      `[THE VIRAL VOICE] ${returning ? 'SIGNAL RE-ESTABLISHED' : 'SIGNAL ESTABLISHED'} // ${formatBelieverNumber(believer.believer_number)}`
     );
   }
+
+
 
   // ----------------------------------------------------------
   // QR SIGNAL ENTRY GATEWAY
-  //
-  // Business card / physical QR target:
-  //
+  // Business-card / physical QR target:
   // https://mcbiggz.github.io/the-viral-voice/?entry=signal
-  //
-  // The normal homepage does NOT trigger this.
   // ----------------------------------------------------------
   function initializeSignalEntry() {
-    const params =
-      new URLSearchParams(
-        window.location.search
-      );
+    const params = new URLSearchParams(window.location.search);
+    const entry = (params.get('entry') || '').toLowerCase();
+    const shouldPlay = entry === 'signal' || entry === 'qr';
 
-    const entry =
-      (
-        params.get('entry') || ''
-      ).toLowerCase();
+    if (!shouldPlay) return;
 
-    const shouldPlay =
-      entry === 'signal' ||
-      entry === 'qr';
+    const gateway = document.querySelector('[data-signal-entry]');
+    const video = document.querySelector('[data-signal-entry-video]');
+    const audioButton = document.querySelector('[data-signal-entry-audio]');
+    const skipButton = document.querySelector('[data-signal-entry-skip]');
 
-    if (!shouldPlay) {
-      return;
-    }
+    if (!gateway || !video) return;
 
-    const gateway =
-      document.querySelector(
-        '[data-signal-entry]'
-      );
+    document.body.dataset.entrySource = entry;
+    document.body.classList.add('signal-entry-active');
+    gateway.classList.add('is-active');
+    gateway.setAttribute('aria-hidden', 'false');
 
-    const video =
-      document.querySelector(
-        '[data-signal-entry-video]'
-      );
-
-    const audioButton =
-      document.querySelector(
-        '[data-signal-entry-audio]'
-      );
-
-    const skipButton =
-      document.querySelector(
-        '[data-signal-entry-skip]'
-      );
-
-    if (
-      !gateway ||
-      !video
-    ) {
-      return;
-    }
-
-    document.body.dataset.entrySource =
-      entry;
-
-    document.body.classList.add(
-      'signal-entry-active'
-    );
-
-    gateway.classList.add(
-      'is-active'
-    );
-
-    gateway.setAttribute(
-      'aria-hidden',
-      'false'
-    );
-
-    // Mobile browsers generally block autoplay
-    // with audio, because humans apparently
-    // cannot be trusted with volume controls.
+    // Browsers usually block sound on first-page autoplay. Start muted, then
+    // let the visitor deliberately open the audio channel with one tap.
     video.muted = true;
     video.currentTime = 0;
 
-    function cleanEntryUrl() {
-      const clean =
-        new URL(
-          window.location.href
-        );
-
-      clean.searchParams.delete(
-        'entry'
-      );
-
-      clean.searchParams.delete(
-        'replay'
-      );
-
-      window.history.replaceState(
-        {},
-        '',
-        clean.pathname +
-          clean.search +
-          clean.hash
-      );
-    }
+    const cleanEntryUrl = () => {
+      const clean = new URL(window.location.href);
+      clean.searchParams.delete('entry');
+      clean.searchParams.delete('replay');
+      window.history.replaceState({}, '', clean.pathname + clean.search + clean.hash);
+    };
 
     let closed = false;
-
-    function closeGateway() {
-      if (closed) {
-        return;
-      }
-
+    const closeGateway = () => {
+      if (closed) return;
       closed = true;
-
-      gateway.classList.add(
-        'is-closing'
-      );
-
+      gateway.classList.add('is-closing');
       cleanEntryUrl();
 
-      window.setTimeout(
-        () => {
-          video.pause();
+      window.setTimeout(() => {
+        video.pause();
+        gateway.classList.remove('is-active', 'is-closing');
+        gateway.setAttribute('aria-hidden', 'true');
+        document.body.classList.remove('signal-entry-active');
 
-          gateway.classList.remove(
-            'is-active',
-            'is-closing'
-          );
+        window.dispatchEvent(
+          new CustomEvent('viralvoice:entrycomplete', {
+            detail: { source: entry }
+          })
+        );
+      }, 560);
+    };
 
-          gateway.setAttribute(
-            'aria-hidden',
-            'true'
-          );
+    audioButton?.addEventListener('click', async () => {
+      try {
+        video.muted = false;
+        video.volume = 1;
+        await video.play();
+        audioButton.textContent = 'AUDIO ACTIVE';
+        audioButton.classList.add('is-enabled');
+      } catch (error) {
+        console.warn('[THE VIRAL VOICE] AUDIO CHANNEL BLOCKED', error);
+      }
+    });
 
-          document.body.classList.remove(
-            'signal-entry-active'
-          );
+    skipButton?.addEventListener('click', closeGateway);
+    video.addEventListener('ended', closeGateway, { once: true });
+    video.addEventListener('error', closeGateway, { once: true });
 
-          window.dispatchEvent(
-            new CustomEvent(
-              'viralvoice:entrycomplete',
-              {
-                detail: {
-                  source: entry
-                }
-              }
-            )
-          );
-        },
-        560
-      );
+    const playAttempt = video.play();
+    if (playAttempt?.catch) {
+      playAttempt.catch(() => {
+        // If even muted autoplay is blocked, the audio button becomes the
+        // explicit start control rather than trapping the visitor.
+        if (audioButton) audioButton.textContent = 'START TRANSMISSION';
+      });
     }
 
-    // --------------------------------------------------------
-    // ENABLE AUDIO
-    // --------------------------------------------------------
-    audioButton?.addEventListener(
-      'click',
-      async () => {
-        try {
-          video.muted = false;
-          video.volume = 1;
-
-          await video.play();
-
-          audioButton.textContent =
-            'AUDIO ACTIVE';
-
-          audioButton.classList.add(
-            'is-enabled'
-          );
-        } catch (error) {
-          console.warn(
-            '[THE VIRAL VOICE] AUDIO CHANNEL BLOCKED',
-            error
-          );
-        }
-      }
-    );
-
-    // --------------------------------------------------------
-    // SKIP
-    // --------------------------------------------------------
-    skipButton?.addEventListener(
-      'click',
-      closeGateway
-    );
-
-    // --------------------------------------------------------
-    // VIDEO COMPLETE
-    // --------------------------------------------------------
-    video.addEventListener(
-      'ended',
-      closeGateway,
-      {
-        once: true
-      }
-    );
-
-    video.addEventListener(
-      'error',
-      closeGateway,
-      {
-        once: true
-      }
-    );
-
-    // --------------------------------------------------------
-    // AUTOPLAY
-    // --------------------------------------------------------
-    const playAttempt =
-      video.play();
-
-    if (
-      playAttempt?.catch
-    ) {
-      playAttempt.catch(
-        () => {
-          // If even muted autoplay is blocked,
-          // turn the audio button into the
-          // explicit start button.
-          if (audioButton) {
-            audioButton.textContent =
-              'START TRANSMISSION';
-          }
-        }
-      );
-    }
-
-    // --------------------------------------------------------
-    // EMERGENCY EXIT
-    //
-    // Never trap somebody behind a stalled video.
-    // --------------------------------------------------------
-    window.setTimeout(
-      closeGateway,
-      14000
-    );
+    // Absolute escape hatch if media playback stalls for any reason.
+    window.setTimeout(closeGateway, 14000);
   }
-
-  // ----------------------------------------------------------
-  // MANUAL TRIP MODE TESTING
-  // ----------------------------------------------------------
-  window.startTrip =
-    function () {
-      document.body.classList.add(
-        'trip-mode'
-      );
-    };
-
-  window.stopTrip =
-    function () {
-      document.body.classList.remove(
-        'trip-mode'
-      );
-    };
 
   // ----------------------------------------------------------
   // STARTUP
   // ----------------------------------------------------------
   initializeSignalEntry();
 
-  const fallbackStrength =
-    believerSection
-      ?.dataset
-      .signalStrength ?? 10;
+  const fallbackStrength = believerSection?.dataset.signalStrength ?? 10;
+  applySignalStrength(fallbackStrength);
 
-  applySignalStrength(
-    fallbackStrength
-  );
-
-  establishSignal().catch(
-    error => {
-      // Keep the site usable if Supabase
-      // is temporarily unavailable.
-      document.body.dataset
-        .signalConnection =
-          'offline';
-
-      console.error(
-        '[THE VIRAL VOICE] SIGNAL CONNECTION FAILED',
-        error
-      );
-    }
-  );
+  establishSignal().catch((error) => {
+    // Keep the site usable if Supabase is temporarily unavailable.
+    document.body.dataset.signalConnection = 'offline';
+    console.error('[THE VIRAL VOICE] SIGNAL CONNECTION FAILED', error);
+  });
 })();
