@@ -19,6 +19,18 @@
 <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+
+<div class="signal-entry" data-signal-entry aria-hidden="true">
+  <div class="signal-entry-noise" aria-hidden="true"></div>
+  <video class="signal-entry-video" data-signal-entry-video playsinline preload="auto">
+    <source src="assets/signal-entry.mp4" type="video/mp4">
+  </video>
+  <div class="signal-entry-ui">
+    <div class="signal-entry-status">QR HANDSHAKE // TVV-001</div>
+    <button class="signal-entry-audio" type="button" data-signal-entry-audio>ENABLE AUDIO</button>
+    <button class="signal-entry-skip" type="button" data-signal-entry-skip>SKIP TRANSMISSION</button>
+  </div>
+</div>
 <div class="noise" aria-hidden="true"></div>
 <div class="scanline" aria-hidden="true"></div>
 <div class="page-signal-distortion" aria-hidden="true"></div>
