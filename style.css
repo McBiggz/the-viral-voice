@@ -1925,364 +1925,355 @@ body.signal-stage-locked .signal-experience .signal-chroma{opacity:.08;backgroun
     max-width:none;
   }
 }
+
+
 /* ==========================================================
-   SIGNAL SUPPLY // HOMEPAGE MERCH PREVIEW FIX
+   SIGNAL SUPPLY // CINEMATIC PRODUCT SHOWCASE
+   Rebuilds the homepage merch block as an overlapping product
+   composition inspired by the Signal Supply concept art.
    ========================================================== */
 
-.merch-preview-strip {
-  position: relative;
-  display: grid;
-  grid-template-columns: minmax(0, 1.15fr) minmax(320px, 0.85fr);
-  align-items: center;
-  gap: clamp(45px, 7vw, 110px);
-
-  min-height: 650px;
-  padding: 90px 8vw;
-
-  overflow: hidden;
+.merch-showcase-strip{
+  position:relative;
+  display:grid;
+  grid-template-columns:minmax(0,1.2fr) minmax(360px,.8fr);
+  align-items:center;
+  gap:clamp(48px,6vw,110px);
+  min-height:720px;
+  padding:88px 7vw 82px;
+  overflow:hidden;
+  isolation:isolate;
+  text-align:left;
+  background:
+    radial-gradient(circle at 28% 46%,rgba(37,201,216,.10),transparent 28%),
+    radial-gradient(circle at 82% 54%,rgba(110,5,20,.14),transparent 32%),
+    linear-gradient(100deg,#031012 0%,#071113 45%,#120708 100%);
 }
 
-
-/* ----------------------------------------------------------
-   MERCH IMAGE GRID
-   ---------------------------------------------------------- */
-
-.merch-preview {
-  width: 100%;
-  max-width: 720px;
-
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  grid-template-rows: auto auto;
-  gap: 14px;
-
-  position: relative;
-  z-index: 2;
+.merch-showcase-strip::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:-2;
+  pointer-events:none;
+  opacity:.12;
+  background-image:
+    repeating-linear-gradient(-45deg,transparent 0 30px,rgba(37,201,216,.18) 31px 32px);
 }
 
-
-/* Shirt takes full top row */
-
-.merch-preview-shirt {
-  grid-column: 1 / -1;
-
-  height: clamp(300px, 34vw, 470px);
-}
-
-
-/* Sticker cards */
-
-.merch-preview-sticker-a,
-.merch-preview-sticker-b {
-  height: clamp(190px, 20vw, 275px);
-}
-
-
-/* ----------------------------------------------------------
-   ALL MERCH CARDS
-   ---------------------------------------------------------- */
-
-.merch-preview-card {
-  position: relative;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  width: 100%;
-
-  overflow: hidden;
-
-  background: #050809;
-
-  border: 1px solid rgba(37, 201, 216, 0.18);
-
-  text-decoration: none;
-
-  transition:
-    transform 0.25s ease,
-    border-color 0.25s ease,
-    box-shadow 0.25s ease;
-}
-
-
-.merch-preview-card:hover {
-  transform: translateY(-4px);
-
-  border-color: rgba(37, 201, 216, 0.7);
-
+.merch-showcase-strip::after{
+  content:"";
+  position:absolute;
+  left:7vw;
+  top:50%;
+  width:min(690px,48vw);
+  aspect-ratio:1;
+  border:1px solid rgba(37,201,216,.20);
+  border-radius:50%;
+  transform:translateY(-50%);
+  z-index:-1;
+  pointer-events:none;
   box-shadow:
-    0 0 30px rgba(37, 201, 216, 0.08);
+    0 0 80px rgba(37,201,216,.035),
+    inset 0 0 80px rgba(37,201,216,.025);
 }
 
-
-/* ----------------------------------------------------------
-   IMAGES
-   ---------------------------------------------------------- */
-
-.merch-preview-card img {
-  display: block;
-
-  width: 100%;
-  height: 100%;
-
-  object-fit: contain;
-
-  padding: 18px;
+.merch-showcase{
+  position:relative;
+  width:100%;
+  max-width:850px;
+  height:610px;
+  margin:0 auto;
+  z-index:2;
 }
 
-
-/* Give the shirt slightly more breathing room */
-
-.merch-preview-shirt img {
-  object-fit: contain;
-
-  padding: 20px;
+.merch-orbit{
+  position:absolute;
+  left:50%;
+  top:47%;
+  transform:translate(-50%,-50%);
+  border-radius:50%;
+  pointer-events:none;
 }
 
-
-/* Stickers can occupy more of their cards */
-
-.merch-preview-sticker-a img,
-.merch-preview-sticker-b img {
-  object-fit: contain;
-
-  padding: 12px;
+.merch-orbit-a{
+  width:72%;
+  aspect-ratio:1;
+  border:1px solid rgba(37,201,216,.20);
 }
 
-
-/* ----------------------------------------------------------
-   COPY
-   ---------------------------------------------------------- */
-
-.merch-preview-strip .merch-copy {
-  position: relative;
-  z-index: 3;
-
-  width: 100%;
-  max-width: 560px;
-
-  padding: 0;
+.merch-orbit-b{
+  width:84%;
+  aspect-ratio:1;
+  border:1px dashed rgba(37,201,216,.10);
 }
 
-
-.merch-preview-strip .merch-copy .eyebrow {
-  margin-bottom: 18px;
-}
-
-
-.merch-preview-strip .merch-copy h2 {
-  margin: 0 0 22px;
-
-  font-size: clamp(3.6rem, 6vw, 6.8rem);
-  line-height: 0.86;
-
-  max-width: 550px;
-}
-
-
-.merch-preview-strip .merch-copy p:not(.eyebrow) {
-  max-width: 500px;
-
-  margin: 0 0 28px;
-
-  font-size: 1rem;
-  line-height: 1.65;
-
-  color: #aeb9bb;
-}
-
-
-/* ----------------------------------------------------------
-   STORE LINK
-   ---------------------------------------------------------- */
-
-.merch-preview-strip .merch-store-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 12px;
-
-  color: #edf8f8;
-
-  font-family: "Barlow Condensed", sans-serif;
-
-  font-size: 0.9rem;
-  font-weight: 700;
-
-  letter-spacing: 0.12em;
-
-  text-decoration: none;
-
+.merch-object{
+  position:absolute;
+  display:block;
+  text-decoration:none;
+  z-index:3;
   transition:
-    color 0.2s ease,
-    gap 0.2s ease;
+    transform .3s ease,
+    filter .3s ease;
 }
 
-
-.merch-preview-strip .merch-store-link:hover {
-  color: var(--cyan);
-
-  gap: 17px;
+.merch-object img{
+  display:block;
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  filter:
+    drop-shadow(0 22px 30px rgba(0,0,0,.72))
+    drop-shadow(0 0 18px rgba(37,201,216,.08));
+  transition:filter .3s ease;
 }
 
-
-/* ----------------------------------------------------------
-   SUPPLY CODE
-   ---------------------------------------------------------- */
-
-.merch-preview-code {
-  position: absolute;
-
-  right: 3vw;
-  bottom: 35px;
-
-  z-index: 1;
-
-  font-family: "Barlow Condensed", sans-serif;
-
-  font-size: 0.65rem;
-  line-height: 1.3;
-
-  letter-spacing: 0.12em;
-
-  color: rgba(215, 238, 239, 0.4);
-
-  pointer-events: none;
+.merch-object:hover,
+.merch-object:focus-visible{
+  z-index:8;
+  transform:translateY(-7px) scale(1.025);
+  outline:none;
 }
 
-
-/* ==========================================================
-   TABLET
-   ========================================================== */
-
-@media (max-width: 1050px) {
-
-  .merch-preview-strip {
-    grid-template-columns: 1fr 0.8fr;
-
-    gap: 45px;
-
-    padding:
-      80px
-      6vw;
-  }
-
-
-  .merch-preview-shirt {
-    height: 360px;
-  }
-
-
-  .merch-preview-sticker-a,
-  .merch-preview-sticker-b {
-    height: 210px;
-  }
-
-
-  .merch-preview-strip .merch-copy h2 {
-    font-size:
-      clamp(
-        3.3rem,
-        7vw,
-        5.5rem
-      );
-  }
-
+.merch-object:hover img,
+.merch-object:focus-visible img{
+  filter:
+    drop-shadow(0 26px 34px rgba(0,0,0,.76))
+    drop-shadow(0 0 24px rgba(37,201,216,.17));
 }
 
-
-/* ==========================================================
-   MOBILE
-   ========================================================== */
-
-@media (max-width: 760px) {
-
-  .merch-preview-strip {
-    display: flex;
-    flex-direction: column;
-
-    align-items: stretch;
-
-    gap: 45px;
-
-    min-height: auto;
-
-    padding:
-      70px
-      22px;
-  }
-
-
-  .merch-preview {
-    max-width: none;
-
-    order: 2;
-  }
-
-
-  .merch-preview-strip .merch-copy {
-    order: 1;
-
-    max-width: none;
-  }
-
-
-  .merch-preview-strip .merch-copy h2 {
-    font-size:
-      clamp(
-        3.5rem,
-        16vw,
-        5.5rem
-      );
-
-    max-width: 450px;
-  }
-
-
-  .merch-preview-shirt {
-    height: 330px;
-  }
-
-
-  .merch-preview-sticker-a,
-  .merch-preview-sticker-b {
-    height: 190px;
-  }
-
-
-  .merch-preview-code {
-    display: none;
-  }
-
+.merch-object-shirt{
+  width:73%;
+  height:94%;
+  left:13%;
+  top:-1%;
+  z-index:3;
 }
 
+.merch-object-sticker{
+  width:44%;
+  height:38%;
+  left:-1%;
+  bottom:0;
+  z-index:6;
+}
 
-/* ==========================================================
-   SMALL MOBILE
-   ========================================================== */
+.merch-object-holo{
+  width:36%;
+  height:36%;
+  right:2%;
+  bottom:1%;
+  z-index:5;
+}
 
-@media (max-width: 480px) {
+.merch-object-sticker img,
+.merch-object-holo img{
+  filter:
+    drop-shadow(0 18px 24px rgba(0,0,0,.76))
+    drop-shadow(0 0 16px rgba(37,201,216,.10));
+}
 
-  .merch-preview {
-    grid-template-columns: 1fr;
+.merch-showcase-star{
+  position:absolute;
+  color:var(--cyan);
+  font-size:2rem;
+  line-height:1;
+  opacity:.9;
+  text-shadow:0 0 18px rgba(37,201,216,.40);
+  pointer-events:none;
+  z-index:7;
+}
+
+.merch-showcase-star-a{
+  left:4%;
+  top:35%;
+}
+
+.merch-showcase-star-b{
+  right:3%;
+  top:42%;
+}
+
+.merch-showcase-strip .merch-copy{
+  position:relative;
+  z-index:4;
+  width:100%;
+  max-width:570px;
+  padding:0;
+  text-align:left;
+}
+
+.merch-showcase-strip .merch-copy .eyebrow{
+  margin:0 0 20px;
+}
+
+.merch-showcase-strip .merch-copy h2{
+  margin:0 0 24px;
+  max-width:570px;
+  font-size:clamp(4.2rem,6.4vw,7.3rem);
+  line-height:.78;
+  letter-spacing:-.025em;
+}
+
+.merch-showcase-strip .merch-copy p:not(.eyebrow){
+  max-width:510px;
+  margin:0 0 30px;
+  color:#aeb9bb;
+  font-size:1rem;
+  line-height:1.65;
+}
+
+.merch-showcase-strip .merch-store-link{
+  position:relative;
+  display:inline-flex;
+  align-items:center;
+  gap:12px;
+  padding:0 0 9px;
+  color:#edf8f8;
+  font-family:"Barlow Condensed",sans-serif;
+  font-size:.92rem;
+  font-weight:700;
+  letter-spacing:.14em;
+  text-decoration:none;
+  border-bottom:1px solid rgba(37,201,216,.72);
+  transition:
+    color .2s ease,
+    gap .2s ease,
+    border-color .2s ease;
+}
+
+.merch-showcase-strip .merch-store-link:hover{
+  color:var(--cyan);
+  gap:18px;
+  border-color:var(--cyan);
+}
+
+.merch-showcase-strip .merch-preview-code{
+  position:absolute;
+  right:3vw;
+  bottom:30px;
+  z-index:1;
+  color:rgba(215,238,239,.28);
+  font-family:"Barlow Condensed",sans-serif;
+  font-size:.62rem;
+  line-height:1.35;
+  letter-spacing:.13em;
+  pointer-events:none;
+}
+
+/* The current source product art includes dark rectangular canvases.
+   These rules visually integrate those canvases into the section.
+   Once transparent PNG versions are uploaded, no CSS changes are needed. */
+.merch-object-shirt img{
+  mix-blend-mode:lighten;
+}
+
+.merch-object-sticker img,
+.merch-object-holo img{
+  mix-blend-mode:screen;
+}
+
+@media(max-width:1100px){
+  .merch-showcase-strip{
+    grid-template-columns:minmax(0,1fr) minmax(330px,.76fr);
+    gap:42px;
+    min-height:660px;
+    padding:78px 6vw;
   }
 
-
-  .merch-preview-shirt {
-    grid-column: 1;
-
-    height: 300px;
+  .merch-showcase{
+    height:530px;
+    max-width:700px;
   }
 
+  .merch-showcase-strip .merch-copy h2{
+    font-size:clamp(3.7rem,6.7vw,6rem);
+  }
+}
 
-  .merch-preview-sticker-a,
-  .merch-preview-sticker-b {
-    height: 230px;
+@media(max-width:900px){
+  .merch-showcase-strip{
+    grid-template-columns:1fr;
+    gap:32px;
+    min-height:auto;
+    padding:76px 7vw 82px;
+    text-align:center;
   }
 
-
-  .merch-preview-card img {
-    padding: 10px;
+  .merch-showcase-strip::after{
+    left:50%;
+    top:37%;
+    width:min(620px,80vw);
+    transform:translate(-50%,-50%);
   }
 
+  .merch-showcase{
+    order:2;
+    width:min(720px,100%);
+    height:510px;
+  }
+
+  .merch-showcase-strip .merch-copy{
+    order:1;
+    max-width:650px;
+    margin:0 auto;
+    text-align:center;
+  }
+
+  .merch-showcase-strip .merch-copy h2{
+    max-width:none;
+    font-size:clamp(4rem,11vw,6.3rem);
+  }
+
+  .merch-showcase-strip .merch-copy p:not(.eyebrow){
+    margin-left:auto;
+    margin-right:auto;
+  }
+
+  .merch-showcase-strip .merch-preview-code{
+    display:none;
+  }
+}
+
+@media(max-width:560px){
+  .merch-showcase-strip{
+    padding:66px 5vw 70px;
+    gap:18px;
+  }
+
+  .merch-showcase{
+    height:390px;
+    width:100%;
+  }
+
+  .merch-object-shirt{
+    width:84%;
+    height:87%;
+    left:8%;
+    top:0;
+  }
+
+  .merch-object-sticker{
+    width:49%;
+    height:34%;
+    left:-2%;
+    bottom:2%;
+  }
+
+  .merch-object-holo{
+    width:42%;
+    height:34%;
+    right:-1%;
+    bottom:2%;
+  }
+
+  .merch-showcase-strip .merch-copy h2{
+    font-size:clamp(3.6rem,17vw,5.2rem);
+    line-height:.82;
+  }
+
+  .merch-showcase-star{
+    font-size:1.35rem;
+  }
 }
