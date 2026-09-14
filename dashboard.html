@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="robots" content="noindex,nofollow" />
+  <meta name="theme-color" content="#020405" />
+  <title>Signal Control | The Viral Voice</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="dashboard.css" />
+</head>
+<body>
+  <main class="dash-shell">
+    <header class="dash-header">
+      <div>
+        <span class="kicker">THE VIRAL VOICE // PRIVATE CHANNEL</span>
+        <h1>SIGNAL CONTROL</h1>
+      </div>
+      <button type="button" class="ghost" data-signout hidden>SIGN OUT</button>
+    </header>
+
+    <section class="auth-card" data-auth-panel>
+      <span class="kicker">AUTHORIZED ACCESS ONLY</span>
+      <h2>OPEN THE DASHBOARD</h2>
+      <p>Enter the email address you added to <code>dashboard_admins</code>. Supabase will send a secure magic link.</p>
+      <form data-login-form>
+        <label for="dashboard-email">EMAIL</label>
+        <div class="login-row">
+          <input id="dashboard-email" name="email" type="email" autocomplete="email" required placeholder="you@example.com" />
+          <button type="submit">SEND MAGIC LINK</button>
+        </div>
+      </form>
+      <p class="status" data-auth-status></p>
+    </section>
+
+    <section data-dashboard hidden>
+      <div class="status-strip"><span data-session-email></span><span data-refresh-time></span></div>
+
+      <div class="metric-grid">
+        <article><span>TOTAL PAGE VIEWS</span><strong data-total-views>0</strong></article>
+        <article><span>UNIQUE VISITORS</span><strong data-unique-visitors>0</strong></article>
+        <article><span>RETURNING VISITS</span><strong data-returning>0</strong></article>
+        <article><span>QR ENTRIES</span><strong data-qr>0</strong></article>
+        <article><span>TODAY</span><strong data-today>0</strong></article>
+        <article><span>LAST 7 DAYS</span><strong data-seven>0</strong></article>
+      </div>
+
+      <section class="panel">
+        <div class="panel-head"><div><span class="kicker">TRAFFIC // 30 DAYS</span><h2>SIGNAL ACTIVITY</h2></div><button class="ghost" type="button" data-refresh>REFRESH</button></div>
+        <div class="chart-wrap"><canvas data-traffic-chart width="1200" height="360" aria-label="Page views over the last 30 days"></canvas></div>
+      </section>
+
+      <div class="two-col">
+        <section class="panel">
+          <div class="panel-head"><div><span class="kicker">ATTRIBUTION</span><h2>TOP SOURCES</h2></div></div>
+          <div class="source-list" data-source-list></div>
+        </section>
+        <section class="panel">
+          <div class="panel-head"><div><span class="kicker">QR CAMPAIGN</span><h2>FREE 4×6</h2></div></div>
+          <div class="qr-callout">
+            <img src="assets/viral-voice-free-4x6-qr.png" alt="QR code for the Viral Voice Free 4 by 6 campaign" />
+            <div><strong data-free4x6-count>0</strong><span>SCANS / PAGE VIEWS</span><code>?entry=signal&amp;src=free4x6</code></div>
+          </div>
+        </section>
+      </div>
+
+      <section class="panel">
+        <div class="panel-head"><div><span class="kicker">LATEST CONTACTS</span><h2>RECENT SIGNALS</h2></div></div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>TIME</th><th>BELIEVER</th><th>VISIT</th><th>TYPE</th><th>SOURCE</th><th>PAGE</th></tr></thead>
+            <tbody data-recent-body></tbody>
+          </table>
+        </div>
+      </section>
+    </section>
+  </main>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="dashboard.js"></script>
+</body>
+</html>
