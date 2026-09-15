@@ -1,293 +1,69 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta name="theme-color" content="#030506" />
-<meta name="description" content="The Viral Voice, Liam McGinn. Follow the signal. Think for yourself." />
-
-<meta name="apple-mobile-web-app-capable" content="yes" />
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-<meta name="apple-mobile-web-app-title" content="The Viral Voice" />
-
-<link rel="icon" type="image/png" href="assets/asset-1.png" />
-<link rel="apple-touch-icon" href="assets/asset-1.png" />
-
-<link rel="canonical" href="https://mcbiggz.github.io/the-viral-voice/" />
-<meta property="og:type" content="website" />
-<meta property="og:title" content="The Viral Voice | Liam McGinn" />
-<meta property="og:description" content="Follow the signal. Think for yourself. The official home of The Viral Voice, Liam McGinn." />
-<meta property="og:url" content="https://mcbiggz.github.io/the-viral-voice/" />
-<meta property="og:image" content="https://mcbiggz.github.io/the-viral-voice/assets/asset-3.png" />
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="The Viral Voice | Liam McGinn" />
-<meta name="twitter:description" content="Follow the signal. Think for yourself." />
-<meta name="twitter:image" content="https://mcbiggz.github.io/the-viral-voice/assets/asset-3.png" />
-<link rel="preload" href="assets/Farquharson.otf" as="font" type="font/otf" crossorigin />
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#020405">
+<meta name="description" content="The Viral Voice, Liam McGinn. Follow the signal. Think for yourself.">
 <title>The Viral Voice | Liam McGinn</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css" />
+<link rel="icon" href="assets/asset-1.png"><link rel="preload" href="assets/Farquharson.otf" as="font" type="font/otf" crossorigin>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-<div class="signal-entry" data-signal-entry aria-hidden="true">
-  <div class="signal-entry-noise" aria-hidden="true"></div>
-  <video class="signal-entry-video" data-signal-entry-video data-src="assets/signal-entry.mp4" playsinline preload="none"></video>
-  <div class="signal-entry-ui">
-    <div class="signal-entry-status">QR HANDSHAKE // TVV-001</div>
-    <button class="signal-entry-audio" type="button" data-signal-entry-audio>ENABLE AUDIO</button>
-    <button class="signal-entry-skip" type="button" data-signal-entry-skip>SKIP TRANSMISSION</button>
-  </div>
-</div>
-<div class="noise" aria-hidden="true"></div>
-<div class="scanline" aria-hidden="true"></div>
-<div class="page-signal-distortion" aria-hidden="true"></div>
+<div class="noise" aria-hidden="true"></div><div class="scanline" aria-hidden="true"></div><div class="cursor-signal" aria-hidden="true"></div>
+<div class="signal-toast" data-signal-toast hidden></div>
 <header class="site-header">
-  <a class="brand-mark" href="#top"><img src="assets/asset-1.png" alt="The Viral Voice sigil"></a>
-  <div class="header-tag">TRANSMISSION // ACTIVE</div>
-  <nav><a href="#signal">Signal</a><a href="#believer">Believer</a><a href="#watch">Archive</a><a href="store.html">Merch</a><a href="#follow">Follow</a></nav>
+<a class="brand-mark" href="#top"><img src="assets/asset-1.png" alt="The Viral Voice sigil"><span>THE VIRAL VOICE</span></a>
+<div class="live-status"><i></i> TRANSMISSION ACTIVE</div>
+<nav><a href="#manifesto">Message</a><a href="#believer">Believer</a><a href="#archive">Archive</a><a href="store.html">Signal Supply</a></nav>
+<button class="menu-toggle" type="button" data-menu>MENU</button>
 </header>
 <main id="top">
-  <section class="hero">
-    <img class="hero-image" src="assets/asset-2.png" alt="Liam McGinn, The Viral Voice">
-    <div class="hero-image-glitch hero-image-glitch-a" aria-hidden="true"></div>
-    <div class="hero-image-glitch hero-image-glitch-b" aria-hidden="true"></div>
-    <video class="hero-static-video" autoplay muted loop playsinline preload="metadata" aria-hidden="true">
-      <source src="assets/static-hero.mp4" type="video/mp4">
-    </video>
-    <div class="hero-vignette"></div>
-    <div class="hero-grid" aria-hidden="true"></div>
-    <div class="hero-content">
-      <p class="micro-label">LIAM McGINN // THE SIGNAL IS LIVE</p>
-      <h1 class="hero-title" aria-label="The Viral Voice">
-        <span class="glitch-line glitch-line-the" data-text="THE">THE</span>
-        <span class="glitch-line" data-text="VIRAL">VIRAL</span>
-        <span class="glitch-line" data-text="VOICE">VOICE</span>
-      </h1>
-      <div class="rule"></div>
-      <picture class="follow-signal hero-follow-signal">
-        <img src="assets/follow-the-signal-horizontal.png" alt="Follow the Signal">
-      </picture>
-      <p class="hero-copy">A voice for people tired of being told what to think.</p>
-      <a class="signal-button" href="#signal"><span>ENTER THE SIGNAL</span><b>↘</b></a>
-    </div>
-    <div class="hero-sidecode">TVV // 001<br>QUESTION<br>THINK<br>DECIDE</div>
-    <div class="hero-sigil"><img src="assets/asset-1.png" alt=""></div>
-  </section>
-
-  <section id="signal" class="signal-section">
-    <div class="section-number">01</div>
-    <div class="signal-copy">
-      <p class="eyebrow">THE MESSAGE</p>
-      <h2><span>THINK</span><br>FOR YOURSELF.</h2>
-      <p class="lead">The Viral Voice doesn't hand you answers. It cuts through the noise, asks the uncomfortable question, and leaves the decision where it belongs: with you.</p>
-      <div class="mantra"><span>QUESTION</span><i></i><span>THINK</span><i></i><span>DECIDE</span></div>
-    </div>
-    <div class="signal-art">
-      <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
-      <img src="assets/asset-1.png" alt="Viral Voice sigil">
-      <div class="stamp">TRUE<br>BELIEVERS<br>THINK<br>INDEPENDENTLY</div>
-    </div>
-  </section>
-
-  <section id="believer" class="signal-experience" data-signal-strength="10" style="--signal-strength:10%">
-    <div class="signal-atmosphere" aria-hidden="true"></div>
-    <div class="signal-chroma" aria-hidden="true"></div>
-
-    <div class="believer-shell">
-      <div class="believer-intro">
-        <p class="eyebrow">TRUE BELIEVER // CONNECTION ESTABLISHED</p>
-        <h2>THE SIGNAL<br><span>REMEMBERS YOU.</span></h2>
-        <p class="believer-lead">Your discoveries, recovered transmissions, and signal strength persist here. The deeper you go, the stranger the signal becomes.</p>
-
-        <button class="curiosity-riddle curiosity-transmission" type="button" data-secret-transmission="2" data-video="assets/transmission-002.mp4" aria-label="Investigate the curious signal">
-          <span class="riddle-mark">+</span>
-          <span class="curiosity-copy"><strong>NOT EVERYTHING ON THIS PAGE WAS MEANT TO BE SEEN.</strong><br>Some signals answer only to the curious.<br><em>Look closer. Curiosity is rewarded.</em></span>
-        </button>
-      </div>
-
-      <div class="believer-dashboard">
-        <article class="believer-card identity-card">
-          <div class="hud-label">IDENTITY // VERIFIED</div>
-          <div class="identity-row">
-            <div>
-              <span class="identity-kicker">TRUE BELIEVER</span>
-              <strong class="believer-number">#----</strong>
-            </div>
-            <img src="assets/asset-1.png" alt="" class="identity-sigil">
-          </div>
-          <div class="identity-meta"><span>STATUS</span><b>SIGNAL DETECTED</b></div>
-          <div class="identity-meta"><span>VISITS</span><b class="believer-visits">--</b></div>
-        </article>
-
-        <article class="believer-card strength-card">
-          <div class="hud-label">SIGNAL STRENGTH // LIVE</div>
-          <div class="strength-header"><span>CONNECTION</span><strong>10%</strong></div>
-          <div class="signal-meter" role="img" aria-label="Signal strength 10 percent">
-            <div class="signal-meter-fill"></div>
-            <div class="signal-meter-grid" aria-hidden="true"></div>
-          </div>
-          <div class="signal-scale"><span>DETECTED</span><span>ACQUIRED</span><span>BELIEVER</span><span>LOCKED</span></div>
-          <p class="strength-note">THE STRONGER THE SIGNAL, THE LESS STABLE THE INTERFACE.</p>
-        </article>
-
-        <article class="believer-card archive-card transmission-tracker-card">
-          <div class="hud-label">RECOVERED TRANSMISSIONS // PRIVATE ARCHIVE</div>
-          <div class="transmission-tracker" aria-label="Recovered transmission progress">
-            <div class="tracker-row" data-tracker-id="1"><span>001</span><b>UNKNOWN</b><small>HIDDEN</small></div>
-            <div class="tracker-row" data-tracker-id="2"><span>002</span><b>UNKNOWN</b><small>HIDDEN</small></div>
-            <div class="tracker-row" data-tracker-id="3"><span>003</span><b>UNKNOWN</b><small>HIDDEN</small></div>
-            <div class="tracker-row tracker-locked" data-tracker-id="4"><span>004</span><b>LOCKED</b><small>REQUIRES 001–003</small></div>
-            <div class="tracker-row tracker-locked" data-tracker-id="5"><span>005</span><b>████████</b><small>NO SIGNAL</small></div>
-          </div>
-          <div class="tracker-footer">
-            <span class="tracker-count">0 / 5 RECOVERED</span>
-            <span class="tracker-completion">ARCHIVE // INCOMPLETE</span>
-          </div>
-        </article>
-
-        <article id="unknown-signal" class="believer-card secret-card">
-          <div class="hud-label">UNKNOWN SIGNAL // LOCKED</div>
-          <button class="easter-mark" type="button" data-secret-transmission="3" data-video="assets/transmission-003.mp4" aria-label="Hidden transmission marker 3">
-            <img src="assets/asset-1.png" alt="">
-          </button>
-          <p class="secret-copy dynamic-signal-copy" aria-label="Some signals don't appear. They're discovered.">
-            <span class="secret-word secret-word-some" aria-hidden="true">SOME</span>
-            <span class="secret-word secret-word-signals" aria-hidden="true">SIGNALS</span>
-            <span class="secret-word secret-word-dont" aria-hidden="true">DON'T</span>
-            <span class="secret-word secret-word-appear" aria-hidden="true">APPEAR.</span>
-            <span class="secret-word secret-word-theyre" aria-hidden="true">THEY'RE</span>
-            <span class="secret-word secret-word-discovered" aria-hidden="true">DISCOVERED.</span>
-          </p>
-          <button class="secret-status access-unknown-trigger" type="button" data-secret-transmission="1" data-video="assets/transmission-001.mp4">ACCESS // UNKNOWN</button>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <section class="manifesto">
-    <button class="signal-easter signal-easter-manifesto" type="button" data-secret-transmission="4" data-video="assets/transmission-004.mp4" data-requires="1,2,3" aria-label="Hidden transmission marker 4">//</button>
-    <div class="manifesto-photo"><img src="assets/asset-2.png" alt="The Viral Voice"><div class="redwash"></div></div>
-    <div class="manifesto-copy">
-      <p class="eyebrow">THE VIRAL VOICE</p>
-      <h2><span class="small-the inline">THE</span> NOISE<br>IS THE POINT.</h2>
-      <p>Algorithms. Manufactured outrage. Fake certainty. Everybody wants your attention, your reaction, your agreement.</p>
-      <blockquote>“True Believers don't believe everything they're told. They believe in their ability to think for themselves.”</blockquote>
-      <p class="signature">LIAM McGINN // THE VIRAL VOICE</p>
-    </div>
-  </section>
-
-  <div class="signal-break" aria-hidden="true">
-    <video autoplay muted loop playsinline preload="metadata">
-      <source src="assets/static-break.mp4" type="video/mp4">
-    </video>
-    <div class="signal-break-mask"></div>
-    <div class="signal-break-label">SIGNAL INTERRUPT // 002</div>
-  </div>
-
-  <section id="watch" class="transmissions section-pad">
-    <div class="section-head"><div><p class="eyebrow">02 // TRANSMISSIONS</p><h2>WATCH THE<br>SIGNAL SPREAD.</h2></div><p class="head-note">Promos, match clips, and future transmissions live here.</p></div>
-    <div class="transmission-grid">
-      <a href="#" class="transmission-card"><span class="card-no">01</span><div class="card-art sigil-card"><img src="assets/asset-1.png" alt=""></div><div class="card-bottom"><strong>PROMOS</strong><small>COMING SOON</small></div></a>
-      <a href="#" class="transmission-card featured"><span class="card-no">02</span><div class="card-art photo-card"><img src="assets/asset-2.png" alt=""></div><div class="card-bottom"><strong>MATCHES</strong><small>COMING SOON</small></div></a>
-      <div class="transmission-card archive-frequency-card" data-archive-frequency><span class="card-no">03</span><div class="card-art type-card"><img class="follow-signal-card" src="assets/follow-the-signal-stacked.png" alt="Follow the Signal"></div><div class="card-bottom"><strong data-archive-frequency-title>UNKNOWN FREQUENCY</strong><small data-archive-frequency-status>SIGNAL CORRUPTED</small></div></div>
-    </div>
-  </section>
-
-  <section id="merch" class="merch-strip merch-showcase-strip">
-    <div class="merch-showcase" aria-label="Signal Supply preview">
-      <div class="merch-orbit merch-orbit-a" aria-hidden="true"></div>
-      <div class="merch-orbit merch-orbit-b" aria-hidden="true"></div>
-
-      <a class="merch-object merch-object-shirt" href="store.html" aria-label="View Viral Voice shirts in Signal Supply">
-        <img src="assets/VVshirt3-final.png" alt="True Believer Tee">
-      </a>
-
-      <a class="merch-object merch-object-sticker" href="store.html" aria-label="View Viral Voice stickers in Signal Supply">
-        <img src="assets/viral_voice_top_center_name_logo.png" alt="The Viral Voice sticker">
-      </a>
-
-      <a class="merch-object merch-object-holo" href="store.html" aria-label="View holographic Viral Voice sticker in Signal Supply">
-        <img src="assets/viral_voice_holographic_logo.png" alt="Holographic Viral Voice sticker">
-      </a>
-
-      <span class="merch-showcase-star merch-showcase-star-a" aria-hidden="true">✦</span>
-      <span class="merch-showcase-star merch-showcase-star-b" aria-hidden="true">✦</span>
-    </div>
-
-    <div class="merch-copy">
-      <p class="eyebrow">03 // SIGNAL SUPPLY</p>
-      <h2>WEAR<br>THE<br>SIGNAL.</h2>
-      <p>Physical pieces of the broadcast. Shirts, stickers, and limited drops for the people who found the signal.</p>
-      <a class="merch-store-link" href="store.html">ENTER SIGNAL SUPPLY <span>↗</span></a>
-    </div>
-
-    <div class="merch-preview-code" aria-hidden="true">SUPPLY // LIVE<br>ARTIFACTS // FOUND</div>
-    <button class="signal-easter signal-easter-merch" type="button" data-secret-transmission="5" data-video="assets/transmission-005.mp4" data-requires="1,2,3,4" aria-label="Hidden transmission marker 5">•</button>
-  </section>
-
-  <section id="follow" class="follow-section section-pad">
-    <img class="logo-lockup" src="assets/asset-3.png" alt="The Viral Voice">
-    <p class="eyebrow">04 // YOU FOUND THE SIGNAL</p>
-    <h2>NOW DECIDE<br>WHAT YOU DO WITH IT.</h2>
-    <div class="social-grid"><a href="#">INSTAGRAM <span>↗</span></a><a href="#">TIKTOK <span>↗</span></a><a href="#">YOUTUBE <span>↗</span></a><a href="#">FACEBOOK <span>↗</span></a></div>
-    <div class="follow-footer">
-      <span>@THEVIRALVOICE</span>
-      <picture class="follow-signal footer-follow-signal">
-        <img src="assets/follow-the-signal-horizontal.png" alt="Follow the Signal">
-      </picture>
-    </div>
-  </section>
-</main>
-<footer><img src="assets/asset-1.png" alt=""><span>THE VIRAL VOICE // LIAM McGINN</span><span>TRANSMISSION ENDS // KEEP THINKING</span></footer>
-<div class="secret-transmission-modal" id="secret-transmission-modal" hidden aria-hidden="true">
-  <div class="secret-transmission-backdrop" data-secret-close></div>
-  <section class="secret-transmission-panel" role="dialog" aria-modal="true" aria-labelledby="secret-transmission-title">
-    <div class="secret-transmission-hud">
-      <span>INTERCEPTED SIGNAL // PRIVATE CHANNEL</span>
-      <button type="button" class="secret-transmission-close" data-secret-close aria-label="Close secret transmission">×</button>
-    </div>
-    <div class="secret-transmission-static" aria-hidden="true"></div>
-
-    <div class="secret-stage secret-stage-decode">
-      <p class="secret-transmission-kicker">SIGNAL INTERRUPTION</p>
-      <h2 id="secret-transmission-title">UNAUTHORIZED FREQUENCY DETECTED</h2>
-      <div class="decode-console">
-        <span>SOURCE // UNKNOWN</span>
-        <span class="decode-label">DECODING TRANSMISSION // 001</span>
-        <div class="decode-bar"><i></i></div>
-        <strong class="decode-percent">0%</strong>
-      </div>
-    </div>
-
-    <div class="secret-stage secret-stage-video" hidden>
-      <p class="secret-transmission-kicker">SIGNAL ACQUIRED</p>
-      <h2 class="secret-video-title">TRANSMISSION // 001</h2>
-      <div class="secret-video-frame">
-        <video class="secret-transmission-video" controls playsinline preload="metadata"></video>
-        <div class="secret-video-scan" aria-hidden="true"></div>
-      </div>
-      <p class="secret-video-missing" hidden>TRANSMISSION DATA UNAVAILABLE. THE SIGNAL HAS BEEN RECOVERED, BUT THE VIDEO FILE IS NOT PRESENT YET.</p>
-    </div>
-
-    <div class="secret-stage secret-stage-result" hidden>
-      <p class="secret-transmission-kicker">TRANSMISSION RECOVERED</p>
-      <h2 class="secret-result-title">TRANSMISSION // 001</h2>
-      <div class="secret-result-grid">
-        <div><span>ARCHIVE STATUS</span><strong class="secret-recovered-count">1 OF 5</strong></div>
-        <div><span>SIGNAL GAIN</span><strong class="secret-signal-reward">+8</strong></div>
-      </div>
-      <div class="secret-progress-blocks" aria-label="Transmission recovery progress">
-        <i></i><i></i><i></i><i></i><i></i>
-      </div>
-      <p class="secret-result-message">SOMETHING ELSE IS HERE.</p>
-      <button class="secret-result-close" type="button" data-secret-close>RETURN TO SIGNAL</button>
-    </div>
-  </section>
+<section class="hero">
+<div class="hero-media"><img src="assets/asset-2.png" alt="Liam McGinn, The Viral Voice"><div class="hero-ghost ghost-a"></div><div class="hero-ghost ghost-b"></div><video autoplay muted loop playsinline preload="metadata"><source src="assets/static-hero.mp4" type="video/mp4"></video></div>
+<div class="hero-shade"></div><div class="hero-grid"></div>
+<div class="hero-copy">
+<p class="eyebrow">LIAM McGINN // CHANNEL 001</p>
+<h1><span>THE</span><strong>VIRAL</strong><strong>VOICE</strong></h1>
+<img class="follow-script" src="assets/follow-the-signal-horizontal.png" alt="Follow the Signal">
+<p class="hero-lead">No answers. Just better questions.</p>
+<div class="hero-actions"><a class="primary-button" href="#manifesto">ENTER THE SIGNAL <b>↘</b></a><button class="text-button egg-trigger" data-egg="origin">WHAT IS THIS?</button></div>
 </div>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="script.js"></script>
-</body>
-</html>
+<div class="hero-code">SIGNAL // 87.9<br>SOURCE // UNKNOWN<br>STATUS // UNSTABLE</div>
+<button class="hidden-node node-hero egg-trigger" data-egg="zero" aria-label="Unknown signal">+</button>
+<div class="scroll-cue">SCROLL TO TUNE <span>↓</span></div>
+</section>
+<section class="ticker" aria-label="Viral Voice principles"><div>QUESTION WHAT YOU'RE GIVEN <i>✦</i> THINK FOR YOURSELF <i>✦</i> SPEAK WITH PURPOSE <i>✦</i> FOLLOW THE SIGNAL <i>✦</i> QUESTION WHAT YOU'RE GIVEN <i>✦</i> THINK FOR YOURSELF</div></section>
+<section id="manifesto" class="manifesto reveal">
+<div class="section-index">01 / MESSAGE</div>
+<div class="manifesto-copy"><p class="eyebrow">THE NOISE IS THE POINT</p><h2>EVERYBODY<br>WANTS YOUR<br><em>ATTENTION.</em></h2><p class="lead">Algorithms. Manufactured outrage. Fake certainty. Everybody wants your reaction, your agreement, your attention.</p><p>The Viral Voice isn't here to tell you what to believe. The point is to notice the frame, ask who built it, and decide for yourself whether the picture deserves your attention.</p><blockquote>GOOD FRAMES WON'T SAVE BAD PICTURES.</blockquote></div>
+<div class="manifesto-visual"><div class="photo-window"><img src="assets/asset-2.png" alt="The Viral Voice"><span class="photo-label">SUBJECT // LIAM McGINN</span></div><button class="redacted egg-trigger" data-egg="frame">[ DATA REDACTED ]</button><div class="coordinates">38.0000° N<br>121.0000° W<br>VOICEPRINT VERIFIED</div></div>
+</section>
+<section class="intercept reveal"><video autoplay muted loop playsinline preload="metadata"><source src="assets/static-break.mp4" type="video/mp4"></video><div class="intercept-mask"></div><div class="intercept-copy"><span>INTERCEPTED BROADCAST</span><strong>YOU ARE NOT THE AUDIENCE.<br>YOU ARE PART OF THE SIGNAL.</strong></div><button class="frequency egg-trigger" data-egg="frequency">87.9</button></section>
+<section id="believer" class="believer reveal">
+<div class="believer-intro"><div class="section-index">02 / TRUE BELIEVER</div><p class="eyebrow">CONNECTION ESTABLISHED</p><h2>THE SIGNAL<br><em>REMEMBERS.</em></h2><p>Your identity persists on this device. Explore, recover hidden transmissions, and strengthen the signal. The site changes as you find more.</p></div>
+<div class="identity-console">
+<div class="console-top"><span>IDENTITY // VERIFIED</span><img src="assets/asset-1.png" alt=""></div>
+<div class="believer-id"><small>TRUE BELIEVER</small><strong data-believer-number>#----</strong></div>
+<div class="console-row"><span>VISITS</span><b data-visit-count>--</b></div><div class="console-row"><span>STATUS</span><b data-believer-status>SIGNAL DETECTED</b></div>
+<div class="strength-header"><span>SIGNAL STRENGTH</span><strong>10%</strong></div><div class="signal-meter"><i></i></div>
+<div class="recovery"><span>RECOVERED</span><strong data-egg-count>0 / 6</strong></div>
+</div>
+<button class="hidden-node node-believer egg-trigger" data-egg="remember" aria-label="Hidden signal">+</button>
+</section>
+<section id="archive" class="archive reveal">
+<div class="section-head"><div><div class="section-index">03 / ARCHIVE</div><p class="eyebrow">TRANSMISSIONS</p><h2>WATCH THE<br>SIGNAL SPREAD.</h2></div><p>Promos, match clips, field recordings, and fragments from the broadcast. Some files are visible. Others have to be found.</p></div>
+<div class="archive-grid">
+<article class="archive-card featured"><div class="archive-image"><img src="assets/asset-2.png" alt="The Viral Voice"><span>01</span></div><div class="archive-meta"><strong>PROMOS</strong><small>TRANSMISSION // OPEN</small></div></article>
+<article class="archive-card"><div class="archive-image sigil"><img src="assets/asset-1.png" alt="Viral Voice sigil"><span>02</span></div><div class="archive-meta"><strong>MATCHES</strong><small>ARCHIVE // BUILDING</small></div></article>
+<button class="archive-card corrupted egg-trigger" data-egg="archive"><div class="archive-image"><div class="corrupt-type">NO<br>SIGNAL</div><span>??</span></div><div class="archive-meta"><strong>UNKNOWN FREQUENCY</strong><small>ACCESS // CORRUPTED</small></div></button>
+</div>
+</section>
+<section class="statement reveal"><div class="statement-sigil"><img src="assets/asset-1.png" alt=""></div><p>TRUE BELIEVERS AREN'T FOLLOWERS.</p><h2>THEY'RE PEOPLE WILLING<br>TO <em>THINK FOR THEMSELVES.</em></h2><button class="micro-egg egg-trigger" data-egg="believe">// 005</button></section>
+<section class="supply reveal"><div class="supply-art"><a href="store.html"><img class="shirt" src="assets/VVshirt3-final.png" alt="True Believer shirt"></a><img class="sticker" src="assets/viral_voice_holographic_logo.png" alt="Viral Voice holographic sticker"><div class="orbit"></div></div><div class="supply-copy"><div class="section-index">04 / SIGNAL SUPPLY</div><p class="eyebrow">PHYSICAL ARTIFACTS</p><h2>WEAR THE<br><em>SIGNAL.</em></h2><p>Shirts, stickers, limited drops, and physical keys that may unlock things the website won't give everybody.</p><a class="primary-button" href="store.html">ENTER SIGNAL SUPPLY <b>↗</b></a></div></section>
+<section class="final-signal reveal"><img src="assets/follow-the-signal-stacked.png" alt="Follow the Signal"><p>THE BROADCAST DOESN'T END HERE.</p><div class="socials"><a href="https://www.instagram.com/theviralvoice/" target="_blank" rel="noopener">INSTAGRAM ↗</a><a href="store.html">MERCH ↗</a></div><button class="hidden-node node-final egg-trigger" data-egg="final" aria-label="Final hidden signal">+</button></section>
+</main>
+<footer><span>THE VIRAL VOICE // LIAM McGINN</span><span>© 2026 // FOLLOW THE SIGNAL</span></footer>
+<div class="transmission-modal" data-modal hidden><div class="modal-static"></div><div class="modal-panel"><button data-close aria-label="Close">×</button><p class="eyebrow" data-modal-kicker>RECOVERED TRANSMISSION</p><h2 data-modal-title>UNKNOWN</h2><p data-modal-copy></p><div class="modal-progress"><span>SIGNAL STRENGTH</span><b data-modal-strength>+0%</b></div></div></div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script src="script.js"></script><script src="experience.js"></script>
+</body></html>
